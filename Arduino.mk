@@ -154,8 +154,13 @@ ifndef AVRDUDE_CONF
 AVRDUDE_CONF     = $(ARDUINO_ETC_PATH)/avrdude.conf
 endif
 
+ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
+endif
+
+ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
+endif
 
 endif
 
@@ -311,11 +316,19 @@ SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
 LIB_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
 LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_SRC))
 
-CPPFLAGS      = -mmcu=$(MCU) -DF_CPU=$(F_CPU) \
+CPPFLAGS      = -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			$(SYS_INCLUDES) -g -Os -w -Wall \
-			-ffunction-sections -fdata-sections
+			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
+
+ifndef NO_MCU
+CPPFLAGS += -mmcu=$(MCU)
+endif
+
+ifndef NO_GNU99
 CFLAGS        = -std=gnu99
+endif
+
 CXXFLAGS      = -fno-exceptions
 ASFLAGS       = -mmcu=$(MCU) -I. -x assembler-with-cpp
 LDFLAGS       = -mmcu=$(MCU) -lm -Wl,--gc-sections -Os
