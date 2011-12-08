@@ -36,6 +36,11 @@
 #              17.v.2011   M J Oldfield
 #                          - grabbed said version from Ubuntu
 #
+#         0.6  22.vi.2011  M J Oldfield
+#                          - added ard-parse-boards supports
+#                          - added -lc to linker opts, 
+#                            on Fabien Le Lez's advice
+#
 ########################################################################
 #
 # STANDARD ARDUINO WORKFLOW
@@ -50,8 +55,7 @@
 #       TARGET       = CLItest
 #       ARDUINO_LIBS = LiquidCrystal
 #
-#       MCU          = atmega168
-#       F_CPU        = 16000000
+#       BOARD_TAG    = uno
 #       ARDUINO_PORT = /dev/cu.usb*
 #
 #       include /usr/local/share/Arduino.mk
@@ -64,9 +68,15 @@
 #                   here: you could always set it to xx if you wanted!
 #    ARDUINO_LIBS - A list of any libraries used by the sketch (we assume
 #                   these are in $(ARDUINO_DIR)/hardware/libraries
-#    MCU,F_CPU    - The target processor description
 #    ARDUINO_PORT - The port where the Arduino can be found (only needed
 #                   when uploading
+#    BOARD_TAG    - The ard-parse-boards tag for the board e.g. uno or mega
+#                   'make show_boards' shows a list
+#
+# You might also want to specify these, but normally they'll be read from the
+# boards.txt file i.e. implied by BOARD_TAG
+#
+#    MCU,F_CPU    - The target processor description
 #
 # Once this file has been created the typical workflow is just
 #
@@ -81,11 +91,12 @@
 # Included libraries are built in the build-cli/libs subdirectory.
 #
 # Besides make upload you can also
-#   make            - no upload
-#   make clean      - remove all our dependencies
-#   make depends    - update dependencies
-#   make reset      - reset the Arduino by tickling DTR on the serial port
-#   make raw_upload - upload without first resetting
+#   make             - no upload
+#   make clean       - remove all our dependencies
+#   make depends     - update dependencies
+#   make reset       - reset the Arduino by tickling DTR on the serial port
+#   make raw_upload  - upload without first resetting
+#   make show_boards - list all the boards defined in boards.txt
 #
 ########################################################################
 #
@@ -106,6 +117,9 @@
 #
 #     ISP_PROG	   = -c stk500v2
 #     ISP_PORT     = /dev/ttyACM0
+#
+# You might also need to set the fuse bits, but typically they'll be
+# read from boards.txt, based on the BOARD_TAG variable:
 #     
 #     ISP_LOCK_FUSE_PRE  = 0x3f
 #     ISP_LOCK_FUSE_POST = 0xcf
@@ -143,6 +157,63 @@ ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 
 endif
+
+########################################################################
+# boards.txt parsing
+#
+ifndef BOARD_TAG
+BOARD_TAG   = uno
+endif
+
+ifndef BOARDS_TXT
+BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
+endif
+
+ifndef PARSE_BOARD
+PARSE_BOARD = ard-parse-boards --boards_txt=$(BOARDS_TXT)
+endif
+
+# processor stuff
+ifndef MCU
+MCU   = $(shell $(PARSE_BOARD) $(BOARD_TAG) build.mcu)
+endif
+
+ifndef F_CPU
+F_CPU = $(shell $(PARSE_BOARD) $(BOARD_TAG) build.f_cpu)
+endif
+
+# normal programming info
+ifndef AVRDUDE_ARD_PROGRAMMER
+AVRDUDE_ARD_PROGRAMMER = $(shell $(PARSE_BOARD) $(BOARD_TAG) upload.protocol)
+endif
+
+ifndef AVRDUDE_ARD_BAUDRATE
+AVRDUDE_ARD_BAUDRATE   = $(shell $(PARSE_BOARD) $(BOARD_TAG) upload.speed)
+endif
+
+# fuses if you're using e.g. ISP
+ifndef ISP_LOCK_FUSE_PRE
+ISP_LOCK_FUSE_PRE  = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.unlock_bits)
+endif
+
+ifndef ISP_LOCK_FUSE_POST
+ISP_LOCK_FUSE_POST = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.lock_bits)
+endif
+
+ifndef ISP_HIGH_FUSE
+ISP_HIGH_FUSE      = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.high_fuses)
+endif
+
+ifndef ISP_LOW_FUSE
+ISP_LOW_FUSE       = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.low_fuses)
+endif
+
+ifndef ISP_EXT_FUSE
+ISP_EXT_FUSE       = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.extended_fuses)
+endif
+
+
+
 
 # Everything gets built in here
 OBJDIR  	  = build-cli
@@ -315,35 +386,7 @@ ifdef AVRDUDE_CONF
 AVRDUDE_COM_OPTS += -C $(AVRDUDE_CONF)
 endif
 
-ifndef AVRDUDE_ARD_PROGRAMMER
-AVRDUDE_ARD_PROGRAMMER = stk500v1
-endif
-
-ifndef AVRDUDE_ARD_BAUDRATE
-AVRDUDE_ARD_BAUDRATE   = 19200
-endif
-
 AVRDUDE_ARD_OPTS = -c $(AVRDUDE_ARD_PROGRAMMER) -b $(AVRDUDE_ARD_BAUDRATE) -P $(ARD_PORT)
-
-ifndef ISP_LOCK_FUSE_PRE
-ISP_LOCK_FUSE_PRE  = 0x3f
-endif
-
-ifndef ISP_LOCK_FUSE_POST
-ISP_LOCK_FUSE_POST = 0xcf
-endif
-
-ifndef ISP_HIGH_FUSE
-ISP_HIGH_FUSE      = 0xdf
-endif
-
-ifndef ISP_LOW_FUSE
-ISP_LOW_FUSE       = 0xff
-endif
-
-ifndef ISP_EXT_FUSE
-ISP_EXT_FUSE       = 0x01
-endif
 
 ifndef ISP_PROG
 ISP_PROG	   = -c stk500v2
@@ -363,7 +406,7 @@ $(OBJDIR):
 		mkdir $(OBJDIR)
 
 $(TARGET_ELF): 	$(OBJS)
-		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_OBJS)
+		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_OBJS) -lc
 
 $(DEP_FILE):	$(OBJDIR) $(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
@@ -402,6 +445,9 @@ clean:
 depends:	$(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
 
-.PHONY:	all clean depends upload raw_upload reset
+show_boards:	
+		$(PARSE_BOARD) --boards
+
+.PHONY:	all clean depends upload raw_upload reset show_boards
 
 include $(DEP_FILE)
