@@ -313,8 +313,10 @@ ECHO    = echo
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
 SYS_INCLUDES  = $(patsubst %,-I%,$(SYS_LIBS))
 SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
-LIB_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
-LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_SRC))
+LIB_CPP_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
+LIB_C_SRC       = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
+LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_CPP_SRC))
+LIB_OBJS      += $(patsubst $(ARDUINO_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(LIB_C_SRC))
 
 CPPFLAGS      = -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
@@ -349,6 +351,9 @@ ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
 
 # library sources
 $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+$(OBJDIR)/libs/c%.o: $(ARDUINO_LIB_PATH)/%.c
 	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
