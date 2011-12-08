@@ -28,6 +28,9 @@
 #                          - added code from Philip Hands to reset
 #                            Arduino prior to upload
 #
+#         0.4  25.v.2010   M J Oldfield
+#                          - tweaked reset target on Philip Hands' advice
+#
 ########################################################################
 #
 # STANDARD ARDUINO WORKFLOW
@@ -299,7 +302,15 @@ ifdef AVRDUDE_CONF
 AVRDUDE_COM_OPTS += -C $(AVRDUDE_CONF)
 endif
 
-AVRDUDE_ARD_OPTS = -c stk500v1 -b 19200 -P $(ARD_PORT)
+ifndef AVRDUDE_ARD_PROGRAMMER
+AVRDUDE_ARD_PROGRAMMER = stk500v1
+endif
+
+ifndef AVRDUDE_ARD_BAUDRATE
+AVRDUDE_ARD_BAUDRATE   = 19200
+endif
+
+AVRDUDE_ARD_OPTS = -c $(AVRDUDE_ARD_PROGRAMMER) -b $(AVRDUDE_ARD_BAUDRATE) -P $(ARD_PORT)
 
 ifndef ISP_LOCK_FUSE_PRE
 ISP_LOCK_FUSE_PRE  = 0x3f
@@ -350,8 +361,16 @@ raw_upload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
 
+# stty on MacOS likes -F, but on Debian it likes -f redirecting
+# stdin/out appears to work but generates a spurious error on MacOS at
+# least. Perhaps it would be better to just do it in perl ?
 reset:		
-		stty hupcl < $(ARD_PORT) ; sleep 0.1 ; stty -hupcl < $(ARD_PORT) 
+		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
+		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
+		done ;\
+		$$STTYF $(ARD_PORT)  hupcl ;\
+		(sleep 0.1 || sleep 1)     ;\
+		$$STTYF $(ARD_PORT) -hupcl 
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
