@@ -31,6 +31,11 @@
 #         0.4  25.v.2010   M J Oldfield
 #                          - tweaked reset target on Philip Hands' advice
 #
+#         0.5  23.iii.2011 Stefan Tomanek
+#                          - added ad-hoc library building
+#              17.v.2011   M J Oldfield
+#                          - grabbed said version from Ubuntu
+#
 ########################################################################
 #
 # STANDARD ARDUINO WORKFLOW
@@ -73,6 +78,7 @@
 #    Arduino header and footer have been affixed.
 #  - any number of .c, .cpp, .s and .h files
 #
+# Included libraries are built in the build-cli/libs subdirectory.
 #
 # Besides make upload you can also
 #   make            - no upload
@@ -133,7 +139,7 @@ ifndef AVRDUDE_CONF
 AVRDUDE_CONF     = $(ARDUINO_ETC_PATH)/avrdude.conf
 endif
 
-ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/hardware/libraries
+ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 
 endif
@@ -169,7 +175,7 @@ endif
 endif
 
 # all the objects!
-OBJS            = $(LOCAL_OBJS) $(CORE_OBJS)
+OBJS            = $(LOCAL_OBJS) $(CORE_OBJS) $(LIB_OBJS)
 
 ########################################################################
 # Rules for making stuff
@@ -200,6 +206,8 @@ ECHO    = echo
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
 SYS_INCLUDES  = $(patsubst %,-I%,$(SYS_LIBS))
 SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
+LIB_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
+LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_SRC))
 
 CPPFLAGS      = -mmcu=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
@@ -223,6 +231,11 @@ ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
 # here for building e.g. a system C++ file and a local C++
 # file. Besides making things simpler now, this would also make it
 # easy to change the build options in future
+
+# library sources
+$(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
 # normal local sources
 # .o rules are for objects, .d for dependency tracking
