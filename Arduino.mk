@@ -173,7 +173,7 @@ BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
 endif
 
 ifndef PARSE_BOARD
-PARSE_BOARD = $(ARDUINO_MK_PATH)/ard-parse-boards --boards_txt=$(BOARDS_TXT)
+PARSE_BOARD = $(ARDUINO_MK_PATH)ard-parse-boards --boards_txt=$(BOARDS_TXT)
 endif
 
 # processor stuff
@@ -263,14 +263,42 @@ TARGETS    = $(OBJDIR)/$(TARGET).*
 # A list of dependencies
 DEP_FILE   = $(OBJDIR)/depends.mk
 
+ifndef CC_NAME
+CC_NAME      = avr-gcc
+endif
+
+ifndef CXX_NAME
+CXX_NAME     = avr-g++
+endif
+
+ifndef OBJCOPY_NAME
+OBJCOPY_NAME = avr-objcopy
+endif
+
+ifndef OBJDUMP_NAME
+OBJDUMP_NAME = avr-objdump
+endif
+
+ifndef AR_NAME
+AR_NAME      = avr-ar
+endif
+
+ifndef SIZE_NAME
+SIZE_NAME    = avr-size
+endif
+
+ifndef NM_NAME
+NM_NAME      = avr-nm
+endif
+
 # Names of executables
-CC      = $(AVR_TOOLS_PATH)/avr-gcc
-CXX     = $(AVR_TOOLS_PATH)/avr-g++
-OBJCOPY = $(AVR_TOOLS_PATH)/avr-objcopy
-OBJDUMP = $(AVR_TOOLS_PATH)/avr-objdump
-AR      = $(AVR_TOOLS_PATH)/avr-ar
-SIZE    = $(AVR_TOOLS_PATH)/avr-size
-NM      = $(AVR_TOOLS_PATH)/avr-nm
+CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
+CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
+OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
+OBJDUMP = $(AVR_TOOLS_PATH)/$(OBJDUMP_NAME)
+AR      = $(AVR_TOOLS_PATH)/$(AR_NAME)
+SIZE    = $(AVR_TOOLS_PATH)/$(SIZE_NAME)
+NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
 REMOVE  = rm -f
 MV      = mv -f
 CAT     = cat
