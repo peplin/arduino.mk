@@ -138,6 +138,7 @@
 ########################################################################
 # Some paths
 #
+#
 
 ifneq (ARDUINO_DIR,)
 
@@ -158,6 +159,8 @@ ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 
 endif
 
+ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
+
 ########################################################################
 # boards.txt parsing
 #
@@ -170,7 +173,7 @@ BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
 endif
 
 ifndef PARSE_BOARD
-PARSE_BOARD = ard-parse-boards --boards_txt=$(BOARDS_TXT)
+PARSE_BOARD = $(ARDUINO_MK_PATH)/ard-parse-boards --boards_txt=$(BOARDS_TXT)
 endif
 
 # processor stuff
