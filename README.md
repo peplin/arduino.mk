@@ -8,6 +8,9 @@ The various released versions (0.3, 0.4, etc) are tagged in this repository.
 
 The original blog post: http://mjo.tc/atelier/2009/02/arduino-cli.html
 
+A blog post on the addition of chipKIT support:
+http://christopherpeplin.com/2011/12/chipkit-arduino-makefile/
+
 ## chipKIT Support
 
 This version adds support for the Digilent chipKIT Uno32 and Max32, both
