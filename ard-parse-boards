@@ -5,6 +5,7 @@ use warnings;
 
 use Getopt::Long;
 use Pod::Usage;
+use YAML;
 
 my %Opt =
   (
@@ -135,7 +136,6 @@ sub dump_boards
 # dump arbitrary data with a title
 sub dump_data
   {
-    use YAML;
     my ($title, $data) = @_;
 
     print "# $title\n", Dump($data);
