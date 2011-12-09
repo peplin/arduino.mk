@@ -318,22 +318,22 @@ LIB_C_SRC       = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
 LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_CPP_SRC))
 LIB_OBJS      += $(patsubst $(ARDUINO_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(LIB_C_SRC))
 
-CPPFLAGS      = -DF_CPU=$(F_CPU) \
+ifndef MCU_FLAG_NAME
+MCU_FLAG_NAME = mmcu
+endif
+
+CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			$(SYS_INCLUDES) -g -Os -w -Wall \
 			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
 
-ifndef NO_MCU
-CPPFLAGS += -mmcu=$(MCU)
-endif
-
-ifndef NO_GNU99
+ifdef USE_GNU99
 CFLAGS        = -std=gnu99
 endif
 
 CXXFLAGS      = -fno-exceptions
 ASFLAGS       = -mmcu=$(MCU) -I. -x assembler-with-cpp
-LDFLAGS       = -mmcu=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
+LDFLAGS       = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
 
 # Rules for making a CPP file from the main sketch (.cpe)
 PDEHEADER     = \\\#include \"WProgram.h\"
