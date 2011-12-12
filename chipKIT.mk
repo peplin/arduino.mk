@@ -22,8 +22,13 @@ AR_NAME = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
+ifndef AVRDUDE
 AVRDUDE = $(ARDUINO_DIR)/hardware/tools/avrdude
+endif
+
+ifndef AVRDUDE
 AVRDUDE_CONF = $(ARDUINO_DIR)/hardware/tools/avrdude.conf
+endif
 
 MCU_FLAG_NAME=mprocessor
 EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=22 -D_BOARD_MEGA_=
