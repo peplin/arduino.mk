@@ -12,6 +12,7 @@
 #
 
 AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
+AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
 ARDUINO_LIB_PATH  = $(ARDUINO_SKETCHBOOK)/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
@@ -22,12 +23,24 @@ AR_NAME = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
-ifndef AVRDUDE
-AVRDUDE = $(ARDUINO_DIR)/hardware/tools/avrdude
-endif
+OSTYPE := $(shell uname)
 
 ifndef AVRDUDE
-AVRDUDE_CONF = $(ARDUINO_DIR)/hardware/tools/avrdude.conf
+	ifeq ($(OSTYPE),darwin)
+		# a different path is used in OS X
+		AVRDUDE = $(AVRDUDE_TOOLS_PATH)/avr/bin/avrdude
+	else
+		AVRDUDE = $(AVRDUDE_TOOLS_PATH)/avrdude
+	endif
+endif
+
+ifndef AVRDUDE_CONF
+	ifeq ($(OSTYPE),darwin)
+		# a different path is used in OS X
+		AVRDUDE_CONF = $(AVRDUDE_TOOLS_PATH)/avr/etc/avrdude.conf
+	else
+		AVRDUDE_CONF = $(AVRDUDE_TOOLS_PATH)/avrdude.conf
+	endif
 endif
 
 MCU_FLAG_NAME=mprocessor
