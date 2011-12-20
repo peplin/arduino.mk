@@ -26,7 +26,7 @@ OBJCOPY_NAME = pic32-objcopy
 OSTYPE := $(shell uname)
 
 ifndef AVRDUDE
-	ifeq ($(OSTYPE),darwin)
+	ifeq ($(OSTYPE),Darwin)
 		# a different path is used in OS X
 		AVRDUDE = $(AVRDUDE_TOOLS_PATH)/avr/bin/avrdude
 	else
@@ -35,7 +35,7 @@ ifndef AVRDUDE
 endif
 
 ifndef AVRDUDE_CONF
-	ifeq ($(OSTYPE),darwin)
+	ifeq ($(OSTYPE),Darwin)
 		# a different path is used in OS X
 		AVRDUDE_CONF = $(AVRDUDE_TOOLS_PATH)/avr/etc/avrdude.conf
 	else
