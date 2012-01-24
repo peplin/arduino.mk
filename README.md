@@ -22,3 +22,16 @@ include `chipKIT.mk` instead of `Arduino.mk` at the bottom of your Makefile.
 You can adjust the same variables as described by Martin for `Arduino.mk`, but
 point to an MPIDE installation (which includes the chipKIT toolchain) instead of
 the Arduino IDE.
+
+## Example
+
+To compile the basic blink example sketch, set the `ARDUINO_MAKEFILE_HOME`
+variable to point to where you clone this repository and use this for your
+Makefile:
+
+    TARGET       = blink
+    BOARD_TAG    = mega_pic32
+
+    ARDUINO_PORT = /dev/ttyUSB*
+
+    include $(ARDUINO_MAKEFILE_HOME)/chipKIT.mk
