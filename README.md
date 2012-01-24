@@ -22,12 +22,3 @@ include `chipKIT.mk` instead of `Arduino.mk` at the bottom of your Makefile.
 You can adjust the same variables as described by Martin for `Arduino.mk`, but
 point to an MPIDE installation (which includes the chipKIT toolchain) instead of
 the Arduino IDE.
-
-## Dependencies
-
-The board feature detection script (`ard-parse-boards`) is a Perl script that
-depends on the YAML Perl module. You can manually specify all of the values it
-is used to fill in if you don't want to install that, but on Ubuntu it's pretty
-easy:
-
-    $ sudo apt-get install libyaml-perl

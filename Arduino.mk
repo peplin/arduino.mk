@@ -15,6 +15,8 @@
 #
 # Original Arduino adaptation by mellis, eighthave, oli.keller
 #
+# Modified by Christopher Peplin for chipKIT.
+#
 # Version 0.1  17.ii.2009  M J Oldfield
 #
 #         0.2  22.ii.2009  M J Oldfield
@@ -40,6 +42,12 @@
 #                          - added ard-parse-boards supports
 #                          - added -lc to linker opts,
 #                            on Fabien Le Lez's advice
+#
+#              Development changes, Chris Peplin,
+#
+#              			   - converted ard-parse-boards to a Makefile function
+#              			   so Perl/YAML aren't required (thanks to avenue33 on
+#              			   the chipKIT forums)
 #
 ########################################################################
 #
@@ -178,50 +186,51 @@ BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
 endif
 
 ifndef PARSE_BOARD
-PARSE_BOARD = $(ARDUINO_MK_PATH)ard-parse-boards --boards_txt=$(BOARDS_TXT)
+nullstring  :=
+spacestring := $(nullstring) # end of the line
+equalstring := $(nullstring)=# end of the line
+# result = $(call READ_BOARD_TXT, 'boardname', 'parameter')
+PARSE_BOARD = $(lastword $(subst $(equalstring),$(spacestring),$(shell grep $(1).$(2) $(BOARDS_TXT))))
 endif
 
 # processor stuff
 ifndef MCU
-MCU   = $(shell $(PARSE_BOARD) $(BOARD_TAG) build.mcu)
+MCU   = $(call PARSE_BOARD,$(BOARD_TAG),build.mcu)
 endif
 
 ifndef F_CPU
-F_CPU = $(shell $(PARSE_BOARD) $(BOARD_TAG) build.f_cpu)
+F_CPU = $(call PARSE_BOARD,$(BOARD_TAG),build.f_cpu)
 endif
 
 # normal programming info
 ifndef AVRDUDE_ARD_PROGRAMMER
-AVRDUDE_ARD_PROGRAMMER = $(shell $(PARSE_BOARD) $(BOARD_TAG) upload.protocol)
+AVRDUDE_ARD_PROGRAMMER = $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
 endif
 
 ifndef AVRDUDE_ARD_BAUDRATE
-AVRDUDE_ARD_BAUDRATE   = $(shell $(PARSE_BOARD) $(BOARD_TAG) upload.speed)
+AVRDUDE_ARD_BAUDRATE   = $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
 endif
 
 # fuses if you're using e.g. ISP
 ifndef ISP_LOCK_FUSE_PRE
-ISP_LOCK_FUSE_PRE  = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.unlock_bits)
+ISP_LOCK_FUSE_PRE  = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.unlock_bits)
 endif
 
 ifndef ISP_LOCK_FUSE_POST
-ISP_LOCK_FUSE_POST = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.lock_bits)
+ISP_LOCK_FUSE_POST = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.lock_bits)
 endif
 
 ifndef ISP_HIGH_FUSE
-ISP_HIGH_FUSE      = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.high_fuses)
+ISP_HIGH_FUSE      = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.high_fuses)
 endif
 
 ifndef ISP_LOW_FUSE
-ISP_LOW_FUSE       = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.low_fuses)
+ISP_LOW_FUSE       = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.low_fuses)
 endif
 
 ifndef ISP_EXT_FUSE
-ISP_EXT_FUSE       = $(shell $(PARSE_BOARD) $(BOARD_TAG) bootloader.extended_fuses)
+ISP_EXT_FUSE       = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.extended_fuses)
 endif
-
-
-
 
 # Everything gets built in here
 OBJDIR  	  = build-cli
@@ -493,9 +502,6 @@ clean:
 
 depends:	$(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
-
-show_boards:
-		$(PARSE_BOARD) --boards
 
 .PHONY:	all clean depends upload raw_upload reset show_boards
 
