@@ -456,6 +456,18 @@ endif
 
 AVRDUDE_ISP_OPTS = -P $(ISP_PORT) $(ISP_PROG)
 
+#######################################################################
+#
+# Serial monitoring
+#
+
+ifndef MON_SPEED
+SERIAL_BAUDRATE = 9600
+endif
+
+ifndef MON_CMD
+SERIAL_COMMAND   = screen
+endif
 
 ########################################################################
 #
@@ -500,6 +512,9 @@ ispload:	$(TARGET_HEX)
 			-U flash:w:$(TARGET_HEX):i
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) \
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
+
+serial:
+	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
 
 clean:
 		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)
