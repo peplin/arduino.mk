@@ -44,7 +44,8 @@ ifndef AVRDUDE_CONF
 endif
 
 MCU_FLAG_NAME=mprocessor
-EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=22 -D_BOARD_MEGA_=
+EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=22 -D_BOARD_MEGA_=  \
+		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
