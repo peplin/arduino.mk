@@ -257,13 +257,13 @@ DEPS            = $(LOCAL_OBJS:.o=.d)
 
 # core sources
 ifeq ($(strip $(NO_CORE)),)
-ifdef ARDUINO_CORE_PATH
-CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
-CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
-CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
-CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,  \
-			$(OBJDIR)/%,$(CORE_OBJ_FILES))
-endif
+	ifdef ARDUINO_CORE_PATH
+		CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
+		CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
+		CORE_AS_SRCS	= $(wildcard $(ARDUINO_CORE_PATH)/*.S)
+		CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o) $(CORE_AS_SRCS:.S=.o)
+		CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%, $(OBJDIR)/%,$(CORE_OBJ_FILES))
+	endif
 endif
 
 # all the objects!
@@ -474,7 +474,9 @@ endif
 # Explicit targets start here
 #
 
-all: 		$(OBJDIR) $(TARGET_HEX)
+all:		clean build upload
+
+build: 		$(OBJDIR) $(TARGET_HEX)
 
 $(OBJDIR):
 		mkdir $(OBJDIR)
@@ -488,6 +490,7 @@ $(DEP_FILE):	$(OBJDIR) $(DEPS)
 upload:		reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
+		@echo "\n---- upload ----";
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
 
@@ -495,12 +498,16 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
-		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
-		done ;\
-		$$STTYF $(ARD_PORT)  hupcl ;\
-		(sleep 0.1 || sleep 1)     ;\
-		$$STTYF $(ARD_PORT) -hupcl
+		@echo "\n---- reset ----";
+		-screen -X quit
+#		osascript -e 'tell application "Terminal" to do script "screen -X quit"'
+#
+#		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
+#		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
+#		done ;\
+#		$$STTYF $(ARD_PORT)  hupcl ;\
+#		(sleep 0.1 || sleep 1)     ;\
+#		$$STTYF $(ARD_PORT) -hupcl
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
@@ -514,14 +521,18 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
-	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
+		@echo "\n---- serial ----";
+		osascript -e 'tell application "Terminal" to do script "$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)"'
+#		$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
 
 clean:
+		@echo "\n---- clean ----";
 		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)
 
 depends:	$(DEPS)
+		@echo "\n---- depends ----";
 		cat $(DEPS) > $(DEP_FILE)
 
-.PHONY:	all clean depends upload raw_upload reset show_boards
+.PHONY:	all build clean depends upload raw_upload reset show_boards
 
 include $(DEP_FILE)
