@@ -495,7 +495,7 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-		@if [ -z "$(ARD_PORT)"]; then \
+		@if [ -z "$(ARD_PORT)" ]; then \
 			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
 			fi
 		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
