@@ -26,6 +26,11 @@ You can adjust the same variables as described by Martin for `Arduino.mk`, but
 point to an MPIDE installation (which includes the chipKIT toolchain) instead of
 the Arduino IDE.
 
+There is one important change in the chipKIT Makefile - the path for extra
+libraries requires the `ARDUINO_SKETCHBOOK` environment variable. At some point
+this will be merged with the Arduino Makefile's approach of looking for
+libraries in the IDE's directory.
+
 ## Example
 
 To compile the basic blink example sketch, set the `ARDUINO_MAKEFILE_HOME`
