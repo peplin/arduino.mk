@@ -11,15 +11,15 @@
 # License, or (at your option) any later version.
 #
 
-AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
-AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
-ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
-ARDUINO_LIB_PATH  = $(ARDUINO_SKETCHBOOK)/libraries
-BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
+AVR_TOOLS_PATH     = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
+AVRDUDE_TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools
+ARDUINO_CORE_PATH  = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
+ARDUINO_LIB_PATH   = $(ARDUINO_SKETCHBOOK)/libraries
+BOARDS_TXT         = $(ARDUINO_DIR)/hardware/pic32/boards.txt
 
-CC_NAME = pic32-gcc
-CXX_NAME = pic32-g++
-AR_NAME = pic32-ar
+CC_NAME      = pic32-gcc
+CXX_NAME     = pic32-g++
+AR_NAME      = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
@@ -43,10 +43,11 @@ ifndef AVRDUDE_CONF
 	endif
 endif
 
-BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
+BOARD    = $(call PARSE_BOARD,$(BOARD_TAG),board)
+LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
 
 MCU_FLAG_NAME=mprocessor
-EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=23 -D$(BOARD)=  \
+EXTRA_CPPFLAGS = -O2 -mno-smart-io -DARDUINO=23 -D$(BOARD)=  \
 		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
