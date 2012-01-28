@@ -1,5 +1,5 @@
 ########################################################################
-#
+# 
 # Arduino command line tools Makefile
 # System part (i.e. project independent)
 #
@@ -474,7 +474,9 @@ endif
 # Explicit targets start here
 #
 
-all: 		$(OBJDIR) $(TARGET_HEX)
+all: 		clean build upload serial
+
+build: 		$(OBJDIR) $(TARGET_HEX)
 
 $(OBJDIR):
 		mkdir $(OBJDIR)
@@ -488,6 +490,7 @@ $(DEP_FILE):	$(OBJDIR) $(DEPS)
 upload:		reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
+		@echo " ---- upload ---- "
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
 
@@ -495,6 +498,7 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
+		@echo " ---- reset ---- "
 		-screen -X kill;
 		sleep 1;
 #		@if [ -z "$(ARD_PORT)" ]; then \
@@ -508,6 +512,7 @@ reset:
 #		$$STTYF $(ARD_PORT) -hupcl
 
 ispload:	$(TARGET_HEX)
+		@echo " ---- ispload ---- "
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
 			-U lock:w:$(ISP_LOCK_FUSE_PRE):m \
 			-U hfuse:w:$(ISP_HIGH_FUSE):m \
@@ -519,14 +524,17 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
+		@echo " ---- serial ---- "
 		osascript -e 'tell application "Terminal" to do script "$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)"'
 
 clean:
+		@echo " ---- clean ---- "
 		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)
 
 depends:	$(DEPS)
+		@echo " ---- depends ---- "
 		cat $(DEPS) > $(DEP_FILE)
 
-.PHONY:	all clean depends upload raw_upload reset show_boards
+.PHONY:	all clean depends build upload raw_upload reset serial show_boards
 
 include $(DEP_FILE)

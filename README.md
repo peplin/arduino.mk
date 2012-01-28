@@ -1,5 +1,5 @@
 # Read Me Rei Vilo fork
-
+ 
 
 ## Environmment
 
@@ -49,7 +49,12 @@ MPIDE 0023
     
 	error-prone `stty` replaced by `screen`
 
+5- Debug comments on makefiles
 
+	cleaner commit
+	`@echo " ---- debug comment ---- "`
+	see issue #7    
+    
     
 ## Results
 
@@ -60,8 +65,21 @@ Both tested on Xcode and Terminal
 
 	upload but no blinking LED!
 
+* Build logs comparison
+
+	MPIDE and this makefile build logs: [comparison](https://docs.google.com/open?id=0B9EofSODZdANZWEzNmYxNjQtNWE4Ni00MTMyLWE2Y2EtM2ExMmZlM2E1NWY0) 
+
+
 
 --------------------------
+
+## 
+
+© Rei VILO, 2010-2012
+CC = BY NC SA
+http://sites.google.com/site/vilorei/
+
+
 
 ## Boards
 
