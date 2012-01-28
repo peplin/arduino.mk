@@ -55,7 +55,13 @@ MPIDE 0023
 	`@echo " ---- debug comment ---- "`
 	see issue #7    
     
+6- Added LDSCRIPT value search    
     
+	LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
+	but unused afterwards
+	seems to be required for link
+    
+                    
 ## Results
 
 Both tested on Xcode and Terminal
