@@ -8,7 +8,7 @@ BOARD_TAG    =uno_pic32
 ARDUINO_MAKEFILE_HOME = $(CURDIR)
 
 ARDUINO_DIR  = /Applications/Mpide.app/Contents/Resources/Java
-ARDUINO_PORT = /dev/tty.usbmodem*
+ARDUINO_PORT = /dev/tty.usb*
 
 nullstring  :=
 spacestring := $(nullstring) # end of the line

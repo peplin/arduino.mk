@@ -495,15 +495,17 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-		@if [ -z "$(ARD_PORT)" ]; then \
-			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
-			fi
-		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
-		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
-		done ;\
-		$$STTYF $(ARD_PORT)  hupcl ;\
-		(sleep 0.1 || sleep 1)     ;\
-		$$STTYF $(ARD_PORT) -hupcl
+		-screen -X kill;
+		sleep 1;
+#		@if [ -z "$(ARD_PORT)" ]; then \
+#			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
+#			fi
+#		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
+#		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
+#		done ;\
+#		$$STTYF $(ARD_PORT)  hupcl ;\
+#		(sleep 0.1 || sleep 1)     ;\
+#		$$STTYF $(ARD_PORT) -hupcl
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
@@ -517,7 +519,7 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
-	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
+		osascript -e 'tell application "Terminal" to do script "$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)"'
 
 clean:
 		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)

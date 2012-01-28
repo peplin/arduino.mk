@@ -4,7 +4,9 @@
 ## Environmment
 
 Mac OS X 10.7.2
+
 Xcode 4.2.1
+
 MPIDE 0023
 
 
@@ -13,36 +15,51 @@ MPIDE 0023
 0- Fork from peplin-arduino.mk-d7bbeea
 
 1- Added files
+
 	ReadMe_ReiVilo.md
+
 	References.txt
+
 	Blink.pde
 
+
 2- Added Xcode project
+
 	Xcode project
+
 	main makefile with switch to Arduino.mk or chipKIT.mk
 
-3- Fixed _BOARD_MEGA_ hard-coded in chipKIT.mk
 
-makefile: 
-	PARSE_BOARD copied from Arduino.mk 
-	/dev/tty.usbmodem* changed to /dev/tty.usb* 
+3- Fixed `_BOARD_MEGA_` hard-coded in chipKIT.mk
 
-Arduino.mk
-	.
+* makefile: 
+
+	`PARSE_BOARD` copied from Arduino.mk 
+
+	`/dev/tty.usbmodem*` changed to `/dev/tty.usb*` 
+
+* chipKIT.mk
+
+	`BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)`
+
+
+4- Serial port management
+
+* Arduino.mk
     
-chipKIT.mk
-	BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
+	error-prone `stty` replaced by `screen`
+
+
     
 ## Results
 
 Both tested on Xcode and Terminal
 
 * Arduino Uno: ok
-* chipKIT UNO32: bug
+* chipKIT UNO32: 
 
-	macbook:mpideXcode OlS$ make upload
-	No Arduino-compatible TTY device found -- exiting
-	make: *** [reset] Error 2
+	upload but no blinking LED!
+
 
 --------------------------
 
