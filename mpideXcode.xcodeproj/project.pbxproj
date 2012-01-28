@@ -11,10 +11,10 @@
 		274171AB14D42A190088B8BC /* Blink.pde */ = {isa = PBXFileReference; lastKnownFileType = text; path = Blink.pde; sourceTree = "<group>"; };
 		274171AC14D42A190088B8BC /* chipKIT.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = chipKIT.mk; sourceTree = "<group>"; };
 		274171AD14D42A190088B8BC /* licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = licence.txt; sourceTree = "<group>"; };
-		274171AE14D42A190088B8BC /* ReadMe_ReiVilo.md.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe_ReiVilo.md.txt; sourceTree = "<group>"; };
 		274171AF14D42A190088B8BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		274171B014D42A190088B8BC /* References.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = References.txt; sourceTree = "<group>"; };
 		274171B214D42AC90088B8BC /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		27D824F514D4395800FDCD8D /* README_peplin.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_peplin.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -33,7 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				274171AF14D42A190088B8BC /* README.md */,
-				274171AE14D42A190088B8BC /* ReadMe_ReiVilo.md.txt */,
+				27D824F514D4395800FDCD8D /* README_peplin.md */,
 				274171B014D42A190088B8BC /* References.txt */,
 				274171AD14D42A190088B8BC /* licence.txt */,
 			);
@@ -273,6 +273,7 @@
 				274171B614D42AE70088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		274171B814D42B050088B8BC /* Build configuration list for PBXLegacyTarget "Clean" */ = {
 			isa = XCConfigurationList;
@@ -281,6 +282,7 @@
 				274171BA14D42B050088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		274171BC14D42B0F0088B8BC /* Build configuration list for PBXLegacyTarget "Upload" */ = {
 			isa = XCConfigurationList;
@@ -289,6 +291,7 @@
 				274171BE14D42B0F0088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		274171C014D42B150088B8BC /* Build configuration list for PBXLegacyTarget "All" */ = {
 			isa = XCConfigurationList;
@@ -297,6 +300,7 @@
 				274171C214D42B150088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

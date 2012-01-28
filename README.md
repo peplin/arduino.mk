@@ -21,6 +21,18 @@ MPIDE 0023
 	Xcode project
 	main makefile with switch to Arduino.mk or chipKIT.mk
 
+3- Fixed _BOARD_MEGA_ hard-coded in chipKIT.mk
+
+makefile: 
+	PARSE_BOARD copied from Arduino.mk 
+	/dev/tty.usbmodem* changed to /dev/tty.usb* 
+
+Arduino.mk
+	.
+    
+chipKIT.mk
+	BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
+    
 ## Results
 
 Both tested on Xcode and Terminal
