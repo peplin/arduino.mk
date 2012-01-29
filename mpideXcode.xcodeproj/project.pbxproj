@@ -6,6 +6,82 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		27C58B3514D5CC9100CB57D7 /* exceptions.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1514D5CC9100CB57D7 /* exceptions.c */; };
+		27C58B3614D5CC9100CB57D7 /* HardwareSerial_cdcacm.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1614D5CC9100CB57D7 /* HardwareSerial_cdcacm.c */; };
+		27C58B3714D5CC9100CB57D7 /* HardwareSerial_usb.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1814D5CC9100CB57D7 /* HardwareSerial_usb.c */; };
+		27C58B3814D5CC9100CB57D7 /* HardwareSerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1A14D5CC9100CB57D7 /* HardwareSerial.cpp */; };
+		27C58B3914D5CC9100CB57D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1C14D5CC9100CB57D7 /* main.cpp */; };
+		27C58B3A14D5CC9100CB57D7 /* pins_arduino.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B1E14D5CC9100CB57D7 /* pins_arduino.c */; };
+		27C58B3B14D5CC9100CB57D7 /* Print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2014D5CC9100CB57D7 /* Print.cpp */; };
+		27C58B3C14D5CC9100CB57D7 /* Tone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2514D5CC9100CB57D7 /* Tone.cpp */; };
+		27C58B3D14D5CC9100CB57D7 /* WInterrupts.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2914D5CC9100CB57D7 /* WInterrupts.c */; };
+		27C58B3E14D5CC9100CB57D7 /* wiring_analog.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2A14D5CC9100CB57D7 /* wiring_analog.c */; };
+		27C58B3F14D5CC9100CB57D7 /* wiring_digital.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2B14D5CC9100CB57D7 /* wiring_digital.c */; };
+		27C58B4014D5CC9100CB57D7 /* wiring_pulse.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2D14D5CC9100CB57D7 /* wiring_pulse.c */; };
+		27C58B4114D5CC9100CB57D7 /* wiring_shift.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2E14D5CC9100CB57D7 /* wiring_shift.c */; };
+		27C58B4214D5CC9100CB57D7 /* wiring.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B2F14D5CC9100CB57D7 /* wiring.c */; };
+		27C58B4314D5CC9100CB57D7 /* WMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B3114D5CC9100CB57D7 /* WMath.cpp */; };
+		27C58B4414D5CC9100CB57D7 /* WString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B3314D5CC9100CB57D7 /* WString.cpp */; };
+		27C58B5E14D5CD0300CB57D7 /* HardwareSerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B4614D5CD0300CB57D7 /* HardwareSerial.cpp */; };
+		27C58B5F14D5CD0300CB57D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B4814D5CD0300CB57D7 /* main.cpp */; };
+		27C58B6014D5CD0300CB57D7 /* pins_arduino.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B4914D5CD0300CB57D7 /* pins_arduino.c */; };
+		27C58B6114D5CD0300CB57D7 /* Print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B4B14D5CD0300CB57D7 /* Print.cpp */; };
+		27C58B6214D5CD0300CB57D7 /* Tone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B4F14D5CD0300CB57D7 /* Tone.cpp */; };
+		27C58B6314D5CD0300CB57D7 /* WInterrupts.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5214D5CD0300CB57D7 /* WInterrupts.c */; };
+		27C58B6414D5CD0300CB57D7 /* wiring_analog.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5314D5CD0300CB57D7 /* wiring_analog.c */; };
+		27C58B6514D5CD0300CB57D7 /* wiring_digital.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5414D5CD0300CB57D7 /* wiring_digital.c */; };
+		27C58B6614D5CD0300CB57D7 /* wiring_pulse.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5614D5CD0300CB57D7 /* wiring_pulse.c */; };
+		27C58B6714D5CD0300CB57D7 /* wiring_shift.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5714D5CD0300CB57D7 /* wiring_shift.c */; };
+		27C58B6814D5CD0300CB57D7 /* wiring.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5814D5CD0300CB57D7 /* wiring.c */; };
+		27C58B6914D5CD0300CB57D7 /* WMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5A14D5CD0300CB57D7 /* WMath.cpp */; };
+		27C58B6A14D5CD0300CB57D7 /* WString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5C14D5CD0300CB57D7 /* WString.cpp */; };
+		27C58C7B14D5CD4800CB57D7 /* ArduinoTestSuite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */; };
+		27C58C7C14D5CD4800CB57D7 /* EEPROM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B9314D5CD4800CB57D7 /* EEPROM.cpp */; };
+		27C58C7E14D5CD4800CB57D7 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B9F14D5CD4800CB57D7 /* Client.cpp */; };
+		27C58C8014D5CD4800CB57D7 /* Ethernet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BA214D5CD4800CB57D7 /* Ethernet.cpp */; };
+		27C58C8214D5CD4800CB57D7 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BB914D5CD4800CB57D7 /* Server.cpp */; };
+		27C58C8414D5CD4800CB57D7 /* Udp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BBC14D5CD4800CB57D7 /* Udp.cpp */; };
+		27C58C8614D5CD4800CB57D7 /* socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BC014D5CD4800CB57D7 /* socket.cpp */; };
+		27C58C8714D5CD4800CB57D7 /* socket.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C58BC214D5CD4800CB57D7 /* socket.o */; };
+		27C58C8814D5CD4800CB57D7 /* w5100.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BC314D5CD4800CB57D7 /* w5100.cpp */; };
+		27C58C8914D5CD4800CB57D7 /* w5100.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C58BC514D5CD4800CB57D7 /* w5100.o */; };
+		27C58C8A14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BCD14D5CD4800CB57D7 /* Makefile */; };
+		27C58C8B14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BD014D5CD4800CB57D7 /* Makefile */; };
+		27C58C8C14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BD714D5CD4800CB57D7 /* Makefile */; };
+		27C58C8D14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BDA14D5CD4800CB57D7 /* Makefile */; };
+		27C58C8E14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BDD14D5CD4800CB57D7 /* Makefile */; };
+		27C58C8F14D5CD4800CB57D7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BE114D5CD4800CB57D7 /* Makefile */; };
+		27C58C9014D5CD4800CB57D7 /* Firmata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BE514D5CD4800CB57D7 /* Firmata.cpp */; };
+		27C58C9214D5CD4800CB57D7 /* LiquidCrystal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C0014D5CD4800CB57D7 /* LiquidCrystal.cpp */; };
+		27C58C9414D5CD4800CB57D7 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C0A14D5CD4800CB57D7 /* Matrix.cpp */; };
+		27C58C9614D5CD4800CB57D7 /* OneWire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C1614D5CD4800CB57D7 /* OneWire.cpp */; };
+		27C58C9714D5CD4800CB57D7 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C2214D5CD4800CB57D7 /* File.cpp */; };
+		27C58C9914D5CD4800CB57D7 /* SD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C2614D5CD4800CB57D7 /* SD.cpp */; };
+		27C58C9B14D5CD4800CB57D7 /* Sd2Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C2B14D5CD4800CB57D7 /* Sd2Card.cpp */; };
+		27C58C9D14D5CD4800CB57D7 /* SdFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C3214D5CD4800CB57D7 /* SdFile.cpp */; };
+		27C58C9F14D5CD4800CB57D7 /* SdVolume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C3514D5CD4800CB57D7 /* SdVolume.cpp */; };
+		27C58CA114D5CD4800CB57D7 /* Servo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C3E14D5CD4800CB57D7 /* Servo.cpp */; };
+		27C58CA314D5CD4800CB57D7 /* SoftwareSerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C4314D5CD4800CB57D7 /* SoftwareSerial.cpp */; };
+		27C58CA514D5CD4800CB57D7 /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C4F14D5CD4800CB57D7 /* SPI.cpp */; };
+		27C58CA714D5CD4800CB57D7 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C5514D5CD4800CB57D7 /* Sprite.cpp */; };
+		27C58CA914D5CD4800CB57D7 /* Stepper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C6314D5CD4800CB57D7 /* Stepper.cpp */; };
+		27C58CAB14D5CD4800CB57D7 /* twi.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C7614D5CD4800CB57D7 /* twi.c */; };
+		27C58CAC14D5CD4800CB57D7 /* Wire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58C7814D5CD4800CB57D7 /* Wire.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27C58ADE14D5C9B600CB57D7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		274171AA14D42A190088B8BC /* Arduino.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arduino.mk; sourceTree = "<group>"; };
 		274171AB14D42A190088B8BC /* Blink.pde */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = Blink.pde; sourceTree = "<group>"; };
@@ -14,18 +90,246 @@
 		274171AF14D42A190088B8BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		274171B014D42A190088B8BC /* References.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = References.txt; sourceTree = "<group>"; };
 		274171B214D42AC90088B8BC /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		27C58AD314D5C68500CB57D7 /* chipKIT_UNO32.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = chipKIT_UNO32.xcconfig; path = Config/chipKIT_UNO32.xcconfig; sourceTree = "<group>"; };
+		27C58AD614D5C70A00CB57D7 /* _basic_arduino_settings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = _basic_arduino_settings.xcconfig; path = Config/_basic_arduino_settings.xcconfig; sourceTree = "<group>"; };
+		27C58AD714D5C70A00CB57D7 /* _basic_chipKIT_settings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = _basic_chipKIT_settings.xcconfig; path = Config/_basic_chipKIT_settings.xcconfig; sourceTree = "<group>"; };
+		27C58AD814D5C70A00CB57D7 /* Arduino_mini_pro.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Arduino_mini_pro.xcconfig; path = Config/Arduino_mini_pro.xcconfig; sourceTree = "<group>"; };
+		27C58AD914D5C70A00CB57D7 /* Arduino_UNO.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Arduino_UNO.xcconfig; path = Config/Arduino_UNO.xcconfig; sourceTree = "<group>"; };
+		27C58AE014D5C9B600CB57D7 /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C58B1314D5CC9100CB57D7 /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = binary.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/binary.h; sourceTree = "<group>"; };
+		27C58B1414D5CC9100CB57D7 /* cpudefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpudefs.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/cpudefs.h; sourceTree = "<group>"; };
+		27C58B1514D5CC9100CB57D7 /* exceptions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = exceptions.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/exceptions.c; sourceTree = "<group>"; };
+		27C58B1614D5CC9100CB57D7 /* HardwareSerial_cdcacm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HardwareSerial_cdcacm.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial_cdcacm.c; sourceTree = "<group>"; };
+		27C58B1714D5CC9100CB57D7 /* HardwareSerial_cdcacm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HardwareSerial_cdcacm.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial_cdcacm.h; sourceTree = "<group>"; };
+		27C58B1814D5CC9100CB57D7 /* HardwareSerial_usb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HardwareSerial_usb.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial_usb.c; sourceTree = "<group>"; };
+		27C58B1914D5CC9100CB57D7 /* HardwareSerial_usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HardwareSerial_usb.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial_usb.h; sourceTree = "<group>"; };
+		27C58B1A14D5CC9100CB57D7 /* HardwareSerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HardwareSerial.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial.cpp; sourceTree = "<group>"; };
+		27C58B1B14D5CC9100CB57D7 /* HardwareSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HardwareSerial.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/HardwareSerial.h; sourceTree = "<group>"; };
+		27C58B1C14D5CC9100CB57D7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/main.cpp; sourceTree = "<group>"; };
+		27C58B1D14D5CC9100CB57D7 /* p32_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = p32_defs.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/p32_defs.h; sourceTree = "<group>"; };
+		27C58B1E14D5CC9100CB57D7 /* pins_arduino.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pins_arduino.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/pins_arduino.c; sourceTree = "<group>"; };
+		27C58B1F14D5CC9100CB57D7 /* pins_arduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pins_arduino.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/pins_arduino.h; sourceTree = "<group>"; };
+		27C58B2014D5CC9100CB57D7 /* Print.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Print.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/Print.cpp; sourceTree = "<group>"; };
+		27C58B2114D5CC9100CB57D7 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Print.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/Print.h; sourceTree = "<group>"; };
+		27C58B2214D5CC9100CB57D7 /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stream.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/Stream.h; sourceTree = "<group>"; };
+		27C58B2314D5CC9100CB57D7 /* System_Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = System_Config.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/System_Config.h; sourceTree = "<group>"; };
+		27C58B2414D5CC9100CB57D7 /* System_Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = System_Defs.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/System_Defs.h; sourceTree = "<group>"; };
+		27C58B2514D5CC9100CB57D7 /* Tone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tone.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/Tone.cpp; sourceTree = "<group>"; };
+		27C58B2614D5CC9100CB57D7 /* ToneNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToneNotes.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/ToneNotes.h; sourceTree = "<group>"; };
+		27C58B2714D5CC9100CB57D7 /* WCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WCharacter.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WCharacter.h; sourceTree = "<group>"; };
+		27C58B2814D5CC9100CB57D7 /* WConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WConstants.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WConstants.h; sourceTree = "<group>"; };
+		27C58B2914D5CC9100CB57D7 /* WInterrupts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = WInterrupts.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WInterrupts.c; sourceTree = "<group>"; };
+		27C58B2A14D5CC9100CB57D7 /* wiring_analog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_analog.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring_analog.c; sourceTree = "<group>"; };
+		27C58B2B14D5CC9100CB57D7 /* wiring_digital.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_digital.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring_digital.c; sourceTree = "<group>"; };
+		27C58B2C14D5CC9100CB57D7 /* wiring_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wiring_private.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring_private.h; sourceTree = "<group>"; };
+		27C58B2D14D5CC9100CB57D7 /* wiring_pulse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_pulse.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring_pulse.c; sourceTree = "<group>"; };
+		27C58B2E14D5CC9100CB57D7 /* wiring_shift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_shift.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring_shift.c; sourceTree = "<group>"; };
+		27C58B2F14D5CC9100CB57D7 /* wiring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring.c; sourceTree = "<group>"; };
+		27C58B3014D5CC9100CB57D7 /* wiring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wiring.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/wiring.h; sourceTree = "<group>"; };
+		27C58B3114D5CC9100CB57D7 /* WMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WMath.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WMath.cpp; sourceTree = "<group>"; };
+		27C58B3214D5CC9100CB57D7 /* WProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WProgram.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WProgram.h; sourceTree = "<group>"; };
+		27C58B3314D5CC9100CB57D7 /* WString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WString.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WString.cpp; sourceTree = "<group>"; };
+		27C58B3414D5CC9100CB57D7 /* WString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WString.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/pic32/cores/pic32/WString.h; sourceTree = "<group>"; };
+		27C58B4514D5CD0300CB57D7 /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = binary.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/binary.h; sourceTree = "<group>"; };
+		27C58B4614D5CD0300CB57D7 /* HardwareSerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HardwareSerial.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.cpp; sourceTree = "<group>"; };
+		27C58B4714D5CD0300CB57D7 /* HardwareSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HardwareSerial.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.h; sourceTree = "<group>"; };
+		27C58B4814D5CD0300CB57D7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp; sourceTree = "<group>"; };
+		27C58B4914D5CD0300CB57D7 /* pins_arduino.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pins_arduino.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/pins_arduino.c; sourceTree = "<group>"; };
+		27C58B4A14D5CD0300CB57D7 /* pins_arduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pins_arduino.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/pins_arduino.h; sourceTree = "<group>"; };
+		27C58B4B14D5CD0300CB57D7 /* Print.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Print.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp; sourceTree = "<group>"; };
+		27C58B4C14D5CD0300CB57D7 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Print.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.h; sourceTree = "<group>"; };
+		27C58B4D14D5CD0300CB57D7 /* StaticDynamicMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticDynamicMemory.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/StaticDynamicMemory.h; sourceTree = "<group>"; };
+		27C58B4E14D5CD0300CB57D7 /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stream.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.h; sourceTree = "<group>"; };
+		27C58B4F14D5CD0300CB57D7 /* Tone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tone.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp; sourceTree = "<group>"; };
+		27C58B5014D5CD0300CB57D7 /* WCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WCharacter.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WCharacter.h; sourceTree = "<group>"; };
+		27C58B5114D5CD0300CB57D7 /* WConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WConstants.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WConstants.h; sourceTree = "<group>"; };
+		27C58B5214D5CD0300CB57D7 /* WInterrupts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = WInterrupts.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c; sourceTree = "<group>"; };
+		27C58B5314D5CD0300CB57D7 /* wiring_analog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_analog.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c; sourceTree = "<group>"; };
+		27C58B5414D5CD0300CB57D7 /* wiring_digital.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_digital.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c; sourceTree = "<group>"; };
+		27C58B5514D5CD0300CB57D7 /* wiring_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wiring_private.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_private.h; sourceTree = "<group>"; };
+		27C58B5614D5CD0300CB57D7 /* wiring_pulse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_pulse.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c; sourceTree = "<group>"; };
+		27C58B5714D5CD0300CB57D7 /* wiring_shift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring_shift.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c; sourceTree = "<group>"; };
+		27C58B5814D5CD0300CB57D7 /* wiring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wiring.c; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c; sourceTree = "<group>"; };
+		27C58B5914D5CD0300CB57D7 /* wiring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wiring.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.h; sourceTree = "<group>"; };
+		27C58B5A14D5CD0300CB57D7 /* WMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WMath.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp; sourceTree = "<group>"; };
+		27C58B5B14D5CD0300CB57D7 /* WProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WProgram.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WProgram.h; sourceTree = "<group>"; };
+		27C58B5C14D5CD0300CB57D7 /* WString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WString.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp; sourceTree = "<group>"; };
+		27C58B5D14D5CD0300CB57D7 /* WString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WString.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.h; sourceTree = "<group>"; };
+		27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArduinoTestSuite.cpp; sourceTree = "<group>"; };
+		27C58B7B14D5CD4800CB57D7 /* ArduinoTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArduinoTestSuite.h; sourceTree = "<group>"; };
+		27C58B7C14D5CD4800CB57D7 /* avr_cpunames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avr_cpunames.h; sourceTree = "<group>"; };
+		27C58B7F14D5CD4800CB57D7 /* ATS_Constants.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Constants.pde; sourceTree = "<group>"; };
+		27C58B8114D5CD4800CB57D7 /* ATS_Delay.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Delay.pde; sourceTree = "<group>"; };
+		27C58B8314D5CD4800CB57D7 /* ATS_General.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_General.pde; sourceTree = "<group>"; };
+		27C58B8514D5CD4800CB57D7 /* ATS_SD_File.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_File.pde; sourceTree = "<group>"; };
+		27C58B8714D5CD4800CB57D7 /* ATS_SD_Files.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_Files.pde; sourceTree = "<group>"; };
+		27C58B8914D5CD4800CB57D7 /* ATS_SD_Seek.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_Seek.pde; sourceTree = "<group>"; };
+		27C58B8B14D5CD4800CB57D7 /* ATS_Skeleton.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Skeleton.pde; sourceTree = "<group>"; };
+		27C58B8D14D5CD4800CB57D7 /* ATS_StringIndexOfMemory.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_StringIndexOfMemory.pde; sourceTree = "<group>"; };
+		27C58B8F14D5CD4800CB57D7 /* ATS_StringTest.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_StringTest.pde; sourceTree = "<group>"; };
+		27C58B9114D5CD4800CB57D7 /* ATS_ToneTest.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_ToneTest.pde; sourceTree = "<group>"; };
+		27C58B9314D5CD4800CB57D7 /* EEPROM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EEPROM.cpp; sourceTree = "<group>"; };
+		27C58B9414D5CD4800CB57D7 /* EEPROM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPROM.h; sourceTree = "<group>"; };
+		27C58B9814D5CD4800CB57D7 /* eeprom_clear.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_clear.pde; sourceTree = "<group>"; };
+		27C58B9A14D5CD4800CB57D7 /* eeprom_read.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_read.pde; sourceTree = "<group>"; };
+		27C58B9C14D5CD4800CB57D7 /* eeprom_write.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_write.pde; sourceTree = "<group>"; };
+		27C58B9D14D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58B9F14D5CD4800CB57D7 /* Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
+		27C58BA014D5CD4800CB57D7 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		27C58BA214D5CD4800CB57D7 /* Ethernet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ethernet.cpp; sourceTree = "<group>"; };
+		27C58BA314D5CD4800CB57D7 /* Ethernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ethernet.h; sourceTree = "<group>"; };
+		27C58BA714D5CD4800CB57D7 /* BarometricPressureWebServer.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureWebServer.pde; sourceTree = "<group>"; };
+		27C58BA914D5CD4800CB57D7 /* ChatServer.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatServer.pde; sourceTree = "<group>"; };
+		27C58BAB14D5CD4800CB57D7 /* PachubeClient.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PachubeClient.pde; sourceTree = "<group>"; };
+		27C58BAD14D5CD4800CB57D7 /* PachubeClientString.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PachubeClientString.pde; sourceTree = "<group>"; };
+		27C58BAF14D5CD4800CB57D7 /* TelnetClient.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TelnetClient.pde; sourceTree = "<group>"; };
+		27C58BB114D5CD4800CB57D7 /* UdpNtpClient.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UdpNtpClient.pde; sourceTree = "<group>"; };
+		27C58BB314D5CD4800CB57D7 /* UDPSendReceiveString.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UDPSendReceiveString.pde; sourceTree = "<group>"; };
+		27C58BB514D5CD4800CB57D7 /* WebClient.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebClient.pde; sourceTree = "<group>"; };
+		27C58BB714D5CD4800CB57D7 /* WebServer.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebServer.pde; sourceTree = "<group>"; };
+		27C58BB814D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58BB914D5CD4800CB57D7 /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Server.cpp; sourceTree = "<group>"; };
+		27C58BBA14D5CD4800CB57D7 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		27C58BBC14D5CD4800CB57D7 /* Udp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Udp.cpp; sourceTree = "<group>"; };
+		27C58BBD14D5CD4800CB57D7 /* Udp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Udp.h; sourceTree = "<group>"; };
+		27C58BC014D5CD4800CB57D7 /* socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket.cpp; sourceTree = "<group>"; };
+		27C58BC114D5CD4800CB57D7 /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
+		27C58BC214D5CD4800CB57D7 /* socket.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = socket.o; sourceTree = "<group>"; };
+		27C58BC314D5CD4800CB57D7 /* w5100.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = w5100.cpp; sourceTree = "<group>"; };
+		27C58BC414D5CD4800CB57D7 /* w5100.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = w5100.h; sourceTree = "<group>"; };
+		27C58BC514D5CD4800CB57D7 /* w5100.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = w5100.o; sourceTree = "<group>"; };
+		27C58BC714D5CD4800CB57D7 /* Boards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boards.h; sourceTree = "<group>"; };
+		27C58BCA14D5CD4800CB57D7 /* AllInputsFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllInputsFirmata.pde; sourceTree = "<group>"; };
+		27C58BCC14D5CD4800CB57D7 /* AnalogFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnalogFirmata.pde; sourceTree = "<group>"; };
+		27C58BCD14D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BCF14D5CD4800CB57D7 /* EchoString.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EchoString.pde; sourceTree = "<group>"; };
+		27C58BD014D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BD214D5CD4800CB57D7 /* I2CFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = I2CFirmata.pde; sourceTree = "<group>"; };
+		27C58BD414D5CD4800CB57D7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		27C58BD514D5CD4800CB57D7 /* OldStandardFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldStandardFirmata.pde; sourceTree = "<group>"; };
+		27C58BD714D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BD814D5CD4800CB57D7 /* ServoFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ServoFirmata.pde; sourceTree = "<group>"; };
+		27C58BDA14D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BDB14D5CD4800CB57D7 /* SimpleAnalogFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleAnalogFirmata.pde; sourceTree = "<group>"; };
+		27C58BDD14D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BDE14D5CD4800CB57D7 /* SimpleDigitalFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleDigitalFirmata.pde; sourceTree = "<group>"; };
+		27C58BE014D5CD4800CB57D7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		27C58BE114D5CD4800CB57D7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27C58BE214D5CD4800CB57D7 /* StandardFirmata.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StandardFirmata.pde; sourceTree = "<group>"; };
+		27C58BE414D5CD4800CB57D7 /* StandardFirmata_2_2_forUNO_0_3.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StandardFirmata_2_2_forUNO_0_3.pde; sourceTree = "<group>"; };
+		27C58BE514D5CD4800CB57D7 /* Firmata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Firmata.cpp; sourceTree = "<group>"; };
+		27C58BE614D5CD4800CB57D7 /* Firmata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firmata.h; sourceTree = "<group>"; };
+		27C58BE814D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58BE914D5CD4800CB57D7 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		27C58BEA14D5CD4800CB57D7 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		27C58BEE14D5CD4800CB57D7 /* Autoscroll.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Autoscroll.pde; sourceTree = "<group>"; };
+		27C58BF014D5CD4800CB57D7 /* Blink.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Blink.pde; sourceTree = "<group>"; };
+		27C58BF214D5CD4800CB57D7 /* Cursor.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cursor.pde; sourceTree = "<group>"; };
+		27C58BF414D5CD4800CB57D7 /* Display.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Display.pde; sourceTree = "<group>"; };
+		27C58BF614D5CD4800CB57D7 /* HelloWorld.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.pde; sourceTree = "<group>"; };
+		27C58BF814D5CD4800CB57D7 /* Scroll.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Scroll.pde; sourceTree = "<group>"; };
+		27C58BFA14D5CD4800CB57D7 /* SerialDisplay.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SerialDisplay.pde; sourceTree = "<group>"; };
+		27C58BFC14D5CD4800CB57D7 /* setCursor.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setCursor.pde; sourceTree = "<group>"; };
+		27C58BFE14D5CD4800CB57D7 /* TextDirection.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextDirection.pde; sourceTree = "<group>"; };
+		27C58BFF14D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C0014D5CD4800CB57D7 /* LiquidCrystal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiquidCrystal.cpp; sourceTree = "<group>"; };
+		27C58C0114D5CD4800CB57D7 /* LiquidCrystal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiquidCrystal.h; sourceTree = "<group>"; };
+		27C58C0614D5CD4800CB57D7 /* hello_matrix.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello_matrix.pde; sourceTree = "<group>"; };
+		27C58C0814D5CD4800CB57D7 /* sprite_animation.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sprite_animation.pde; sourceTree = "<group>"; };
+		27C58C0914D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C0A14D5CD4800CB57D7 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		27C58C0B14D5CD4800CB57D7 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		27C58C1014D5CD4800CB57D7 /* DS18x20_Temperature.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DS18x20_Temperature.pde; sourceTree = "<group>"; };
+		27C58C1214D5CD4800CB57D7 /* DS2408_Switch.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DS2408_Switch.pde; sourceTree = "<group>"; };
+		27C58C1414D5CD4800CB57D7 /* DS250x_PROM.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DS250x_PROM.pde; sourceTree = "<group>"; };
+		27C58C1514D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C1614D5CD4800CB57D7 /* OneWire.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OneWire.cpp; sourceTree = "<group>"; };
+		27C58C1714D5CD4800CB57D7 /* OneWire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneWire.h; sourceTree = "<group>"; };
+		27C58C1B14D5CD4800CB57D7 /* Datalogger.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Datalogger.pde; sourceTree = "<group>"; };
+		27C58C1D14D5CD4800CB57D7 /* DumpFile.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DumpFile.pde; sourceTree = "<group>"; };
+		27C58C1F14D5CD4800CB57D7 /* Files.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Files.pde; sourceTree = "<group>"; };
+		27C58C2114D5CD4800CB57D7 /* ReadWrite.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadWrite.pde; sourceTree = "<group>"; };
+		27C58C2214D5CD4800CB57D7 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = File.cpp; sourceTree = "<group>"; };
+		27C58C2414D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C2514D5CD4800CB57D7 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		27C58C2614D5CD4800CB57D7 /* SD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SD.cpp; sourceTree = "<group>"; };
+		27C58C2714D5CD4800CB57D7 /* SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SD.h; sourceTree = "<group>"; };
+		27C58C2A14D5CD4800CB57D7 /* FatStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatStructs.h; sourceTree = "<group>"; };
+		27C58C2B14D5CD4800CB57D7 /* Sd2Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sd2Card.cpp; sourceTree = "<group>"; };
+		27C58C2C14D5CD4800CB57D7 /* Sd2Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sd2Card.h; sourceTree = "<group>"; };
+		27C58C2E14D5CD4800CB57D7 /* Sd2PinMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sd2PinMap.h; sourceTree = "<group>"; };
+		27C58C2F14D5CD4800CB57D7 /* SdFat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFat.h; sourceTree = "<group>"; };
+		27C58C3014D5CD4800CB57D7 /* SdFatmainpage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFatmainpage.h; sourceTree = "<group>"; };
+		27C58C3114D5CD4800CB57D7 /* SdFatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFatUtil.h; sourceTree = "<group>"; };
+		27C58C3214D5CD4800CB57D7 /* SdFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdFile.cpp; sourceTree = "<group>"; };
+		27C58C3414D5CD4800CB57D7 /* SdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdInfo.h; sourceTree = "<group>"; };
+		27C58C3514D5CD4800CB57D7 /* SdVolume.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdVolume.cpp; sourceTree = "<group>"; };
+		27C58C3A14D5CD4800CB57D7 /* Knob.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Knob.pde; sourceTree = "<group>"; };
+		27C58C3C14D5CD4800CB57D7 /* Sweep.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sweep.pde; sourceTree = "<group>"; };
+		27C58C3D14D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C3E14D5CD4800CB57D7 /* Servo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Servo.cpp; sourceTree = "<group>"; };
+		27C58C3F14D5CD4800CB57D7 /* Servo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Servo.h; sourceTree = "<group>"; };
+		27C58C4214D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C4314D5CD4800CB57D7 /* SoftwareSerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftwareSerial.cpp; sourceTree = "<group>"; };
+		27C58C4414D5CD4800CB57D7 /* SoftwareSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSerial.h; sourceTree = "<group>"; };
+		27C58C4A14D5CD4800CB57D7 /* BarometricPressureSensor.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureSensor.pde; sourceTree = "<group>"; };
+		27C58C4B14D5CD4800CB57D7 /* BarometricPressureSensor.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureSensor.pde; sourceTree = "<group>"; };
+		27C58C4D14D5CD4800CB57D7 /* DigitalPotControl.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DigitalPotControl.pde; sourceTree = "<group>"; };
+		27C58C4E14D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C4F14D5CD4800CB57D7 /* SPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SPI.cpp; sourceTree = "<group>"; };
+		27C58C5014D5CD4800CB57D7 /* SPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPI.h; sourceTree = "<group>"; };
+		27C58C5314D5CD4800CB57D7 /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary.h; sourceTree = "<group>"; };
+		27C58C5414D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C5514D5CD4800CB57D7 /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
+		27C58C5614D5CD4800CB57D7 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		27C58C5B14D5CD4800CB57D7 /* MotorKnob.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MotorKnob.pde; sourceTree = "<group>"; };
+		27C58C5D14D5CD4800CB57D7 /* stepper_oneRevolution.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_oneRevolution.pde; sourceTree = "<group>"; };
+		27C58C5F14D5CD4800CB57D7 /* stepper_oneStepAtATime.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_oneStepAtATime.pde; sourceTree = "<group>"; };
+		27C58C6114D5CD4800CB57D7 /* stepper_speedControl.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_speedControl.pde; sourceTree = "<group>"; };
+		27C58C6214D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C6314D5CD4800CB57D7 /* Stepper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stepper.cpp; sourceTree = "<group>"; };
+		27C58C6414D5CD4800CB57D7 /* Stepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stepper.h; sourceTree = "<group>"; };
+		27C58C6914D5CD4800CB57D7 /* digital_potentiometer.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digital_potentiometer.pde; sourceTree = "<group>"; };
+		27C58C6B14D5CD4800CB57D7 /* master_reader.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = master_reader.pde; sourceTree = "<group>"; };
+		27C58C6D14D5CD4800CB57D7 /* master_writer.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = master_writer.pde; sourceTree = "<group>"; };
+		27C58C6F14D5CD4800CB57D7 /* SFRRanger_reader.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SFRRanger_reader.pde; sourceTree = "<group>"; };
+		27C58C7114D5CD4800CB57D7 /* slave_receiver.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slave_receiver.pde; sourceTree = "<group>"; };
+		27C58C7314D5CD4800CB57D7 /* slave_sender.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slave_sender.pde; sourceTree = "<group>"; };
+		27C58C7414D5CD4800CB57D7 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		27C58C7614D5CD4800CB57D7 /* twi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = twi.c; sourceTree = "<group>"; };
+		27C58C7714D5CD4800CB57D7 /* twi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
+		27C58C7814D5CD4800CB57D7 /* Wire.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wire.cpp; sourceTree = "<group>"; };
+		27C58C7914D5CD4800CB57D7 /* Wire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wire.h; sourceTree = "<group>"; };
+		27C58CAE14D5EB0A00CB57D7 /* foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foo.h; sourceTree = "<group>"; };
 		27D824F514D4395800FDCD8D /* README_peplin.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_peplin.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27C58ADD14D5C9B600CB57D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27C58C8714D5CD4800CB57D7 /* socket.o in Frameworks */,
+				27C58C8914D5CD4800CB57D7 /* w5100.o in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2707CCE114D429ED004695ED = {
 			isa = PBXGroup;
 			children = (
-				274171B214D42AC90088B8BC /* makefile */,
-				274171AA14D42A190088B8BC /* Arduino.mk */,
-				274171AC14D42A190088B8BC /* chipKIT.mk */,
 				274171AB14D42A190088B8BC /* Blink.pde */,
+				27C58CAE14D5EB0A00CB57D7 /* foo.h */,
+				27C58CB014D5EDF200CB57D7 /* User */,
+				27C58AEC14D5CBED00CB57D7 /* Libraries */,
+				27C58ADB14D5C88E00CB57D7 /* Makefiles */,
+				27C58AD414D5C6AB00CB57D7 /* Config */,
+				27C58AEA14D5CBD900CB57D7 /* Arduino */,
+				27C58AEB14D5CBE300CB57D7 /* chipKIT */,
 				274171B114D42A430088B8BC /* About */,
+				27C58AE114D5C9B600CB57D7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -38,6 +342,1034 @@
 				274171AD14D42A190088B8BC /* licence.txt */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		27C58AD414D5C6AB00CB57D7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				27C58AD914D5C70A00CB57D7 /* Arduino_UNO.xcconfig */,
+				27C58AD814D5C70A00CB57D7 /* Arduino_mini_pro.xcconfig */,
+				27C58AD314D5C68500CB57D7 /* chipKIT_UNO32.xcconfig */,
+				27C58AD614D5C70A00CB57D7 /* _basic_arduino_settings.xcconfig */,
+				27C58AD714D5C70A00CB57D7 /* _basic_chipKIT_settings.xcconfig */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		27C58ADB14D5C88E00CB57D7 /* Makefiles */ = {
+			isa = PBXGroup;
+			children = (
+				274171B214D42AC90088B8BC /* makefile */,
+				274171AA14D42A190088B8BC /* Arduino.mk */,
+				274171AC14D42A190088B8BC /* chipKIT.mk */,
+			);
+			name = Makefiles;
+			sourceTree = "<group>";
+		};
+		27C58AE114D5C9B600CB57D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27C58AE014D5C9B600CB57D7 /* Index */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27C58AEA14D5CBD900CB57D7 /* Arduino */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B4514D5CD0300CB57D7 /* binary.h */,
+				27C58B4614D5CD0300CB57D7 /* HardwareSerial.cpp */,
+				27C58B4714D5CD0300CB57D7 /* HardwareSerial.h */,
+				27C58B4814D5CD0300CB57D7 /* main.cpp */,
+				27C58B4914D5CD0300CB57D7 /* pins_arduino.c */,
+				27C58B4A14D5CD0300CB57D7 /* pins_arduino.h */,
+				27C58B4B14D5CD0300CB57D7 /* Print.cpp */,
+				27C58B4C14D5CD0300CB57D7 /* Print.h */,
+				27C58B4D14D5CD0300CB57D7 /* StaticDynamicMemory.h */,
+				27C58B4E14D5CD0300CB57D7 /* Stream.h */,
+				27C58B4F14D5CD0300CB57D7 /* Tone.cpp */,
+				27C58B5014D5CD0300CB57D7 /* WCharacter.h */,
+				27C58B5114D5CD0300CB57D7 /* WConstants.h */,
+				27C58B5214D5CD0300CB57D7 /* WInterrupts.c */,
+				27C58B5314D5CD0300CB57D7 /* wiring_analog.c */,
+				27C58B5414D5CD0300CB57D7 /* wiring_digital.c */,
+				27C58B5514D5CD0300CB57D7 /* wiring_private.h */,
+				27C58B5614D5CD0300CB57D7 /* wiring_pulse.c */,
+				27C58B5714D5CD0300CB57D7 /* wiring_shift.c */,
+				27C58B5814D5CD0300CB57D7 /* wiring.c */,
+				27C58B5914D5CD0300CB57D7 /* wiring.h */,
+				27C58B5A14D5CD0300CB57D7 /* WMath.cpp */,
+				27C58B5B14D5CD0300CB57D7 /* WProgram.h */,
+				27C58B5C14D5CD0300CB57D7 /* WString.cpp */,
+				27C58B5D14D5CD0300CB57D7 /* WString.h */,
+			);
+			name = Arduino;
+			sourceTree = "<group>";
+		};
+		27C58AEB14D5CBE300CB57D7 /* chipKIT */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B1314D5CC9100CB57D7 /* binary.h */,
+				27C58B1414D5CC9100CB57D7 /* cpudefs.h */,
+				27C58B1514D5CC9100CB57D7 /* exceptions.c */,
+				27C58B1614D5CC9100CB57D7 /* HardwareSerial_cdcacm.c */,
+				27C58B1714D5CC9100CB57D7 /* HardwareSerial_cdcacm.h */,
+				27C58B1814D5CC9100CB57D7 /* HardwareSerial_usb.c */,
+				27C58B1914D5CC9100CB57D7 /* HardwareSerial_usb.h */,
+				27C58B1A14D5CC9100CB57D7 /* HardwareSerial.cpp */,
+				27C58B1B14D5CC9100CB57D7 /* HardwareSerial.h */,
+				27C58B1C14D5CC9100CB57D7 /* main.cpp */,
+				27C58B1D14D5CC9100CB57D7 /* p32_defs.h */,
+				27C58B1E14D5CC9100CB57D7 /* pins_arduino.c */,
+				27C58B1F14D5CC9100CB57D7 /* pins_arduino.h */,
+				27C58B2014D5CC9100CB57D7 /* Print.cpp */,
+				27C58B2114D5CC9100CB57D7 /* Print.h */,
+				27C58B2214D5CC9100CB57D7 /* Stream.h */,
+				27C58B2314D5CC9100CB57D7 /* System_Config.h */,
+				27C58B2414D5CC9100CB57D7 /* System_Defs.h */,
+				27C58B2514D5CC9100CB57D7 /* Tone.cpp */,
+				27C58B2614D5CC9100CB57D7 /* ToneNotes.h */,
+				27C58B2714D5CC9100CB57D7 /* WCharacter.h */,
+				27C58B2814D5CC9100CB57D7 /* WConstants.h */,
+				27C58B2914D5CC9100CB57D7 /* WInterrupts.c */,
+				27C58B2A14D5CC9100CB57D7 /* wiring_analog.c */,
+				27C58B2B14D5CC9100CB57D7 /* wiring_digital.c */,
+				27C58B2C14D5CC9100CB57D7 /* wiring_private.h */,
+				27C58B2D14D5CC9100CB57D7 /* wiring_pulse.c */,
+				27C58B2E14D5CC9100CB57D7 /* wiring_shift.c */,
+				27C58B2F14D5CC9100CB57D7 /* wiring.c */,
+				27C58B3014D5CC9100CB57D7 /* wiring.h */,
+				27C58B3114D5CC9100CB57D7 /* WMath.cpp */,
+				27C58B3214D5CC9100CB57D7 /* WProgram.h */,
+				27C58B3314D5CC9100CB57D7 /* WString.cpp */,
+				27C58B3414D5CC9100CB57D7 /* WString.h */,
+			);
+			name = chipKIT;
+			sourceTree = "<group>";
+		};
+		27C58AEC14D5CBED00CB57D7 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B7914D5CD4800CB57D7 /* ArduinoTestSuite */,
+				27C58B9214D5CD4800CB57D7 /* EEPROM */,
+				27C58B9E14D5CD4800CB57D7 /* Ethernet */,
+				27C58BC614D5CD4800CB57D7 /* Firmata */,
+				27C58BEB14D5CD4800CB57D7 /* LiquidCrystal */,
+				27C58C0314D5CD4800CB57D7 /* Matrix */,
+				27C58C0D14D5CD4800CB57D7 /* OneWire */,
+				27C58C1814D5CD4800CB57D7 /* SD */,
+				27C58C3714D5CD4800CB57D7 /* Servo */,
+				27C58C4114D5CD4800CB57D7 /* SoftwareSerial */,
+				27C58C4614D5CD4800CB57D7 /* SPI */,
+				27C58C5214D5CD4800CB57D7 /* Sprite */,
+				27C58C5814D5CD4800CB57D7 /* Stepper */,
+				27C58C6614D5CD4800CB57D7 /* Wire */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		27C58B7914D5CD4800CB57D7 /* ArduinoTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */,
+				27C58B7B14D5CD4800CB57D7 /* ArduinoTestSuite.h */,
+				27C58B7C14D5CD4800CB57D7 /* avr_cpunames.h */,
+				27C58B7D14D5CD4800CB57D7 /* examples */,
+			);
+			name = ArduinoTestSuite;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/ArduinoTestSuite;
+			sourceTree = "<group>";
+		};
+		27C58B7D14D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B7E14D5CD4800CB57D7 /* ATS_Constants */,
+				27C58B8014D5CD4800CB57D7 /* ATS_Delay */,
+				27C58B8214D5CD4800CB57D7 /* ATS_General */,
+				27C58B8414D5CD4800CB57D7 /* ATS_SD_File */,
+				27C58B8614D5CD4800CB57D7 /* ATS_SD_Files */,
+				27C58B8814D5CD4800CB57D7 /* ATS_SD_Seek */,
+				27C58B8A14D5CD4800CB57D7 /* ATS_Skeleton */,
+				27C58B8C14D5CD4800CB57D7 /* ATS_StringIndexOfMemory */,
+				27C58B8E14D5CD4800CB57D7 /* ATS_StringTest */,
+				27C58B9014D5CD4800CB57D7 /* ATS_ToneTest */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58B7E14D5CD4800CB57D7 /* ATS_Constants */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B7F14D5CD4800CB57D7 /* ATS_Constants.pde */,
+			);
+			path = ATS_Constants;
+			sourceTree = "<group>";
+		};
+		27C58B8014D5CD4800CB57D7 /* ATS_Delay */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8114D5CD4800CB57D7 /* ATS_Delay.pde */,
+			);
+			path = ATS_Delay;
+			sourceTree = "<group>";
+		};
+		27C58B8214D5CD4800CB57D7 /* ATS_General */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8314D5CD4800CB57D7 /* ATS_General.pde */,
+			);
+			path = ATS_General;
+			sourceTree = "<group>";
+		};
+		27C58B8414D5CD4800CB57D7 /* ATS_SD_File */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8514D5CD4800CB57D7 /* ATS_SD_File.pde */,
+			);
+			path = ATS_SD_File;
+			sourceTree = "<group>";
+		};
+		27C58B8614D5CD4800CB57D7 /* ATS_SD_Files */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8714D5CD4800CB57D7 /* ATS_SD_Files.pde */,
+			);
+			path = ATS_SD_Files;
+			sourceTree = "<group>";
+		};
+		27C58B8814D5CD4800CB57D7 /* ATS_SD_Seek */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8914D5CD4800CB57D7 /* ATS_SD_Seek.pde */,
+			);
+			path = ATS_SD_Seek;
+			sourceTree = "<group>";
+		};
+		27C58B8A14D5CD4800CB57D7 /* ATS_Skeleton */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8B14D5CD4800CB57D7 /* ATS_Skeleton.pde */,
+			);
+			path = ATS_Skeleton;
+			sourceTree = "<group>";
+		};
+		27C58B8C14D5CD4800CB57D7 /* ATS_StringIndexOfMemory */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8D14D5CD4800CB57D7 /* ATS_StringIndexOfMemory.pde */,
+			);
+			path = ATS_StringIndexOfMemory;
+			sourceTree = "<group>";
+		};
+		27C58B8E14D5CD4800CB57D7 /* ATS_StringTest */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B8F14D5CD4800CB57D7 /* ATS_StringTest.pde */,
+			);
+			path = ATS_StringTest;
+			sourceTree = "<group>";
+		};
+		27C58B9014D5CD4800CB57D7 /* ATS_ToneTest */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9114D5CD4800CB57D7 /* ATS_ToneTest.pde */,
+			);
+			path = ATS_ToneTest;
+			sourceTree = "<group>";
+		};
+		27C58B9214D5CD4800CB57D7 /* EEPROM */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9314D5CD4800CB57D7 /* EEPROM.cpp */,
+				27C58B9414D5CD4800CB57D7 /* EEPROM.h */,
+				27C58B9614D5CD4800CB57D7 /* examples */,
+				27C58B9D14D5CD4800CB57D7 /* keywords.txt */,
+			);
+			name = EEPROM;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/EEPROM;
+			sourceTree = "<group>";
+		};
+		27C58B9614D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9714D5CD4800CB57D7 /* eeprom_clear */,
+				27C58B9914D5CD4800CB57D7 /* eeprom_read */,
+				27C58B9B14D5CD4800CB57D7 /* eeprom_write */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58B9714D5CD4800CB57D7 /* eeprom_clear */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9814D5CD4800CB57D7 /* eeprom_clear.pde */,
+			);
+			path = eeprom_clear;
+			sourceTree = "<group>";
+		};
+		27C58B9914D5CD4800CB57D7 /* eeprom_read */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9A14D5CD4800CB57D7 /* eeprom_read.pde */,
+			);
+			path = eeprom_read;
+			sourceTree = "<group>";
+		};
+		27C58B9B14D5CD4800CB57D7 /* eeprom_write */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9C14D5CD4800CB57D7 /* eeprom_write.pde */,
+			);
+			path = eeprom_write;
+			sourceTree = "<group>";
+		};
+		27C58B9E14D5CD4800CB57D7 /* Ethernet */ = {
+			isa = PBXGroup;
+			children = (
+				27C58B9F14D5CD4800CB57D7 /* Client.cpp */,
+				27C58BA014D5CD4800CB57D7 /* Client.h */,
+				27C58BA214D5CD4800CB57D7 /* Ethernet.cpp */,
+				27C58BA314D5CD4800CB57D7 /* Ethernet.h */,
+				27C58BA514D5CD4800CB57D7 /* examples */,
+				27C58BB814D5CD4800CB57D7 /* keywords.txt */,
+				27C58BB914D5CD4800CB57D7 /* Server.cpp */,
+				27C58BBA14D5CD4800CB57D7 /* Server.h */,
+				27C58BBC14D5CD4800CB57D7 /* Udp.cpp */,
+				27C58BBD14D5CD4800CB57D7 /* Udp.h */,
+				27C58BBF14D5CD4800CB57D7 /* utility */,
+			);
+			name = Ethernet;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Ethernet;
+			sourceTree = "<group>";
+		};
+		27C58BA514D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BA614D5CD4800CB57D7 /* BarometricPressureWebServer */,
+				27C58BA814D5CD4800CB57D7 /* ChatServer */,
+				27C58BAA14D5CD4800CB57D7 /* PachubeClient */,
+				27C58BAC14D5CD4800CB57D7 /* PachubeClientString */,
+				27C58BAE14D5CD4800CB57D7 /* TelnetClient */,
+				27C58BB014D5CD4800CB57D7 /* UdpNtpClient */,
+				27C58BB214D5CD4800CB57D7 /* UDPSendReceiveString */,
+				27C58BB414D5CD4800CB57D7 /* WebClient */,
+				27C58BB614D5CD4800CB57D7 /* WebServer */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58BA614D5CD4800CB57D7 /* BarometricPressureWebServer */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BA714D5CD4800CB57D7 /* BarometricPressureWebServer.pde */,
+			);
+			path = BarometricPressureWebServer;
+			sourceTree = "<group>";
+		};
+		27C58BA814D5CD4800CB57D7 /* ChatServer */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BA914D5CD4800CB57D7 /* ChatServer.pde */,
+			);
+			path = ChatServer;
+			sourceTree = "<group>";
+		};
+		27C58BAA14D5CD4800CB57D7 /* PachubeClient */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BAB14D5CD4800CB57D7 /* PachubeClient.pde */,
+			);
+			path = PachubeClient;
+			sourceTree = "<group>";
+		};
+		27C58BAC14D5CD4800CB57D7 /* PachubeClientString */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BAD14D5CD4800CB57D7 /* PachubeClientString.pde */,
+			);
+			path = PachubeClientString;
+			sourceTree = "<group>";
+		};
+		27C58BAE14D5CD4800CB57D7 /* TelnetClient */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BAF14D5CD4800CB57D7 /* TelnetClient.pde */,
+			);
+			path = TelnetClient;
+			sourceTree = "<group>";
+		};
+		27C58BB014D5CD4800CB57D7 /* UdpNtpClient */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BB114D5CD4800CB57D7 /* UdpNtpClient.pde */,
+			);
+			path = UdpNtpClient;
+			sourceTree = "<group>";
+		};
+		27C58BB214D5CD4800CB57D7 /* UDPSendReceiveString */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BB314D5CD4800CB57D7 /* UDPSendReceiveString.pde */,
+			);
+			path = UDPSendReceiveString;
+			sourceTree = "<group>";
+		};
+		27C58BB414D5CD4800CB57D7 /* WebClient */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BB514D5CD4800CB57D7 /* WebClient.pde */,
+			);
+			path = WebClient;
+			sourceTree = "<group>";
+		};
+		27C58BB614D5CD4800CB57D7 /* WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BB714D5CD4800CB57D7 /* WebServer.pde */,
+			);
+			path = WebServer;
+			sourceTree = "<group>";
+		};
+		27C58BBF14D5CD4800CB57D7 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BC014D5CD4800CB57D7 /* socket.cpp */,
+				27C58BC114D5CD4800CB57D7 /* socket.h */,
+				27C58BC214D5CD4800CB57D7 /* socket.o */,
+				27C58BC314D5CD4800CB57D7 /* w5100.cpp */,
+				27C58BC414D5CD4800CB57D7 /* w5100.h */,
+				27C58BC514D5CD4800CB57D7 /* w5100.o */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		27C58BC614D5CD4800CB57D7 /* Firmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BC714D5CD4800CB57D7 /* Boards.h */,
+				27C58BC814D5CD4800CB57D7 /* examples */,
+				27C58BE514D5CD4800CB57D7 /* Firmata.cpp */,
+				27C58BE614D5CD4800CB57D7 /* Firmata.h */,
+				27C58BE814D5CD4800CB57D7 /* keywords.txt */,
+				27C58BE914D5CD4800CB57D7 /* LICENSE.txt */,
+				27C58BEA14D5CD4800CB57D7 /* TODO.txt */,
+			);
+			name = Firmata;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Firmata;
+			sourceTree = "<group>";
+		};
+		27C58BC814D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BC914D5CD4800CB57D7 /* AllInputsFirmata */,
+				27C58BCB14D5CD4800CB57D7 /* AnalogFirmata */,
+				27C58BCE14D5CD4800CB57D7 /* EchoString */,
+				27C58BD114D5CD4800CB57D7 /* I2CFirmata */,
+				27C58BD314D5CD4800CB57D7 /* OldStandardFirmata */,
+				27C58BD614D5CD4800CB57D7 /* ServoFirmata */,
+				27C58BD914D5CD4800CB57D7 /* SimpleAnalogFirmata */,
+				27C58BDC14D5CD4800CB57D7 /* SimpleDigitalFirmata */,
+				27C58BDF14D5CD4800CB57D7 /* StandardFirmata */,
+				27C58BE314D5CD4800CB57D7 /* StandardFirmata_2_2_forUNO_0_3 */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58BC914D5CD4800CB57D7 /* AllInputsFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BCA14D5CD4800CB57D7 /* AllInputsFirmata.pde */,
+			);
+			path = AllInputsFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BCB14D5CD4800CB57D7 /* AnalogFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BCC14D5CD4800CB57D7 /* AnalogFirmata.pde */,
+				27C58BCD14D5CD4800CB57D7 /* Makefile */,
+			);
+			path = AnalogFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BCE14D5CD4800CB57D7 /* EchoString */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BCF14D5CD4800CB57D7 /* EchoString.pde */,
+				27C58BD014D5CD4800CB57D7 /* Makefile */,
+			);
+			path = EchoString;
+			sourceTree = "<group>";
+		};
+		27C58BD114D5CD4800CB57D7 /* I2CFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BD214D5CD4800CB57D7 /* I2CFirmata.pde */,
+			);
+			path = I2CFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BD314D5CD4800CB57D7 /* OldStandardFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BD414D5CD4800CB57D7 /* LICENSE.txt */,
+				27C58BD514D5CD4800CB57D7 /* OldStandardFirmata.pde */,
+			);
+			path = OldStandardFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BD614D5CD4800CB57D7 /* ServoFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BD714D5CD4800CB57D7 /* Makefile */,
+				27C58BD814D5CD4800CB57D7 /* ServoFirmata.pde */,
+			);
+			path = ServoFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BD914D5CD4800CB57D7 /* SimpleAnalogFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BDA14D5CD4800CB57D7 /* Makefile */,
+				27C58BDB14D5CD4800CB57D7 /* SimpleAnalogFirmata.pde */,
+			);
+			path = SimpleAnalogFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BDC14D5CD4800CB57D7 /* SimpleDigitalFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BDD14D5CD4800CB57D7 /* Makefile */,
+				27C58BDE14D5CD4800CB57D7 /* SimpleDigitalFirmata.pde */,
+			);
+			path = SimpleDigitalFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BDF14D5CD4800CB57D7 /* StandardFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BE014D5CD4800CB57D7 /* LICENSE.txt */,
+				27C58BE114D5CD4800CB57D7 /* Makefile */,
+				27C58BE214D5CD4800CB57D7 /* StandardFirmata.pde */,
+			);
+			path = StandardFirmata;
+			sourceTree = "<group>";
+		};
+		27C58BE314D5CD4800CB57D7 /* StandardFirmata_2_2_forUNO_0_3 */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BE414D5CD4800CB57D7 /* StandardFirmata_2_2_forUNO_0_3.pde */,
+			);
+			path = StandardFirmata_2_2_forUNO_0_3;
+			sourceTree = "<group>";
+		};
+		27C58BEB14D5CD4800CB57D7 /* LiquidCrystal */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BEC14D5CD4800CB57D7 /* examples */,
+				27C58BFF14D5CD4800CB57D7 /* keywords.txt */,
+				27C58C0014D5CD4800CB57D7 /* LiquidCrystal.cpp */,
+				27C58C0114D5CD4800CB57D7 /* LiquidCrystal.h */,
+			);
+			name = LiquidCrystal;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/LiquidCrystal;
+			sourceTree = "<group>";
+		};
+		27C58BEC14D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BED14D5CD4800CB57D7 /* Autoscroll */,
+				27C58BEF14D5CD4800CB57D7 /* Blink */,
+				27C58BF114D5CD4800CB57D7 /* Cursor */,
+				27C58BF314D5CD4800CB57D7 /* Display */,
+				27C58BF514D5CD4800CB57D7 /* HelloWorld */,
+				27C58BF714D5CD4800CB57D7 /* Scroll */,
+				27C58BF914D5CD4800CB57D7 /* SerialDisplay */,
+				27C58BFB14D5CD4800CB57D7 /* setCursor */,
+				27C58BFD14D5CD4800CB57D7 /* TextDirection */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58BED14D5CD4800CB57D7 /* Autoscroll */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BEE14D5CD4800CB57D7 /* Autoscroll.pde */,
+			);
+			path = Autoscroll;
+			sourceTree = "<group>";
+		};
+		27C58BEF14D5CD4800CB57D7 /* Blink */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BF014D5CD4800CB57D7 /* Blink.pde */,
+			);
+			path = Blink;
+			sourceTree = "<group>";
+		};
+		27C58BF114D5CD4800CB57D7 /* Cursor */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BF214D5CD4800CB57D7 /* Cursor.pde */,
+			);
+			path = Cursor;
+			sourceTree = "<group>";
+		};
+		27C58BF314D5CD4800CB57D7 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BF414D5CD4800CB57D7 /* Display.pde */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		27C58BF514D5CD4800CB57D7 /* HelloWorld */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BF614D5CD4800CB57D7 /* HelloWorld.pde */,
+			);
+			path = HelloWorld;
+			sourceTree = "<group>";
+		};
+		27C58BF714D5CD4800CB57D7 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BF814D5CD4800CB57D7 /* Scroll.pde */,
+			);
+			path = Scroll;
+			sourceTree = "<group>";
+		};
+		27C58BF914D5CD4800CB57D7 /* SerialDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BFA14D5CD4800CB57D7 /* SerialDisplay.pde */,
+			);
+			path = SerialDisplay;
+			sourceTree = "<group>";
+		};
+		27C58BFB14D5CD4800CB57D7 /* setCursor */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BFC14D5CD4800CB57D7 /* setCursor.pde */,
+			);
+			path = setCursor;
+			sourceTree = "<group>";
+		};
+		27C58BFD14D5CD4800CB57D7 /* TextDirection */ = {
+			isa = PBXGroup;
+			children = (
+				27C58BFE14D5CD4800CB57D7 /* TextDirection.pde */,
+			);
+			path = TextDirection;
+			sourceTree = "<group>";
+		};
+		27C58C0314D5CD4800CB57D7 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0414D5CD4800CB57D7 /* examples */,
+				27C58C0914D5CD4800CB57D7 /* keywords.txt */,
+				27C58C0A14D5CD4800CB57D7 /* Matrix.cpp */,
+				27C58C0B14D5CD4800CB57D7 /* Matrix.h */,
+			);
+			name = Matrix;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Matrix;
+			sourceTree = "<group>";
+		};
+		27C58C0414D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0514D5CD4800CB57D7 /* hello_matrix */,
+				27C58C0714D5CD4800CB57D7 /* sprite_animation */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C0514D5CD4800CB57D7 /* hello_matrix */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0614D5CD4800CB57D7 /* hello_matrix.pde */,
+			);
+			path = hello_matrix;
+			sourceTree = "<group>";
+		};
+		27C58C0714D5CD4800CB57D7 /* sprite_animation */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0814D5CD4800CB57D7 /* sprite_animation.pde */,
+			);
+			path = sprite_animation;
+			sourceTree = "<group>";
+		};
+		27C58C0D14D5CD4800CB57D7 /* OneWire */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0E14D5CD4800CB57D7 /* examples */,
+				27C58C1514D5CD4800CB57D7 /* keywords.txt */,
+				27C58C1614D5CD4800CB57D7 /* OneWire.cpp */,
+				27C58C1714D5CD4800CB57D7 /* OneWire.h */,
+			);
+			name = OneWire;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/OneWire;
+			sourceTree = "<group>";
+		};
+		27C58C0E14D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C0F14D5CD4800CB57D7 /* DS18x20_Temperature */,
+				27C58C1114D5CD4800CB57D7 /* DS2408_Switch */,
+				27C58C1314D5CD4800CB57D7 /* DS250x_PROM */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C0F14D5CD4800CB57D7 /* DS18x20_Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1014D5CD4800CB57D7 /* DS18x20_Temperature.pde */,
+			);
+			path = DS18x20_Temperature;
+			sourceTree = "<group>";
+		};
+		27C58C1114D5CD4800CB57D7 /* DS2408_Switch */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1214D5CD4800CB57D7 /* DS2408_Switch.pde */,
+			);
+			path = DS2408_Switch;
+			sourceTree = "<group>";
+		};
+		27C58C1314D5CD4800CB57D7 /* DS250x_PROM */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1414D5CD4800CB57D7 /* DS250x_PROM.pde */,
+			);
+			path = DS250x_PROM;
+			sourceTree = "<group>";
+		};
+		27C58C1814D5CD4800CB57D7 /* SD */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1914D5CD4800CB57D7 /* examples */,
+				27C58C2214D5CD4800CB57D7 /* File.cpp */,
+				27C58C2414D5CD4800CB57D7 /* keywords.txt */,
+				27C58C2514D5CD4800CB57D7 /* README.txt */,
+				27C58C2614D5CD4800CB57D7 /* SD.cpp */,
+				27C58C2714D5CD4800CB57D7 /* SD.h */,
+				27C58C2914D5CD4800CB57D7 /* utility */,
+			);
+			name = SD;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/SD;
+			sourceTree = "<group>";
+		};
+		27C58C1914D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1A14D5CD4800CB57D7 /* Datalogger */,
+				27C58C1C14D5CD4800CB57D7 /* DumpFile */,
+				27C58C1E14D5CD4800CB57D7 /* Files */,
+				27C58C2014D5CD4800CB57D7 /* ReadWrite */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C1A14D5CD4800CB57D7 /* Datalogger */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1B14D5CD4800CB57D7 /* Datalogger.pde */,
+			);
+			path = Datalogger;
+			sourceTree = "<group>";
+		};
+		27C58C1C14D5CD4800CB57D7 /* DumpFile */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1D14D5CD4800CB57D7 /* DumpFile.pde */,
+			);
+			path = DumpFile;
+			sourceTree = "<group>";
+		};
+		27C58C1E14D5CD4800CB57D7 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C1F14D5CD4800CB57D7 /* Files.pde */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		27C58C2014D5CD4800CB57D7 /* ReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C2114D5CD4800CB57D7 /* ReadWrite.pde */,
+			);
+			path = ReadWrite;
+			sourceTree = "<group>";
+		};
+		27C58C2914D5CD4800CB57D7 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C2A14D5CD4800CB57D7 /* FatStructs.h */,
+				27C58C2B14D5CD4800CB57D7 /* Sd2Card.cpp */,
+				27C58C2C14D5CD4800CB57D7 /* Sd2Card.h */,
+				27C58C2E14D5CD4800CB57D7 /* Sd2PinMap.h */,
+				27C58C2F14D5CD4800CB57D7 /* SdFat.h */,
+				27C58C3014D5CD4800CB57D7 /* SdFatmainpage.h */,
+				27C58C3114D5CD4800CB57D7 /* SdFatUtil.h */,
+				27C58C3214D5CD4800CB57D7 /* SdFile.cpp */,
+				27C58C3414D5CD4800CB57D7 /* SdInfo.h */,
+				27C58C3514D5CD4800CB57D7 /* SdVolume.cpp */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		27C58C3714D5CD4800CB57D7 /* Servo */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C3814D5CD4800CB57D7 /* examples */,
+				27C58C3D14D5CD4800CB57D7 /* keywords.txt */,
+				27C58C3E14D5CD4800CB57D7 /* Servo.cpp */,
+				27C58C3F14D5CD4800CB57D7 /* Servo.h */,
+			);
+			name = Servo;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Servo;
+			sourceTree = "<group>";
+		};
+		27C58C3814D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C3914D5CD4800CB57D7 /* Knob */,
+				27C58C3B14D5CD4800CB57D7 /* Sweep */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C3914D5CD4800CB57D7 /* Knob */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C3A14D5CD4800CB57D7 /* Knob.pde */,
+			);
+			path = Knob;
+			sourceTree = "<group>";
+		};
+		27C58C3B14D5CD4800CB57D7 /* Sweep */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C3C14D5CD4800CB57D7 /* Sweep.pde */,
+			);
+			path = Sweep;
+			sourceTree = "<group>";
+		};
+		27C58C4114D5CD4800CB57D7 /* SoftwareSerial */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4214D5CD4800CB57D7 /* keywords.txt */,
+				27C58C4314D5CD4800CB57D7 /* SoftwareSerial.cpp */,
+				27C58C4414D5CD4800CB57D7 /* SoftwareSerial.h */,
+			);
+			name = SoftwareSerial;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/SoftwareSerial;
+			sourceTree = "<group>";
+		};
+		27C58C4614D5CD4800CB57D7 /* SPI */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4714D5CD4800CB57D7 /* examples */,
+				27C58C4E14D5CD4800CB57D7 /* keywords.txt */,
+				27C58C4F14D5CD4800CB57D7 /* SPI.cpp */,
+				27C58C5014D5CD4800CB57D7 /* SPI.h */,
+			);
+			name = SPI;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/SPI;
+			sourceTree = "<group>";
+		};
+		27C58C4714D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4814D5CD4800CB57D7 /* BarometricPressureSensor */,
+				27C58C4C14D5CD4800CB57D7 /* DigitalPotControl */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C4814D5CD4800CB57D7 /* BarometricPressureSensor */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4914D5CD4800CB57D7 /* BarometricPressureSensor */,
+				27C58C4B14D5CD4800CB57D7 /* BarometricPressureSensor.pde */,
+			);
+			path = BarometricPressureSensor;
+			sourceTree = "<group>";
+		};
+		27C58C4914D5CD4800CB57D7 /* BarometricPressureSensor */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4A14D5CD4800CB57D7 /* BarometricPressureSensor.pde */,
+			);
+			path = BarometricPressureSensor;
+			sourceTree = "<group>";
+		};
+		27C58C4C14D5CD4800CB57D7 /* DigitalPotControl */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C4D14D5CD4800CB57D7 /* DigitalPotControl.pde */,
+			);
+			path = DigitalPotControl;
+			sourceTree = "<group>";
+		};
+		27C58C5214D5CD4800CB57D7 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5314D5CD4800CB57D7 /* binary.h */,
+				27C58C5414D5CD4800CB57D7 /* keywords.txt */,
+				27C58C5514D5CD4800CB57D7 /* Sprite.cpp */,
+				27C58C5614D5CD4800CB57D7 /* Sprite.h */,
+			);
+			name = Sprite;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Sprite;
+			sourceTree = "<group>";
+		};
+		27C58C5814D5CD4800CB57D7 /* Stepper */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5914D5CD4800CB57D7 /* examples */,
+				27C58C6214D5CD4800CB57D7 /* keywords.txt */,
+				27C58C6314D5CD4800CB57D7 /* Stepper.cpp */,
+				27C58C6414D5CD4800CB57D7 /* Stepper.h */,
+			);
+			name = Stepper;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Stepper;
+			sourceTree = "<group>";
+		};
+		27C58C5914D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5A14D5CD4800CB57D7 /* MotorKnob */,
+				27C58C5C14D5CD4800CB57D7 /* stepper_oneRevolution */,
+				27C58C5E14D5CD4800CB57D7 /* stepper_oneStepAtATime */,
+				27C58C6014D5CD4800CB57D7 /* stepper_speedControl */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C5A14D5CD4800CB57D7 /* MotorKnob */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5B14D5CD4800CB57D7 /* MotorKnob.pde */,
+			);
+			path = MotorKnob;
+			sourceTree = "<group>";
+		};
+		27C58C5C14D5CD4800CB57D7 /* stepper_oneRevolution */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5D14D5CD4800CB57D7 /* stepper_oneRevolution.pde */,
+			);
+			path = stepper_oneRevolution;
+			sourceTree = "<group>";
+		};
+		27C58C5E14D5CD4800CB57D7 /* stepper_oneStepAtATime */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C5F14D5CD4800CB57D7 /* stepper_oneStepAtATime.pde */,
+			);
+			path = stepper_oneStepAtATime;
+			sourceTree = "<group>";
+		};
+		27C58C6014D5CD4800CB57D7 /* stepper_speedControl */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6114D5CD4800CB57D7 /* stepper_speedControl.pde */,
+			);
+			path = stepper_speedControl;
+			sourceTree = "<group>";
+		};
+		27C58C6614D5CD4800CB57D7 /* Wire */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6714D5CD4800CB57D7 /* examples */,
+				27C58C7414D5CD4800CB57D7 /* keywords.txt */,
+				27C58C7514D5CD4800CB57D7 /* utility */,
+				27C58C7814D5CD4800CB57D7 /* Wire.cpp */,
+				27C58C7914D5CD4800CB57D7 /* Wire.h */,
+			);
+			name = Wire;
+			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/Wire;
+			sourceTree = "<group>";
+		};
+		27C58C6714D5CD4800CB57D7 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6814D5CD4800CB57D7 /* digital_potentiometer */,
+				27C58C6A14D5CD4800CB57D7 /* master_reader */,
+				27C58C6C14D5CD4800CB57D7 /* master_writer */,
+				27C58C6E14D5CD4800CB57D7 /* SFRRanger_reader */,
+				27C58C7014D5CD4800CB57D7 /* slave_receiver */,
+				27C58C7214D5CD4800CB57D7 /* slave_sender */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		27C58C6814D5CD4800CB57D7 /* digital_potentiometer */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6914D5CD4800CB57D7 /* digital_potentiometer.pde */,
+			);
+			path = digital_potentiometer;
+			sourceTree = "<group>";
+		};
+		27C58C6A14D5CD4800CB57D7 /* master_reader */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6B14D5CD4800CB57D7 /* master_reader.pde */,
+			);
+			path = master_reader;
+			sourceTree = "<group>";
+		};
+		27C58C6C14D5CD4800CB57D7 /* master_writer */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6D14D5CD4800CB57D7 /* master_writer.pde */,
+			);
+			path = master_writer;
+			sourceTree = "<group>";
+		};
+		27C58C6E14D5CD4800CB57D7 /* SFRRanger_reader */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C6F14D5CD4800CB57D7 /* SFRRanger_reader.pde */,
+			);
+			path = SFRRanger_reader;
+			sourceTree = "<group>";
+		};
+		27C58C7014D5CD4800CB57D7 /* slave_receiver */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C7114D5CD4800CB57D7 /* slave_receiver.pde */,
+			);
+			path = slave_receiver;
+			sourceTree = "<group>";
+		};
+		27C58C7214D5CD4800CB57D7 /* slave_sender */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C7314D5CD4800CB57D7 /* slave_sender.pde */,
+			);
+			path = slave_sender;
+			sourceTree = "<group>";
+		};
+		27C58C7514D5CD4800CB57D7 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				27C58C7614D5CD4800CB57D7 /* twi.c */,
+				27C58C7714D5CD4800CB57D7 /* twi.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		27C58CB014D5EDF200CB57D7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +1447,26 @@
 		};
 /* End PBXLegacyTarget section */
 
+/* Begin PBXNativeTarget section */
+		27C58ADF14D5C9B600CB57D7 /* Index */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27C58AE814D5C9B600CB57D7 /* Build configuration list for PBXNativeTarget "Index" */;
+			buildPhases = (
+				27C58ADC14D5C9B600CB57D7 /* Sources */,
+				27C58ADD14D5C9B600CB57D7 /* Frameworks */,
+				27C58ADE14D5C9B600CB57D7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Index;
+			productName = Index;
+			productReference = 27C58AE014D5C9B600CB57D7 /* Index */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
 		2707CCE314D429ED004695ED /* Project object */ = {
 			isa = PBXProject;
@@ -129,6 +1481,7 @@
 				en,
 			);
 			mainGroup = 2707CCE114D429ED004695ED;
+			productRefGroup = 27C58AE114D5C9B600CB57D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -137,48 +1490,93 @@
 				274171BB14D42B0F0088B8BC /* Upload */,
 				27A8C58814D48017002F38A1 /* Serial */,
 				274171BF14D42B150088B8BC /* All */,
+				27C58ADF14D5C9B600CB57D7 /* Index */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin XCBuildConfiguration section */
-		2707CCE914D429ED004695ED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-			};
-			name = Debug;
+/* Begin PBXSourcesBuildPhase section */
+		27C58ADC14D5C9B600CB57D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27C58B3514D5CC9100CB57D7 /* exceptions.c in Sources */,
+				27C58B3614D5CC9100CB57D7 /* HardwareSerial_cdcacm.c in Sources */,
+				27C58B3714D5CC9100CB57D7 /* HardwareSerial_usb.c in Sources */,
+				27C58B3814D5CC9100CB57D7 /* HardwareSerial.cpp in Sources */,
+				27C58B3914D5CC9100CB57D7 /* main.cpp in Sources */,
+				27C58B3A14D5CC9100CB57D7 /* pins_arduino.c in Sources */,
+				27C58B3B14D5CC9100CB57D7 /* Print.cpp in Sources */,
+				27C58B3C14D5CC9100CB57D7 /* Tone.cpp in Sources */,
+				27C58B3D14D5CC9100CB57D7 /* WInterrupts.c in Sources */,
+				27C58B3E14D5CC9100CB57D7 /* wiring_analog.c in Sources */,
+				27C58B3F14D5CC9100CB57D7 /* wiring_digital.c in Sources */,
+				27C58B4014D5CC9100CB57D7 /* wiring_pulse.c in Sources */,
+				27C58B4114D5CC9100CB57D7 /* wiring_shift.c in Sources */,
+				27C58B4214D5CC9100CB57D7 /* wiring.c in Sources */,
+				27C58B4314D5CC9100CB57D7 /* WMath.cpp in Sources */,
+				27C58B4414D5CC9100CB57D7 /* WString.cpp in Sources */,
+				27C58B5E14D5CD0300CB57D7 /* HardwareSerial.cpp in Sources */,
+				27C58B5F14D5CD0300CB57D7 /* main.cpp in Sources */,
+				27C58B6014D5CD0300CB57D7 /* pins_arduino.c in Sources */,
+				27C58B6114D5CD0300CB57D7 /* Print.cpp in Sources */,
+				27C58B6214D5CD0300CB57D7 /* Tone.cpp in Sources */,
+				27C58B6314D5CD0300CB57D7 /* WInterrupts.c in Sources */,
+				27C58B6414D5CD0300CB57D7 /* wiring_analog.c in Sources */,
+				27C58B6514D5CD0300CB57D7 /* wiring_digital.c in Sources */,
+				27C58B6614D5CD0300CB57D7 /* wiring_pulse.c in Sources */,
+				27C58B6714D5CD0300CB57D7 /* wiring_shift.c in Sources */,
+				27C58B6814D5CD0300CB57D7 /* wiring.c in Sources */,
+				27C58B6914D5CD0300CB57D7 /* WMath.cpp in Sources */,
+				27C58B6A14D5CD0300CB57D7 /* WString.cpp in Sources */,
+				27C58C7B14D5CD4800CB57D7 /* ArduinoTestSuite.cpp in Sources */,
+				27C58C7C14D5CD4800CB57D7 /* EEPROM.cpp in Sources */,
+				27C58C7E14D5CD4800CB57D7 /* Client.cpp in Sources */,
+				27C58C8014D5CD4800CB57D7 /* Ethernet.cpp in Sources */,
+				27C58C8214D5CD4800CB57D7 /* Server.cpp in Sources */,
+				27C58C8414D5CD4800CB57D7 /* Udp.cpp in Sources */,
+				27C58C8614D5CD4800CB57D7 /* socket.cpp in Sources */,
+				27C58C8814D5CD4800CB57D7 /* w5100.cpp in Sources */,
+				27C58C8A14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C8B14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C8C14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C8D14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C8E14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C8F14D5CD4800CB57D7 /* Makefile in Sources */,
+				27C58C9014D5CD4800CB57D7 /* Firmata.cpp in Sources */,
+				27C58C9214D5CD4800CB57D7 /* LiquidCrystal.cpp in Sources */,
+				27C58C9414D5CD4800CB57D7 /* Matrix.cpp in Sources */,
+				27C58C9614D5CD4800CB57D7 /* OneWire.cpp in Sources */,
+				27C58C9714D5CD4800CB57D7 /* File.cpp in Sources */,
+				27C58C9914D5CD4800CB57D7 /* SD.cpp in Sources */,
+				27C58C9B14D5CD4800CB57D7 /* Sd2Card.cpp in Sources */,
+				27C58C9D14D5CD4800CB57D7 /* SdFile.cpp in Sources */,
+				27C58C9F14D5CD4800CB57D7 /* SdVolume.cpp in Sources */,
+				27C58CA114D5CD4800CB57D7 /* Servo.cpp in Sources */,
+				27C58CA314D5CD4800CB57D7 /* SoftwareSerial.cpp in Sources */,
+				27C58CA514D5CD4800CB57D7 /* SPI.cpp in Sources */,
+				27C58CA714D5CD4800CB57D7 /* Sprite.cpp in Sources */,
+				27C58CA914D5CD4800CB57D7 /* Stepper.cpp in Sources */,
+				27C58CAB14D5CD4800CB57D7 /* twi.c in Sources */,
+				27C58CAC14D5CD4800CB57D7 /* Wire.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
 		2707CCEA14D429ED004695ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C58AD314D5C68500CB57D7 /* chipKIT_UNO32.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = __AVR_ATmega8__;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -188,18 +1586,6 @@
 				SDKROOT = macosx;
 			};
 			name = Release;
-		};
-		274171B514D42AE70088B8BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
 		};
 		274171B614D42AE70088B8BC /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -210,18 +1596,6 @@
 			};
 			name = Release;
 		};
-		274171B914D42B050088B8BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
 		274171BA14D42B050088B8BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -230,18 +1604,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
-		};
-		274171BD14D42B0F0088B8BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
 		};
 		274171BE14D42B0F0088B8BC /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -252,18 +1614,6 @@
 			};
 			name = Release;
 		};
-		274171C114D42B150088B8BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
 		274171C214D42B150088B8BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -272,18 +1622,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
-		};
-		27A8C58A14D48017002F38A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
 		};
 		27A8C58B14D48017002F38A1 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -294,13 +1632,19 @@
 			};
 			name = Release;
 		};
+		27C58AE914D5C9B600CB57D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2707CCE614D429ED004695ED /* Build configuration list for PBXProject "mpideXcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2707CCE914D429ED004695ED /* Debug */,
 				2707CCEA14D429ED004695ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -309,7 +1653,6 @@
 		274171B414D42AE70088B8BC /* Build configuration list for PBXLegacyTarget "Build" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				274171B514D42AE70088B8BC /* Debug */,
 				274171B614D42AE70088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -318,7 +1661,6 @@
 		274171B814D42B050088B8BC /* Build configuration list for PBXLegacyTarget "Clean" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				274171B914D42B050088B8BC /* Debug */,
 				274171BA14D42B050088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -327,7 +1669,6 @@
 		274171BC14D42B0F0088B8BC /* Build configuration list for PBXLegacyTarget "Upload" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				274171BD14D42B0F0088B8BC /* Debug */,
 				274171BE14D42B0F0088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -336,7 +1677,6 @@
 		274171C014D42B150088B8BC /* Build configuration list for PBXLegacyTarget "All" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				274171C114D42B150088B8BC /* Debug */,
 				274171C214D42B150088B8BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -345,8 +1685,15 @@
 		27A8C58914D48017002F38A1 /* Build configuration list for PBXLegacyTarget "Serial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				27A8C58A14D48017002F38A1 /* Debug */,
 				27A8C58B14D48017002F38A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27C58AE814D5C9B600CB57D7 /* Build configuration list for PBXNativeTarget "Index" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27C58AE914D5C9B600CB57D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

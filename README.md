@@ -68,10 +68,19 @@ MPIDE 0023
 
 	EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
     
-                    
+    
+8- Library issue solved
+
+	`ARDUINO_LIB_PATH` fixed
+	was `= $(ARDUINO_SKETCHBOOK)/libraries`
+	now `= $(ARDUINO_DIR)/hardware/pic32/libraries`
+	more powerful clean
+	info section added for debugging
+      
+                                  
 ## Results
 
-Tested on both Xcode and Terminal
+Tested on both Xcode and Terminal, with local library foo and Wire
 
 * Arduino Uno: ok
 * chipKIT UNO32: ok
