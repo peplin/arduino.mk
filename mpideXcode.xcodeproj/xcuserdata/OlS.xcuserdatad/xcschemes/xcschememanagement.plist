@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Serial.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Upload.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -48,6 +53,11 @@
 			<true/>
 		</dict>
 		<key>274171BF14D42B150088B8BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27A8C58814D48017002F38A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
