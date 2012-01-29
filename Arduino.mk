@@ -475,8 +475,10 @@ endif
 #
 
 all: 		clean build upload serial
+		@echo " ---- all ---- "
 
 build: 		$(OBJDIR) $(TARGET_HEX)
+		@echo " ---- build ---- "
 
 $(OBJDIR):
 		mkdir $(OBJDIR)
@@ -535,6 +537,6 @@ depends:	$(DEPS)
 		@echo " ---- depends ---- "
 		cat $(DEPS) > $(DEP_FILE)
 
-.PHONY:	all clean depends build upload raw_upload reset serial show_boards
+.PHONY:	all clean depends upload raw_upload reset serial show_boards
 
 include $(DEP_FILE)

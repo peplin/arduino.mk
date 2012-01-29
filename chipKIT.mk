@@ -50,6 +50,9 @@ MCU_FLAG_NAME=mprocessor
 EXTRA_CPPFLAGS = -O2 -mno-smart-io -DARDUINO=23 -D$(BOARD)=  \
 		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
 
+EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
+
+
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include $(CHIPKIT_MK_PATH)/Arduino.mk

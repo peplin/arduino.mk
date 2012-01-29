@@ -49,11 +49,13 @@ MPIDE 0023
     
 	error-prone `stty` replaced by `screen`
 
+
 5- Debug comments on makefiles
 
 	cleaner commit
 	`@echo " ---- debug comment ---- "`
 	see issue #7    
+    
     
 6- Added LDSCRIPT value search    
     
@@ -61,19 +63,18 @@ MPIDE 0023
 	but unused afterwards
 	seems to be required for link
     
+
+7- Added EXTRA_LDFLAGS for linker
+
+	EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
+    
                     
 ## Results
 
-Both tested on Xcode and Terminal
+Tested on both Xcode and Terminal
 
 * Arduino Uno: ok
-* chipKIT UNO32: 
-
-	upload but no blinking LED!
-
-* Build logs comparison
-
-	MPIDE and this makefile build logs: [comparison](https://docs.google.com/open?id=0B9EofSODZdANZWEzNmYxNjQtNWE4Ni00MTMyLWE2Y2EtM2ExMmZlM2E1NWY0) 
+* chipKIT UNO32: ok
 
 
 
