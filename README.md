@@ -72,9 +72,13 @@ MPIDE 0023
 8- Library issue solved
 
 	`ARDUINO_LIB_PATH` fixed
+
 	was `= $(ARDUINO_SKETCHBOOK)/libraries`
+
 	now `= $(ARDUINO_DIR)/hardware/pic32/libraries`
+
 	more powerful clean
+
 	info section added for debugging
       
                                   
