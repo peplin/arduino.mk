@@ -16,6 +16,7 @@ AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
 ARDUINO_LIB_PATH = $(ARDUINO_DIR)/hardware/pic32/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
+VARIANTS_PATH = $(ARDUINO_DIR)/hardware/pic32/variants
 
 CC_NAME = pic32-gcc
 CXX_NAME = pic32-g++
@@ -23,6 +24,7 @@ AR_NAME = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
+CORE_INCLUDE_NAME = "WProgram.h"
 LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
 OSTYPE := $(shell uname)
 
@@ -46,8 +48,7 @@ endif
 
 MCU_FLAG_NAME=mprocessor
 EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
-EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=23 -D$(BOARD)  \
-		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
+EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=23 -D$(BOARD)
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 

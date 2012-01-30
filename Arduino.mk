@@ -184,6 +184,10 @@ ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 endif
 
+ifndef VARIANTS_PATH
+VARIANTS_PATH = $(ARDUINO_DIR)/hardware/arduino/variants
+endif
+
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
@@ -199,6 +203,11 @@ endif
 
 ifndef BOARDS_TXT
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
+endif
+
+# To support both MPIDE (which uses WProgram.h) and Arduino 1.0 (Arduino.h)
+ifndef CORE_INCLUDE_NAME
+CORE_INCLUDE_NAME = "Arduino.h"
 endif
 
 ifndef PARSE_BOARD
@@ -361,6 +370,7 @@ endif
 
 CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
+			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -g -Os -w -Wall \
 			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
 
@@ -373,7 +383,7 @@ ASFLAGS       = -mmcu=$(MCU) -I. -x assembler-with-cpp
 LDFLAGS       = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
 
 # Rules for making a CPP file from the main sketch (.cpe)
-PDEHEADER     = \\\#include \"WProgram.h\"
+PDEHEADER     = \\\#include \"$(CORE_INCLUDE_NAME)\"
 
 # Expand and pick the first port
 ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
