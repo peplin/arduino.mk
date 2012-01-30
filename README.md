@@ -11,8 +11,7 @@ The original blog post: http://mjo.tc/atelier/2009/02/arduino-cli.html
 A blog post on the addition of chipKIT support:
 http://christopherpeplin.com/2011/12/chipkit-arduino-makefile/
 
-This Makefile current does *not* support Arduino 1.0. It shouldn't take too long
-to update, however - pull requests are welcome!
+This Makefile current requires either Arduino 1.0 or MPIDE 0023.
 
 ## chipKIT Support
 
