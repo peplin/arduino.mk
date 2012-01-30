@@ -174,6 +174,8 @@ endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
+OSTYPE := $(shell uname)
+
 ########################################################################
 # boards.txt parsing
 #
@@ -301,28 +303,25 @@ ifndef OBJDUMP_NAME
 OBJDUMP_NAME = avr-objdump
 endif
 
-ifndef AR_NAME
-AR_NAME      = avr-ar
-endif
-
-ifndef SIZE_NAME
-SIZE_NAME    = avr-size
-endif
-
 ifndef NM_NAME
 NM_NAME      = avr-nm
 endif
 
 # Names of executables
+ifeq ($(OSTYPE),Linux)
+# Compilers are not distributed in IDE on Linux - use system versions
+CXX     = $(CXX_NAME)
+CC      = $(CC_NAME)
+OBJCOPY = $(OBJCOPY_NAME)
+else
 CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
 CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
 OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
+endif
+
 OBJDUMP = $(AVR_TOOLS_PATH)/$(OBJDUMP_NAME)
-AR      = $(AVR_TOOLS_PATH)/$(AR_NAME)
-SIZE    = $(AVR_TOOLS_PATH)/$(SIZE_NAME)
 NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
 REMOVE  = rm -f
-MV      = mv -f
 CAT     = cat
 ECHO    = echo
 

@@ -50,3 +50,9 @@ EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=22 -D$(BOARD)=  \
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include $(CHIPKIT_MK_PATH)/Arduino.mk
+
+# MPIDE still comes with the compilers on Linux, unlike Arduino
+CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
+CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
+OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
+
