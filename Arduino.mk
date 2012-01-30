@@ -151,11 +151,11 @@
 ifneq (ARDUINO_DIR,)
 
 ifndef AVR_TOOLS_PATH
-AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools/avr/bin
+AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools
 endif
 
 ifndef ARDUINO_ETC_PATH
-ARDUINO_ETC_PATH  = $(ARDUINO_DIR)/hardware/tools/avr/etc
+ARDUINO_ETC_PATH  = $(ARDUINO_DIR)/hardware/tools
 endif
 
 ifndef AVRDUDE_CONF
