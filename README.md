@@ -43,3 +43,9 @@ Makefile:
     ARDUINO_PORT = /dev/ttyUSB*
 
     include $(ARDUINO_MAKEFILE_HOME)/chipKIT.mk
+
+## Contributors
+
+* Martin Oldfield (initial version)
+* Chris Peplin (chipKIT)
+* rei_vilo / Olivier
