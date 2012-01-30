@@ -27,6 +27,7 @@ OBJCOPY_NAME = pic32-objcopy
 
 # Arduino / chipKIT libraries path and list
 #
+ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH := $(ARDUINO_DIR)/hardware/pic32/libraries
 endif
 

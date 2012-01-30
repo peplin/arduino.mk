@@ -3,9 +3,8 @@
 # BOARD_TAG and ARDUINO_PORT 
 #
 ifndef BOARD_TAG
-
-ARDUINO_PORT      = /dev/tty.usbmodem*
 BOARD_TAG    = uno
+ARDUINO_PORT = /dev/tty.usbmodem*
 endif
 
 
@@ -41,7 +40,7 @@ PARSE_BOARD = $(lastword $(subst $(equalstring),$(spacestring),$(shell grep $(1)
 #
 FLAG = $(shell grep $(BOARD_TAG).name $(ARDUINO_DIR)/hardware/pic32/boards.txt)
 
-
+    
 # Something = chipKIT board, empty = Arduino board
 #
 NEXT = $(if $(FLAG),chipKIT.mk,Arduino.mk)

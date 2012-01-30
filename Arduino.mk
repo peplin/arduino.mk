@@ -171,6 +171,7 @@ DIRS1        := $(realpath $(sort $(dir $(wildcard $(ARDUINO_LIB_PATH)/*/*.h $(A
 DIRS2        := $(filter-out %OneWire %ArduinoTestSuite,$(DIRS1))
 ARDUINO_LIBS := $(subst $(ARDUINO_LIB_PATH)/,, $(filter-out %xample %xamples %ocumentation,$(DIRS2)))
 endif
+
 ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 endif

@@ -453,7 +453,6 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-				27C58B8014D5CD4800CB57D7 /* ATS_Delay */,
 		27C58B9214D5CD4800CB57D7 /* EEPROM */ = {
 			isa = PBXGroup;
 			children = (
