@@ -523,7 +523,7 @@ serial:
 	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
 
 clean:
-		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)
+	rm -r $(OBJDIR)/*
 
 depends:	$(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
