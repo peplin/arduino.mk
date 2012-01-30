@@ -1,0 +1,6 @@
+// board specifics defined in .xconfig file
+//
+#include "_basic_arduino_settings.xcconfig"
+
+BOARD_TAG    = pro5v328
+ARDUINO_PORT = /dev/tty.usbmodem*

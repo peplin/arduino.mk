@@ -1,5 +1,5 @@
 ########################################################################
-#
+# 
 # Arduino command line tools Makefile
 # System part (i.e. project independent)
 #
@@ -159,11 +159,17 @@ ARDUINO_ETC_PATH  = $(ARDUINO_DIR)/hardware/tools/avr/etc
 endif
 
 ifndef AVRDUDE_CONF
-AVRDUDE_CONF     = $(ARDUINO_ETC_PATH)/avrdude.conf
+AVRDUDE_CONF      = $(ARDUINO_ETC_PATH)/avrdude.conf
 endif
 
 ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
+endif
+
+ifndef ARDUINO_LIBS
+DIRS1        := $(realpath $(sort $(dir $(wildcard $(ARDUINO_LIB_PATH)/*/*.h $(ARDUINO_LIB_PATH)/*/*/*.h))))
+DIRS2        := $(filter-out %OneWire %ArduinoTestSuite,$(DIRS1))
+ARDUINO_LIBS := $(subst $(ARDUINO_LIB_PATH)/,, $(filter-out %xample %xamples %ocumentation,$(DIRS2)))
 endif
 
 ifndef ARDUINO_CORE_PATH
@@ -237,7 +243,7 @@ VARIANT            = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 endif
 
 # Everything gets built in here
-OBJDIR  	  = build-cli
+OBJDIR  	  = Builds
 
 ########################################################################
 # Local sources
@@ -248,8 +254,8 @@ LOCAL_CC_SRCS   = $(wildcard *.cc)
 LOCAL_PDE_SRCS  = $(wildcard *.pde)
 LOCAL_AS_SRCS   = $(wildcard *.S)
 LOCAL_OBJ_FILES = $(LOCAL_C_SRCS:.c=.o) $(LOCAL_CPP_SRCS:.cpp=.o) \
-		$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.pde=.o) \
-		$(LOCAL_AS_SRCS:.S=.o)
+					$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.pde=.o) \
+					$(LOCAL_AS_SRCS:.S=.o)
 LOCAL_OBJS      = $(patsubst %,$(OBJDIR)/%,$(LOCAL_OBJ_FILES))
 
 # Dependency files
@@ -257,13 +263,13 @@ DEPS            = $(LOCAL_OBJS:.o=.d)
 
 # core sources
 ifeq ($(strip $(NO_CORE)),)
-ifdef ARDUINO_CORE_PATH
-CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
-CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
-CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
-CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,  \
-			$(OBJDIR)/%,$(CORE_OBJ_FILES))
-endif
+	ifdef ARDUINO_CORE_PATH
+		CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
+		CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
+		CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
+		CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,  \
+							$(OBJDIR)/%,$(CORE_OBJ_FILES))
+	endif
 endif
 
 # all the objects!
@@ -318,6 +324,7 @@ AR      = $(AVR_TOOLS_PATH)/$(AR_NAME)
 SIZE    = $(AVR_TOOLS_PATH)/$(SIZE_NAME)
 NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
 REMOVE  = rm -f
+REMOVE_ALL = rm -R
 MV      = mv -f
 CAT     = cat
 ECHO    = echo
@@ -325,11 +332,11 @@ ECHO    = echo
 # General arguments
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
 SYS_INCLUDES  = $(patsubst %,-I%,$(SYS_LIBS))
-SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
-LIB_CPP_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
-LIB_C_SRC       = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
+SYS_OBJS      = $(wildcard $(x %,%/*.o,$(SYS_LIBS)))
+LIB_CPP_SRC   = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
+LIB_C_SRC     = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
 LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_CPP_SRC))
-LIB_OBJS      += $(patsubst $(ARDUINO_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(LIB_C_SRC))
+LIB_OBJS     += $(patsubst $(ARDUINO_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(LIB_C_SRC))
 
 ifndef MCU_FLAG_NAME
 MCU_FLAG_NAME = mmcu
@@ -444,6 +451,7 @@ AVRDUDE          = $(AVR_TOOLS_PATH)/avrdude
 endif
 
 AVRDUDE_COM_OPTS = -q -V -p $(MCU)
+
 ifdef AVRDUDE_CONF
 AVRDUDE_COM_OPTS += -C $(AVRDUDE_CONF)
 endif
@@ -474,7 +482,12 @@ endif
 # Explicit targets start here
 #
 
-all: 		$(OBJDIR) $(TARGET_HEX)
+all: 		clean build upload serial
+		@echo " ---- all ---- "
+
+build: 		$(OBJDIR) $(TARGET_HEX) info
+		@echo " ---- build ---- "
+		
 
 $(OBJDIR):
 		mkdir $(OBJDIR)
@@ -488,6 +501,7 @@ $(DEP_FILE):	$(OBJDIR) $(DEPS)
 upload:		reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
+		@echo " ---- upload ---- "
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
 
@@ -495,17 +509,21 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-		@if [ -z "$(ARD_PORT)" ]; then \
-			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
-			fi
-		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
-		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
-		done ;\
-		$$STTYF $(ARD_PORT)  hupcl ;\
-		(sleep 0.1 || sleep 1)     ;\
-		$$STTYF $(ARD_PORT) -hupcl
+		@echo " ---- reset ---- "
+		-screen -X kill;
+		sleep 1;
+#		@if [ -z "$(ARD_PORT)" ]; then \
+#			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
+#			fi
+#		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
+#		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
+#		done ;\
+#		$$STTYF $(ARD_PORT)  hupcl ;\
+#		(sleep 0.1 || sleep 1)     ;\
+#		$$STTYF $(ARD_PORT) -hupcl
 
 ispload:	$(TARGET_HEX)
+		@echo " ---- ispload ---- "
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
 			-U lock:w:$(ISP_LOCK_FUSE_PRE):m \
 			-U hfuse:w:$(ISP_HIGH_FUSE):m \
@@ -517,14 +535,32 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
-	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
+		@echo " ---- serial ---- "
+		osascript -e 'tell application "Terminal" to do script "$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)"'
 
+# print info
+info:
+	@echo "---- info ----";
+	@echo "* Board";
+	@echo " name  \t" $(call PARSE_BOARD,$(BOARD_TAG),name);
+	@echo " f_cpu \t" $(F_CPU); 
+	@echo " mcu   \t" $(MCU);
+	@echo " port  \t" $(ARDUINO_PORT);
+	@echo " \n";
+	@echo "* Arduino / chipKIT libraries \n\t" $(ARDUINO_LIBS);
+	@echo "* User libraries \n\t" $(ARDUINO_LIBS);
+	@echo "---- end ----";
+	@echo " ";
+	
 clean:
-		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS)
+		@echo " ---- clean ---- "
+		$(REMOVE_ALL) $(OBJDIR)
+#		$(REMOVE) $(OBJS) $(TARGETS) $(DEP_FILE) $(DEPS) $(LIB_OBJS)
 
 depends:	$(DEPS)
+		@echo " ---- depends ---- "
 		cat $(DEPS) > $(DEP_FILE)
 
-.PHONY:	all clean depends upload raw_upload reset show_boards
+.PHONY:	all clean depends upload raw_upload reset serial show_boards
 
-include $(DEP_FILE)
+# include $(DEP_FILE)

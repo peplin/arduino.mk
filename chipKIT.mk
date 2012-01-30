@@ -1,4 +1,4 @@
-#
+# 
 # chipKIT extensions for Arduino Makefile
 # System part (i.e. project independent)
 #
@@ -11,17 +11,30 @@
 # License, or (at your option) any later version.
 #
 
-AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
-AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
-ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
-ARDUINO_LIB_PATH  = $(ARDUINO_SKETCHBOOK)/libraries
-BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
+AVR_TOOLS_PATH     = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
+AVRDUDE_TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools
+ARDUINO_CORE_PATH  = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
+#ARDUINO_LIB_PATH   = $(ARDUINO_SKETCHBOOK)/libraries
+ARDUINO_LIB_PATH   = $(ARDUINO_DIR)/hardware/pic32/libraries
+BOARDS_TXT         = $(ARDUINO_DIR)/hardware/pic32/boards.txt
 
-CC_NAME = pic32-gcc
-CXX_NAME = pic32-g++
-AR_NAME = pic32-ar
+CC_NAME      = pic32-gcc
+CXX_NAME     = pic32-g++
+AR_NAME      = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
+
+
+# Arduino / chipKIT libraries path and list
+#
+ifndef ARDUINO_LIB_PATH
+ARDUINO_LIB_PATH := $(ARDUINO_DIR)/hardware/pic32/libraries
+endif
+
+#ifndef ARDUINO_LIBS
+#DIRS1        := $(realpath $(sort $(dir $(wildcard $(ARDUINO_LIB_PATH)/*/*.h $(ARDUINO_LIB_PATH)/*/*/*.h))))
+#ARDUINO_LIBS := $(subst $(ARDUINO_LIB_PATH)/,, $(filter-out %xample %xamples %ocumentation,$(DIRS1)))
+#endif
 
 OSTYPE := $(shell uname)
 
@@ -43,9 +56,15 @@ ifndef AVRDUDE_CONF
 	endif
 endif
 
+BOARD    = $(call PARSE_BOARD,$(BOARD_TAG),board)
+LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
+
 MCU_FLAG_NAME=mprocessor
-EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=22 -D_BOARD_MEGA_=  \
+EXTRA_CPPFLAGS = -O2 -mno-smart-io -DARDUINO=23 -D$(BOARD)  \
 		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
+
+EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
+
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 

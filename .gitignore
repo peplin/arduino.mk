@@ -1,0 +1,5 @@
+.DS_Store
+Builds/
+Archive/
+*.xcuserdatad
+UserInterfaceState.xcuserstate
