@@ -6,13 +6,13 @@
  */
 
 #include "WProgram.h"
-#include "SD.h"
+#include "Wire.h"
 
 void setup() {
   // initialize the digital pin as an output.
   // Pin 13 has an LED connected on most Arduino boards:
   pinMode(13, OUTPUT);
-  SD.begin();
+  Serial.begin(9600);
 }
 
 void loop() {

@@ -1,6 +1,6 @@
 TARGET       = blink
 BOARD_TAG    = uno
-ARDUINO_LIBS = SD SD/utility
+ARDUINO_LIBS = Wire Wire/utility
 
 ARDUINO_PORT = /dev/ttyACM*
 
