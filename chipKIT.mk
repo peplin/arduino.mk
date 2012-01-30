@@ -23,6 +23,7 @@ AR_NAME = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
+LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
 OSTYPE := $(shell uname)
 
 ifndef AVRDUDE
@@ -44,6 +45,7 @@ ifndef AVRDUDE_CONF
 endif
 
 MCU_FLAG_NAME=mprocessor
+EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
 EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=23 -D$(BOARD)=  \
 		-I$(ARDUINO_DIR)/hardware/pic32/variants/$(VARIANT)
 
