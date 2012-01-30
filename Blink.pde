@@ -1,5 +1,7 @@
 #include "WProgram.h"
 #include "Wire.h"
+//#include "I2C_Serial.h"
+#include "foo.h"
 
 /*
  Blink
@@ -8,6 +10,8 @@
  This example code is in the public domain.
  */
 
+//I2C_Serial myI2C;
+
 void setup() {                
     // initialize the digital pin as an output.
     // Pin 13 has an LED connected on most Arduino boards:
@@ -15,8 +19,11 @@ void setup() {
     
     Serial.begin(9600);
     Serial.print("\n\n\n***\n");
+    Serial.print(foovalue, DEC);
+    
     
     Wire.begin();
+//    myI2C.begin();
 }
 
 void loop() {

@@ -24,6 +24,17 @@ AR_NAME      = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
+
+# Arduino / chipKIT libraries path and list
+#
+ARDUINO_LIB_PATH := $(ARDUINO_DIR)/hardware/pic32/libraries
+endif
+
+#ifndef ARDUINO_LIBS
+#DIRS1        := $(realpath $(sort $(dir $(wildcard $(ARDUINO_LIB_PATH)/*/*.h $(ARDUINO_LIB_PATH)/*/*/*.h))))
+#ARDUINO_LIBS := $(subst $(ARDUINO_LIB_PATH)/,, $(filter-out %xample %xamples %ocumentation,$(DIRS1)))
+#endif
+
 OSTYPE := $(shell uname)
 
 ifndef AVRDUDE

@@ -3,18 +3,22 @@
 # BOARD_TAG and ARDUINO_PORT 
 #
 ifndef BOARD_TAG
-BOARD_TAG      = uno
-endif
 
-ifndef ARDUINO_PORT
 ARDUINO_PORT      = /dev/tty.usbmodem*
+BOARD_TAG    = uno
 endif
 
 
 # Declare Arduino/chipKIT libraries used 
+# Otherwise, all will be considered (default)
 #
 ARDUINO_LIBS = Wire Wire/utility 
-# ARDUINO_LIBS += EEPROM Ethernet Ethernet/utility SPI Firmata LiquidCrystal Matrix Sprite SD SD/utility Servo SoftwareSerial Stepper
+# EEPROM Ethernet Ethernet/utility SPI Firmata LiquidCrystal Matrix Sprite SD SD/utility Servo SoftwareSerial Stepper
+
+# Declare user libraries used 
+# Otherwise, all will be considered (default)
+#
+SKETCHBOOK_LIBS = I2C_Serial 
 
 
 # Mpide.app path

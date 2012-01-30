@@ -166,6 +166,11 @@ ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 endif
 
+ifndef ARDUINO_LIBS
+DIRS1        := $(realpath $(sort $(dir $(wildcard $(ARDUINO_LIB_PATH)/*/*.h $(ARDUINO_LIB_PATH)/*/*/*.h))))
+DIRS2        := $(filter-out %OneWire %ArduinoTestSuite,$(DIRS1))
+ARDUINO_LIBS := $(subst $(ARDUINO_LIB_PATH)/,, $(filter-out %xample %xamples %ocumentation,$(DIRS2)))
+endif
 ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 endif
@@ -535,19 +540,14 @@ serial:
 # print info
 info:
 	@echo "---- info ----";
-	@echo "Board";
-	@echo " name \t" $(call PARSE_BOARD,$(BOARD_TAG),name);
-	@echo " cpu  \t" $(F_CPU); 
-	@echo " mcu  \t" $(MCU);
-	@echo " port \t" $(ARDUINO_PORT);
-	
+	@echo "* Board";
+	@echo " name  \t" $(call PARSE_BOARD,$(BOARD_TAG),name);
+	@echo " f_cpu \t" $(F_CPU); 
+	@echo " mcu   \t" $(MCU);
+	@echo " port  \t" $(ARDUINO_PORT);
 	@echo " \n";
-
-	@echo "Library paths \n\t" $(LIBRARY_PATHS);
-	@echo "Library cpp files \n\t" $(foreach item,$(LIBRARY_PATHS), $(wildcard $(item)/*.cpp));
-	@echo "Compiling sources \n\t" $(CXXSRC);
-	@echo "Compiling libraries sources \n\t" $(CPP_LIBRARIES);
-	@echo "Included libraries \n\t" $(INCLUDE_LIBRARIES);
+	@echo "* Arduino / chipKIT libraries \n\t" $(ARDUINO_LIBS);
+	@echo "* User libraries \n\t" $(ARDUINO_LIBS);
 	@echo "---- end ----";
 	@echo " ";
 	

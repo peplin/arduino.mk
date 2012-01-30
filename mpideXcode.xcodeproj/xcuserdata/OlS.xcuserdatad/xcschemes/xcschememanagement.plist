@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Info.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Serial.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>274171BF14D42B150088B8BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>278C1D0D14D6F91800BC13E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

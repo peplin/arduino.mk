@@ -36,7 +36,6 @@
 		27C58B6814D5CD0300CB57D7 /* wiring.c in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5814D5CD0300CB57D7 /* wiring.c */; };
 		27C58B6914D5CD0300CB57D7 /* WMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5A14D5CD0300CB57D7 /* WMath.cpp */; };
 		27C58B6A14D5CD0300CB57D7 /* WString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B5C14D5CD0300CB57D7 /* WString.cpp */; };
-		27C58C7B14D5CD4800CB57D7 /* ArduinoTestSuite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */; };
 		27C58C7C14D5CD4800CB57D7 /* EEPROM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B9314D5CD4800CB57D7 /* EEPROM.cpp */; };
 		27C58C7E14D5CD4800CB57D7 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58B9F14D5CD4800CB57D7 /* Client.cpp */; };
 		27C58C8014D5CD4800CB57D7 /* Ethernet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27C58BA214D5CD4800CB57D7 /* Ethernet.cpp */; };
@@ -87,7 +86,7 @@
 		274171AB14D42A190088B8BC /* Blink.pde */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = Blink.pde; sourceTree = "<group>"; };
 		274171AC14D42A190088B8BC /* chipKIT.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = chipKIT.mk; sourceTree = "<group>"; };
 		274171AD14D42A190088B8BC /* licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = licence.txt; sourceTree = "<group>"; };
-		274171AF14D42A190088B8BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		274171AF14D42A190088B8BC /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		274171B014D42A190088B8BC /* References.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = References.txt; sourceTree = "<group>"; };
 		274171B214D42AC90088B8BC /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		27C58AD314D5C68500CB57D7 /* chipKIT_UNO32.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = chipKIT_UNO32.xcconfig; path = Config/chipKIT_UNO32.xcconfig; sourceTree = "<group>"; };
@@ -155,19 +154,6 @@
 		27C58B5B14D5CD0300CB57D7 /* WProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WProgram.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WProgram.h; sourceTree = "<group>"; };
 		27C58B5C14D5CD0300CB57D7 /* WString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WString.cpp; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp; sourceTree = "<group>"; };
 		27C58B5D14D5CD0300CB57D7 /* WString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WString.h; path = ../../../../Applications/Mpide.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.h; sourceTree = "<group>"; };
-		27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArduinoTestSuite.cpp; sourceTree = "<group>"; };
-		27C58B7B14D5CD4800CB57D7 /* ArduinoTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArduinoTestSuite.h; sourceTree = "<group>"; };
-		27C58B7C14D5CD4800CB57D7 /* avr_cpunames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avr_cpunames.h; sourceTree = "<group>"; };
-		27C58B7F14D5CD4800CB57D7 /* ATS_Constants.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Constants.pde; sourceTree = "<group>"; };
-		27C58B8114D5CD4800CB57D7 /* ATS_Delay.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Delay.pde; sourceTree = "<group>"; };
-		27C58B8314D5CD4800CB57D7 /* ATS_General.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_General.pde; sourceTree = "<group>"; };
-		27C58B8514D5CD4800CB57D7 /* ATS_SD_File.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_File.pde; sourceTree = "<group>"; };
-		27C58B8714D5CD4800CB57D7 /* ATS_SD_Files.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_Files.pde; sourceTree = "<group>"; };
-		27C58B8914D5CD4800CB57D7 /* ATS_SD_Seek.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_SD_Seek.pde; sourceTree = "<group>"; };
-		27C58B8B14D5CD4800CB57D7 /* ATS_Skeleton.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_Skeleton.pde; sourceTree = "<group>"; };
-		27C58B8D14D5CD4800CB57D7 /* ATS_StringIndexOfMemory.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_StringIndexOfMemory.pde; sourceTree = "<group>"; };
-		27C58B8F14D5CD4800CB57D7 /* ATS_StringTest.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_StringTest.pde; sourceTree = "<group>"; };
-		27C58B9114D5CD4800CB57D7 /* ATS_ToneTest.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ATS_ToneTest.pde; sourceTree = "<group>"; };
 		27C58B9314D5CD4800CB57D7 /* EEPROM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EEPROM.cpp; sourceTree = "<group>"; };
 		27C58B9414D5CD4800CB57D7 /* EEPROM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPROM.h; sourceTree = "<group>"; };
 		27C58B9814D5CD4800CB57D7 /* eeprom_clear.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_clear.pde; sourceTree = "<group>"; };
@@ -324,10 +310,10 @@
 				27C58CAE14D5EB0A00CB57D7 /* foo.h */,
 				27C58CB014D5EDF200CB57D7 /* User */,
 				27C58AEC14D5CBED00CB57D7 /* Libraries */,
-				27C58ADB14D5C88E00CB57D7 /* Makefiles */,
 				27C58AD414D5C6AB00CB57D7 /* Config */,
-				27C58AEA14D5CBD900CB57D7 /* Arduino */,
-				27C58AEB14D5CBE300CB57D7 /* chipKIT */,
+				27C58ADB14D5C88E00CB57D7 /* Makefiles */,
+				27C58AEA14D5CBD900CB57D7 /* Arduino core */,
+				27C58AEB14D5CBE300CB57D7 /* chipKIT core */,
 				274171B114D42A430088B8BC /* About */,
 				27C58AE114D5C9B600CB57D7 /* Products */,
 			);
@@ -336,7 +322,7 @@
 		274171B114D42A430088B8BC /* About */ = {
 			isa = PBXGroup;
 			children = (
-				274171AF14D42A190088B8BC /* README.md */,
+				274171AF14D42A190088B8BC /* README.txt */,
 				27D824F514D4395800FDCD8D /* README_peplin.md */,
 				274171B014D42A190088B8BC /* References.txt */,
 				274171AD14D42A190088B8BC /* licence.txt */,
@@ -374,7 +360,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		27C58AEA14D5CBD900CB57D7 /* Arduino */ = {
+		27C58AEA14D5CBD900CB57D7 /* Arduino core */ = {
 			isa = PBXGroup;
 			children = (
 				27C58B4514D5CD0300CB57D7 /* binary.h */,
@@ -403,10 +389,10 @@
 				27C58B5C14D5CD0300CB57D7 /* WString.cpp */,
 				27C58B5D14D5CD0300CB57D7 /* WString.h */,
 			);
-			name = Arduino;
+			name = "Arduino core";
 			sourceTree = "<group>";
 		};
-		27C58AEB14D5CBE300CB57D7 /* chipKIT */ = {
+		27C58AEB14D5CBE300CB57D7 /* chipKIT core */ = {
 			isa = PBXGroup;
 			children = (
 				27C58B1314D5CC9100CB57D7 /* binary.h */,
@@ -444,13 +430,12 @@
 				27C58B3314D5CC9100CB57D7 /* WString.cpp */,
 				27C58B3414D5CC9100CB57D7 /* WString.h */,
 			);
-			name = chipKIT;
+			name = "chipKIT core";
 			sourceTree = "<group>";
 		};
 		27C58AEC14D5CBED00CB57D7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				27C58B7914D5CD4800CB57D7 /* ArduinoTestSuite */,
 				27C58B9214D5CD4800CB57D7 /* EEPROM */,
 				27C58B9E14D5CD4800CB57D7 /* Ethernet */,
 				27C58BC614D5CD4800CB57D7 /* Firmata */,
@@ -468,115 +453,7 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		27C58B7914D5CD4800CB57D7 /* ArduinoTestSuite */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B7A14D5CD4800CB57D7 /* ArduinoTestSuite.cpp */,
-				27C58B7B14D5CD4800CB57D7 /* ArduinoTestSuite.h */,
-				27C58B7C14D5CD4800CB57D7 /* avr_cpunames.h */,
-				27C58B7D14D5CD4800CB57D7 /* examples */,
-			);
-			name = ArduinoTestSuite;
-			path = ../../../../Applications/Mpide.app/Contents/Resources/Java/libraries/ArduinoTestSuite;
-			sourceTree = "<group>";
-		};
-		27C58B7D14D5CD4800CB57D7 /* examples */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B7E14D5CD4800CB57D7 /* ATS_Constants */,
 				27C58B8014D5CD4800CB57D7 /* ATS_Delay */,
-				27C58B8214D5CD4800CB57D7 /* ATS_General */,
-				27C58B8414D5CD4800CB57D7 /* ATS_SD_File */,
-				27C58B8614D5CD4800CB57D7 /* ATS_SD_Files */,
-				27C58B8814D5CD4800CB57D7 /* ATS_SD_Seek */,
-				27C58B8A14D5CD4800CB57D7 /* ATS_Skeleton */,
-				27C58B8C14D5CD4800CB57D7 /* ATS_StringIndexOfMemory */,
-				27C58B8E14D5CD4800CB57D7 /* ATS_StringTest */,
-				27C58B9014D5CD4800CB57D7 /* ATS_ToneTest */,
-			);
-			path = examples;
-			sourceTree = "<group>";
-		};
-		27C58B7E14D5CD4800CB57D7 /* ATS_Constants */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B7F14D5CD4800CB57D7 /* ATS_Constants.pde */,
-			);
-			path = ATS_Constants;
-			sourceTree = "<group>";
-		};
-		27C58B8014D5CD4800CB57D7 /* ATS_Delay */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8114D5CD4800CB57D7 /* ATS_Delay.pde */,
-			);
-			path = ATS_Delay;
-			sourceTree = "<group>";
-		};
-		27C58B8214D5CD4800CB57D7 /* ATS_General */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8314D5CD4800CB57D7 /* ATS_General.pde */,
-			);
-			path = ATS_General;
-			sourceTree = "<group>";
-		};
-		27C58B8414D5CD4800CB57D7 /* ATS_SD_File */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8514D5CD4800CB57D7 /* ATS_SD_File.pde */,
-			);
-			path = ATS_SD_File;
-			sourceTree = "<group>";
-		};
-		27C58B8614D5CD4800CB57D7 /* ATS_SD_Files */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8714D5CD4800CB57D7 /* ATS_SD_Files.pde */,
-			);
-			path = ATS_SD_Files;
-			sourceTree = "<group>";
-		};
-		27C58B8814D5CD4800CB57D7 /* ATS_SD_Seek */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8914D5CD4800CB57D7 /* ATS_SD_Seek.pde */,
-			);
-			path = ATS_SD_Seek;
-			sourceTree = "<group>";
-		};
-		27C58B8A14D5CD4800CB57D7 /* ATS_Skeleton */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8B14D5CD4800CB57D7 /* ATS_Skeleton.pde */,
-			);
-			path = ATS_Skeleton;
-			sourceTree = "<group>";
-		};
-		27C58B8C14D5CD4800CB57D7 /* ATS_StringIndexOfMemory */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8D14D5CD4800CB57D7 /* ATS_StringIndexOfMemory.pde */,
-			);
-			path = ATS_StringIndexOfMemory;
-			sourceTree = "<group>";
-		};
-		27C58B8E14D5CD4800CB57D7 /* ATS_StringTest */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B8F14D5CD4800CB57D7 /* ATS_StringTest.pde */,
-			);
-			path = ATS_StringTest;
-			sourceTree = "<group>";
-		};
-		27C58B9014D5CD4800CB57D7 /* ATS_ToneTest */ = {
-			isa = PBXGroup;
-			children = (
-				27C58B9114D5CD4800CB57D7 /* ATS_ToneTest.pde */,
-			);
-			path = ATS_ToneTest;
-			sourceTree = "<group>";
-		};
 		27C58B9214D5CD4800CB57D7 /* EEPROM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1431,6 +1308,20 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = All;
 		};
+		278C1D0D14D6F91800BC13E8 /* Info */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = info;
+			buildConfigurationList = 278C1D0E14D6F91800BC13E8 /* Build configuration list for PBXLegacyTarget "Info" */;
+			buildPhases = (
+			);
+			buildToolPath = make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Info;
+			passBuildSettingsInEnvironment = 1;
+			productName = Info;
+		};
 		27A8C58814D48017002F38A1 /* Serial */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = serial;
@@ -1491,6 +1382,7 @@
 				27A8C58814D48017002F38A1 /* Serial */,
 				274171BF14D42B150088B8BC /* All */,
 				27C58ADF14D5C9B600CB57D7 /* Index */,
+				278C1D0D14D6F91800BC13E8 /* Info */,
 			);
 		};
 /* End PBXProject section */
@@ -1529,7 +1421,6 @@
 				27C58B6814D5CD0300CB57D7 /* wiring.c in Sources */,
 				27C58B6914D5CD0300CB57D7 /* WMath.cpp in Sources */,
 				27C58B6A14D5CD0300CB57D7 /* WString.cpp in Sources */,
-				27C58C7B14D5CD4800CB57D7 /* ArduinoTestSuite.cpp in Sources */,
 				27C58C7C14D5CD4800CB57D7 /* EEPROM.cpp in Sources */,
 				27C58C7E14D5CD4800CB57D7 /* Client.cpp in Sources */,
 				27C58C8014D5CD4800CB57D7 /* Ethernet.cpp in Sources */,
@@ -1584,6 +1475,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
+				SKETCHBOOK_DIR = "~/Documents/Arduino/_Projets";
 			};
 			name = Release;
 		};
@@ -1623,6 +1515,16 @@
 			};
 			name = Release;
 		};
+		278C1D0F14D6F91800BC13E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		27A8C58B14D48017002F38A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1635,6 +1537,8 @@
 		27C58AE914D5C9B600CB57D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = __AVR_ATmega8__;
+				HEADER_SEARCH_PATHS = "/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/avr/include/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1682,6 +1586,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		278C1D0E14D6F91800BC13E8 /* Build configuration list for PBXLegacyTarget "Info" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C1D0F14D6F91800BC13E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		27A8C58914D48017002F38A1 /* Build configuration list for PBXLegacyTarget "Serial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1696,6 +1608,7 @@
 				27C58AE914D5C9B600CB57D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

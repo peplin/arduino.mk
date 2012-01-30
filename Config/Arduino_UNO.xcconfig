@@ -1,0 +1,6 @@
+// board specifics defined in .xconfig file
+//
+#include "_basic_arduino_settings.xcconfig"
+
+BOARD_TAG    = uno
+ARDUINO_PORT = /dev/tty.usbmodem*
