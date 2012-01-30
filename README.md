@@ -44,7 +44,6 @@ Makefile:
 
     TARGET       = blink
     BOARD_TAG    = mega_pic32
-    ARDUINO_
 
     ARDUINO_PORT = /dev/ttyUSB*
 
