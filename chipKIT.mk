@@ -14,7 +14,7 @@
 AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
 AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
-ARDUINO_LIB_PATH  = $(ARDUINO_SKETCHBOOK)/libraries
+ARDUINO_LIB_PATH = $(ARDUINO_DIR)/hardware/pic32/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
 
 CC_NAME = pic32-gcc
