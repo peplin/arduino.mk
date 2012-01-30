@@ -166,6 +166,10 @@ ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 endif
 
+ifndef USER_LIB_PATH
+USER_LIB_PATH = $(ARDUINO_SKETCHBOOK)/libraries
+endif
+
 ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
 endif
@@ -327,12 +331,19 @@ ECHO    = echo
 
 # General arguments
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
+USER_LIBS     = $(patsubst %,$(USER_LIB_PATH)/%,$(ARDUINO_LIBS))
 SYS_INCLUDES  = $(patsubst %,-I%,$(SYS_LIBS))
+SYS_INCLUDES  += $(patsubst %,-I%,$(USER_LIBS))
 SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
-LIB_CPP_SRC       = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
-LIB_C_SRC       = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
+SYS_OBJS      += $(wildcard $(patsubst %,%/*.o,$(USER_LIBS)))
+LIB_CPP_SRC   = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
+LIB_C_SRC     = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
+USER_LIB_CPP_SRC   = $(wildcard $(patsubst %,%/*.cpp,$(USER_LIBS)))
+USER_LIB_C_SRC     = $(wildcard $(patsubst %,%/*.c,$(USER_LIBS)))
 LIB_OBJS      = $(patsubst $(ARDUINO_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(LIB_CPP_SRC))
 LIB_OBJS      += $(patsubst $(ARDUINO_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(LIB_C_SRC))
+LIB_OBJS      += $(patsubst $(USER_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(USER_LIB_CPP_SRC))
+LIB_OBJS      += $(patsubst $(USER_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(USER_LIB_C_SRC))
 
 ifndef MCU_FLAG_NAME
 MCU_FLAG_NAME = mmcu
@@ -370,6 +381,12 @@ $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.cpp
 	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.c
+	mkdir -p $(dir $@)
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+$(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+$(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.c
 	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
