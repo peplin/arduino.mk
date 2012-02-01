@@ -78,7 +78,7 @@
 #                   these are in $(ARDUINO_DIR)/hardware/libraries
 #    ARDUINO_PORT - The port where the Arduino can be found (only needed
 #                   when uploading
-#    BOARD_TAG    - The ard-parse-boards tag for the board e.g. uno or mega
+#    BOARD_TAG    - The tag for the board e.g. uno or mega
 #                   'make show_boards' shows a list
 #
 # You might also want to specify these, but normally they'll be read from the
@@ -564,6 +564,9 @@ clean:
 
 depends:	$(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
+
+show_boards:
+	cat $(BOARDS_TXT) | grep board | cut -d . -f 1
 
 .PHONY:	all clean depends upload raw_upload reset show_boards
 
