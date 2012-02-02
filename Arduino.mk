@@ -566,7 +566,7 @@ depends:	$(DEPS)
 		cat $(DEPS) > $(DEP_FILE)
 
 show_boards:
-	cat $(BOARDS_TXT) | grep board | cut -d . -f 1
+	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
 
 .PHONY:	all clean depends upload raw_upload reset show_boards
 

@@ -53,3 +53,4 @@ Makefile:
 * Martin Oldfield (initial version)
 * Chris Peplin (chipKIT)
 * rei_vilo / Olivier
+* Edward Comer
