@@ -48,6 +48,14 @@ Makefile:
 
     include $(ARDUINO_MAKEFILE_HOME)/chipKIT.mk
 
+## Options
+
+If you are defining your own `main()` function, you can stop the Ardunio's
+built-in `main()` from being compiled with your code by defining the
+`NO_CORE_MAIN_FUNCTION` variable:
+
+    NO_CORE_MAIN_FUNCTION = 1
+
 ## Contributors
 
 * Martin Oldfield (initial version)
