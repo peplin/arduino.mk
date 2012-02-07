@@ -151,11 +151,6 @@
 ifneq (ARDUINO_DIR,)
 
 ifndef AVR_TOOLS_PATH
-# Unfortunately the path for this is different in Arduino 0023 and MPIDE 0023,
-# so you'll have to fiddle.
-# Arduino 0023
-# AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools
-# MIPDE 0023
 AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools/avr/bin
 endif
 
