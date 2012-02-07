@@ -501,11 +501,11 @@ AVRDUDE_ISP_OPTS = -P $(ISP_PORT) $(ISP_PROG)
 # Serial monitoring
 #
 
-ifndef MON_SPEED
+ifndef SERIAL_BAUDRATE
 SERIAL_BAUDRATE = 9600
 endif
 
-ifndef MON_CMD
+ifndef SERIAL_COMMAND
 SERIAL_COMMAND   = screen
 endif
 
