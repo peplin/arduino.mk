@@ -5,7 +5,6 @@
   This example code is in the public domain.
  */
 
-#include "WProgram.h"
 #include "Wire.h"
 
 void setup() {
