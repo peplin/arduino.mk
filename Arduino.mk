@@ -205,11 +205,8 @@ CORE_INCLUDE_NAME = "Arduino.h"
 endif
 
 ifndef PARSE_BOARD
-nullstring  :=
-spacestring := $(nullstring) # end of the line
-equalstring := $(nullstring)=# end of the line
 # result = $(call READ_BOARD_TXT, 'boardname', 'parameter')
-PARSE_BOARD = $(lastword $(subst $(equalstring),$(spacestring),$(shell grep $(1).$(2) $(BOARDS_TXT))))
+PARSE_BOARD = $(shell grep $(1).$(2) $(BOARDS_TXT) | cut -d = -f 2 )
 endif
 
 # processor stuff
