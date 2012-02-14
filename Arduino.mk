@@ -344,7 +344,6 @@ endif
 OBJDUMP = $(AVR_TOOLS_PATH)/$(OBJDUMP_NAME)
 NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
 REMOVE  = rm -f
-CAT     = cat
 ECHO    = echo
 
 # General arguments
@@ -446,7 +445,7 @@ $(OBJDIR)/%.d: %.s
 # the pde -> cpp -> o file
 $(OBJDIR)/%.cpp: %.pde
 	$(ECHO) $(PDEHEADER) > $@
-	$(CAT)  $< >> $@
+	@cat  $< >> $@
 
 $(OBJDIR)/%.o: $(OBJDIR)/%.cpp
 	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
@@ -523,7 +522,7 @@ $(TARGET_ELF): 	$(OBJS)
 		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_OBJS) -lc
 
 $(DEP_FILE):	$(OBJDIR) $(DEPS)
-		cat $(DEPS) > $(DEP_FILE)
+		@cat $(DEPS) > $(DEP_FILE)
 
 upload:		reset raw_upload
 
@@ -563,7 +562,7 @@ clean:
 	rm -r $(OBJDIR)/*
 
 depends:	$(DEPS)
-		cat $(DEPS) > $(DEP_FILE)
+		@cat $(DEPS) > $(DEP_FILE)
 
 show_boards:
 	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
