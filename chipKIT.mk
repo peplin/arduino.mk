@@ -17,6 +17,7 @@ ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
 ARDUINO_LIB_PATH = $(ARDUINO_DIR)/hardware/pic32/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
 VARIANTS_PATH = $(ARDUINO_DIR)/hardware/pic32/variants
+ARDUINO_VERSION = 23
 
 CC_NAME = pic32-gcc
 CXX_NAME = pic32-g++
@@ -48,7 +49,7 @@ endif
 
 MCU_FLAG_NAME=mprocessor
 EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
-EXTRA_CPPFLAGS = -O2  -mno-smart-io -DARDUINO=23 -D$(BOARD)
+EXTRA_CPPFLAGS = -O2  -mno-smart-io -D$(BOARD)
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 

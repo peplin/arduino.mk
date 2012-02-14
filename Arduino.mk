@@ -178,6 +178,10 @@ ifndef VARIANTS_PATH
 VARIANTS_PATH = $(ARDUINO_DIR)/hardware/arduino/variants
 endif
 
+ifndef ARDUINO_VERSION
+ARDUINO_VERSION = 100
+endif
+
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
@@ -364,6 +368,7 @@ MCU_FLAG_NAME = mmcu
 endif
 
 CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
+			-DARDUINO=$(ARDUINO_VERSION) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -g -Os -w -Wall \
