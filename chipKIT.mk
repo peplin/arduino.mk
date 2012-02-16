@@ -19,6 +19,16 @@ BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
 VARIANTS_PATH = $(ARDUINO_DIR)/hardware/pic32/variants
 ARDUINO_VERSION = 23
 
+ifndef ARDUINO_PREFERENCES_PATH
+
+ifeq ($(OSTYPE),Linux)
+ARDUINO_PREFERENCES_PATH = $(HOME)/.mpide/preferences.txt
+else
+ARDUINO_PREFERENCES_PATH = $(HOME)/Library/Mpide/preferences.txt
+endif
+
+endif
+
 CC_NAME = pic32-gcc
 CXX_NAME = pic32-g++
 AR_NAME = pic32-ar
