@@ -166,9 +166,28 @@ ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 endif
 
+# ---- edit
+# ARDUINO_SKETCHBOOK doesn't seem to have been defined before
+# Sketchbook/Libraries path
+# wildcard required for ~ management
+#
 ifndef USER_LIB_PATH
-USER_LIB_PATH = $(ARDUINO_SKETCHBOOK)/libraries
+
+ifeq ($(wildcard ~/Library/Arduino/preferences.txt),)
+    $(error Error: run Arduino once and define sketchbook path)
 endif
+
+# Required: run Arduino or chipKIT/Mpide before and set sketchbook path in Preferences
+# for chipKIT, replace Arduino by Mpide
+#
+ARDUINO_SKETCHBOOK = $(shell grep sketchbook.path $(wildcard ~/Library/Arduino/preferences.txt) | cut -d = -f 2)
+ifeq ($(wildcard $(ARDUINO_SKETCHBOOK)),)
+   $(error Error: sketchbook path not found)
+endif
+USER_LIB_PATH  = $(wildcard $(ARDUINO_SKETCHBOOK)/Libraries)
+
+endif
+# ---- end of edit
 
 ifndef ARDUINO_CORE_PATH
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
