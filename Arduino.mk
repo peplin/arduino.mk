@@ -147,6 +147,8 @@
 # Some paths
 #
 #
+#
+OSTYPE := $(shell uname)
 
 ifneq (ARDUINO_DIR,)
 
@@ -164,6 +166,24 @@ endif
 
 ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
+endif
+
+ifndef ARDUINO_PREFERENCES_PATH
+
+ifeq ($(OSTYPE),Linux)
+ARDUINO_PREFERENCES_PATH = $(HOME)/.arduino/preferences.txt
+else
+ARDUINO_PREFERENCES_PATH = $(HOME)/Library/Arduino/preferences.txt
+endif
+
+endif
+
+ifeq ($(wildcard $(ARDUINO_PREFERENCES_PATH)),)
+$(error "Error: run the IDE once to initialize preferences sketchbook path")
+endif
+
+ifndef ARDUINO_SKETCHBOOK
+ARDUINO_SKETCHBOOK = $(shell grep sketchbook.path $(wildcard $(ARDUINO_PREFERENCES_PATH)) | cut -d = -f 2)
 endif
 
 ifndef USER_LIB_PATH
@@ -185,8 +205,6 @@ endif
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
-
-OSTYPE := $(shell uname)
 
 ########################################################################
 # boards.txt parsing
