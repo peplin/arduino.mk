@@ -12,54 +12,17 @@
 # License, or (at your option) any later version.
 #
 # Adapted from Arduino 0011 Makefile by M J Oldfield
-#
 # Original Arduino adaptation by mellis, eighthave, oli.keller
-#
 # Modified by Christopher Peplin for chipKIT.
-#
-# Version 0.1  17.ii.2009  M J Oldfield
-#
-#         0.2  22.ii.2009  M J Oldfield
-#                          - fixes so that the Makefile actually works!
-#                          - support for uploading via ISP
-#                          - orthogonal choices of using the Arduino for
-#                            tools, libraries and uploading
-#
-#         0.3  21.v.2010   M J Oldfield
-#                          - added proper license statement
-#                          - added code from Philip Hands to reset
-#                            Arduino prior to upload
-#
-#         0.4  25.v.2010   M J Oldfield
-#                          - tweaked reset target on Philip Hands' advice
-#
-#         0.5  23.iii.2011 Stefan Tomanek
-#                          - added ad-hoc library building
-#              17.v.2011   M J Oldfield
-#                          - grabbed said version from Ubuntu
-#
-#         0.6  22.vi.2011  M J Oldfield
-#                          - added ard-parse-boards supports
-#                          - added -lc to linker opts,
-#                            on Fabien Le Lez's advice
-#
-#              Development changes, Chris Peplin,
-#
-#              			   - converted ard-parse-boards to a Makefile function
-#              			   so Perl/YAML aren't required (thanks to avenue33 on
-#              			   the chipKIT forums)
-#
+# Further modified by Edward Comer
 ########################################################################
-#
 # STANDARD ARDUINO WORKFLOW
 #
 # Given a normal sketch directory, all you need to do is to create
 # a small Makefile which defines a few things, and then includes this one.
 #
 # For example:
-#
 #       ARDUINO_DIR  = /Applications/arduino-0013
-#
 #       TARGET       = CLItest
 #       ARDUINO_LIBS = LiquidCrystal
 #
@@ -76,7 +39,7 @@
 #                   here: you could always set it to xx if you wanted!
 #    ARDUINO_LIBS - A list of any libraries used by the sketch (we assume
 #                   these are in $(ARDUINO_DIR)/hardware/libraries
-#    ARDUINO_PORT - The port where the Arduino can be found (only needed
+#    ARDUINO_PORT - The port where the Arduino can be found. Only needed
 #                   when uploading
 #    BOARD_TAG    - The tag for the board e.g. uno or mega
 #                   'make show_boards' shows a list
@@ -105,9 +68,9 @@
 #   make reset       - reset the Arduino by tickling DTR on the serial port
 #   make raw_upload  - upload without first resetting
 #   make show_boards - list all the boards defined in boards.txt
+#   make ispload     - upload via external programmer
 #
 ########################################################################
-#
 # ARDUINO WITH OTHER TOOLS
 #
 # If the tools aren't in the Arduino distribution, then you need to
@@ -115,9 +78,7 @@
 #
 #    AVR_TOOLS_PATH = /usr/bin
 #    AVRDUDE_CONF   = /etc/avrdude/avrdude.conf
-#
 ########################################################################
-#
 # ARDUINO WITH ISP
 #
 # You need to specify some details of your ISP programmer and might
@@ -141,47 +102,53 @@
 # To actually do this upload use the ispload target:
 #
 #    make ispload
-#
-#
 ########################################################################
 # Some paths
 #
-#
 
+# Since the Makefile MUST specify ARDUINO_DIR, whu is this condition here?
 ifneq (ARDUINO_DIR,)
 
-ifndef AVR_TOOLS_PATH
-AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools/avr/bin
+	ifndef AVR_TOOLS_PATH
+		AVR_TOOLS_PATH = $(shell dirname "`find $(ARDUINO_DIR) -type f -name 'avr-gcc'`")
+	endif
+
+	ifndef AVRDUDE_CONF
+		AVRDUDE_CONF = $(shell dirname "`find $(ARDUINO_DIR) -type f -name 'avrdude.conf'`")
+	endif
+
+	ifndef ARDUINO_LIB_PATH
+		ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
+	endif
+
+	ifndef USER_LIB_PATH
+		USER_LIB_PATH = $(ARDUINO_SKETCHBOOK)/libraries
+	endif
+
+	ARDUINO_CORE_PATH = $(shell find $(ARDUINO_DIR) -type d -name 'arduino' | sort -u|grep cores)
+
+	# Sketchbook location needed to descriminate between ~/arduino/arduino-1.0/hardware/arduino/variants
+	# and varients within sketchbook per MIT's High-Low tech http://hlt.media.mit.edu/?p=1695
+	# https://github.com/damellis/attiny/tree/Arduino1
+	ifndef ARDUINO_SKETCHBOOK
+		ARDUINO_SKETCHBOOK = $(ARDUINO_DIR)/sketchbook
+	endif
+
+	ifndef VARIANTS_PATH
+		ifneq (,$(findstring tiny,$(BOARD_TAG)))
+			VARIANTS_PATH = $(shell find $(ARDUINO_SKETCHBOOK) -type d -name 'variants')
+		else
+			VARIANTS_PATH = $(ARDUINO_DIR)/hardware/arduino/variants
+		endif
+	endif
 endif
 
-ifndef ARDUINO_ETC_PATH
-ARDUINO_ETC_PATH  = $(ARDUINO_DIR)/hardware/tools/avr/etc
-endif
-
-ifndef AVRDUDE_CONF
-AVRDUDE_CONF     = $(ARDUINO_ETC_PATH)/avrdude.conf
-endif
-
-ifndef ARDUINO_LIB_PATH
-ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
-endif
-
-ifndef USER_LIB_PATH
-USER_LIB_PATH = $(ARDUINO_SKETCHBOOK)/libraries
-endif
-
-ifndef ARDUINO_CORE_PATH
-ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/arduino/cores/arduino
-endif
-
-ifndef VARIANTS_PATH
-VARIANTS_PATH = $(ARDUINO_DIR)/hardware/arduino/variants
-endif
-
+# Select suffix type
 ifndef ARDUINO_VERSION
-ARDUINO_VERSION = 100
-endif
-
+	ARDUINO_VERSION = 100
+	SUFFIX := ino
+else
+	SUFFIX := pde
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
@@ -192,69 +159,110 @@ OSTYPE := $(shell uname)
 # boards.txt parsing
 #
 ifndef BOARD_TAG
-BOARD_TAG   = uno
+	BOARD_TAG   = uno
 endif
 
+# CHANGED
 ifndef BOARDS_TXT
-BOARDS_TXT  = $(ARDUINO_DIR)/hardware/arduino/boards.txt
+	ifneq (,$(findstring tiny,$(BOARD_TAG)))
+		BOARDS_TXT = $(shell find $(ARDUINO_DIR) -type f -name 'boards.txt' |sort -u |grep tiny)
+	else
+		BOARDS_TXT = $(shell find $(ARDUINO_DIR) -type f -name 'boards.txt' |sort -u |grep -v tiny)
+	endif
 endif
 
 # To support both MPIDE (which uses WProgram.h) and Arduino 1.0 (Arduino.h)
 ifndef CORE_INCLUDE_NAME
-CORE_INCLUDE_NAME = "Arduino.h"
+	CORE_INCLUDE_NAME = "Arduino.h"
 endif
 
 ifndef PARSE_BOARD
-# result = $(call READ_BOARD_TXT, 'boardname', 'parameter')
-PARSE_BOARD = $(shell grep $(1).$(2) $(BOARDS_TXT) | cut -d = -f 2 )
+	# result = $(call READ_BOARD_TXT, 'boardname', 'parameter')
+	PARSE_BOARD = $(shell grep $(1).$(2) $(BOARDS_TXT) | cut -d = -f 2 )
 endif
 
 # processor stuff
 ifndef MCU
-MCU   = $(call PARSE_BOARD,$(BOARD_TAG),build.mcu)
+	MCU   = $(call PARSE_BOARD,$(BOARD_TAG),build.mcu)
 endif
 
 ifndef F_CPU
-F_CPU = $(call PARSE_BOARD,$(BOARD_TAG),build.f_cpu)
+	F_CPU = $(call PARSE_BOARD,$(BOARD_TAG),build.f_cpu)
 endif
 
 # normal programming info
 ifndef AVRDUDE_ARD_PROGRAMMER
-AVRDUDE_ARD_PROGRAMMER = $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
+	AVRDUDE_ARD_PROGRAMMER = $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
 endif
 
+# FIX ME - May not be present
 ifndef AVRDUDE_ARD_BAUDRATE
-AVRDUDE_ARD_BAUDRATE = $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
+	AVRDUDE_ARD_BAUDRATE = $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
 endif
 
-# fuses if you're using e.g. ISP
+# FIX ME - May not be present
 ifndef ISP_LOCK_FUSE_PRE
-ISP_LOCK_FUSE_PRE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.unlock_bits)
+	ISP_LOCK_FUSE_PRE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.unlock_bits)
 endif
 
+# FIX ME - May not be present
 ifndef ISP_LOCK_FUSE_POST
-ISP_LOCK_FUSE_POST = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.lock_bits)
+	ISP_LOCK_FUSE_POST = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.lock_bits)
 endif
 
 ifndef ISP_HIGH_FUSE
-ISP_HIGH_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.high_fuses)
+	ISP_HIGH_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.high_fuses)
 endif
 
 ifndef ISP_LOW_FUSE
-ISP_LOW_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.low_fuses)
+	ISP_LOW_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.low_fuses)
 endif
 
 ifndef ISP_EXT_FUSE
-ISP_EXT_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.extended_fuses)
+	ISP_EXT_FUSE = $(call PARSE_BOARD,$(BOARD_TAG),bootloader.extended_fuses)
+endif
+
+ifdef KEEPFUSES
+	FUSE_OPTS = 
+else
+	FUSE_OPTS = -U lfuse:w:$(ISP_LOW_FUSE):m \
+	-U hfuse:w:$(ISP_HIGH_FUSE):m \
+	-U efuse:w:$(ISP_EXT_FUSE):m
 endif
 
 ifndef VARIANT
-VARIANT = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
+	VARIANT = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 endif
 
-ifndef BOARD
-BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
+########################################################################
+#
+# Avrdude
+#
+
+ifndef AVRDUDE
+	ifeq ($(AVR_TOOLS_PATH),.)
+		AVRDUDE = $(shell find $(ARDUINO_DIR) -type f -name 'avrdude')
+	else
+		AVRDUDE = $(shell find $(AVR_TOOLS_PATH) -type f -name 'avrdude')
+	endif
 endif
+
+AVRDUDE_COM_OPTS = -p $(MCU)
+
+
+#######################################################################
+#
+# Serial monitoring
+#
+
+ifndef SERIAL_BAUDRATE
+	SERIAL_BAUDRATE = 9600
+endif
+
+ifndef SERIAL_COMMAND
+	SERIAL_COMMAND   = screen
+endif
+
 
 # Everything gets built in here
 OBJDIR  	  = build-cli
@@ -265,30 +273,30 @@ OBJDIR  	  = build-cli
 LOCAL_C_SRCS    = $(wildcard *.c)
 LOCAL_CPP_SRCS  = $(wildcard *.cpp)
 LOCAL_CC_SRCS   = $(wildcard *.cc)
-LOCAL_PDE_SRCS  = $(wildcard *.pde)
+LOCAL_PDE_SRCS  = $(wildcard *.$(SUFFIX))
 LOCAL_AS_SRCS   = $(wildcard *.S)
 LOCAL_OBJ_FILES = $(LOCAL_C_SRCS:.c=.o) $(LOCAL_CPP_SRCS:.cpp=.o) \
-		$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.pde=.o) \
+		$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.$(SUFFIX)=.o) \
 		$(LOCAL_AS_SRCS:.S=.o)
 LOCAL_OBJS      = $(patsubst %,$(OBJDIR)/%,$(LOCAL_OBJ_FILES))
 
 # Dependency files
 DEPS            = $(LOCAL_OBJS:.o=.d)
 
+# If you want to develop code which isn't linked against the Wiring 
+# library, in the primary Makefile set NO_CORE=1
 # core sources
 ifeq ($(strip $(NO_CORE)),)
-ifdef ARDUINO_CORE_PATH
-CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
-CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
+	ifdef ARDUINO_CORE_PATH
+		CORE_C_SRCS     = $(wildcard $(ARDUINO_CORE_PATH)/*.c)
+		CORE_CPP_SRCS   = $(wildcard $(ARDUINO_CORE_PATH)/*.cpp)
+		ifneq ($(strip $(NO_CORE_MAIN_FUNCTION)),)
+			CORE_CPP_SRCS := $(filter-out %main.cpp, $(CORE_CPP_SRCS))
+		endif
+	endif
 
-ifneq ($(strip $(NO_CORE_MAIN_FUNCTION)),)
-CORE_CPP_SRCS := $(filter-out %main.cpp, $(CORE_CPP_SRCS))
-endif
-
-CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
-CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,  \
-			$(OBJDIR)/%,$(CORE_OBJ_FILES))
-endif
+	CORE_OBJ_FILES  = $(CORE_C_SRCS:.c=.o) $(CORE_CPP_SRCS:.cpp=.o)
+	CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,$(OBJDIR)/%,$(CORE_OBJ_FILES))
 endif
 
 # all the objects!
@@ -307,41 +315,41 @@ TARGETS    = $(OBJDIR)/$(TARGET).*
 DEP_FILE   = $(OBJDIR)/depends.mk
 
 ifndef CC_NAME
-CC_NAME      = avr-gcc
+	CC_NAME      = avr-gcc
 endif
 
 ifndef CXX_NAME
-CXX_NAME     = avr-g++
+	CXX_NAME     = avr-g++
 endif
 
 ifndef OBJCOPY_NAME
-OBJCOPY_NAME = avr-objcopy
+	OBJCOPY_NAME = avr-objcopy
 endif
 
 ifndef OBJDUMP_NAME
-OBJDUMP_NAME = avr-objdump
+	OBJDUMP_NAME = avr-objdump
 endif
 
 ifndef NM_NAME
-NM_NAME      = avr-nm
+	NM_NAME      = avr-nm
 endif
 
 # Names of executables
 ifeq ($(OSTYPE),Linux)
-# Compilers are not distributed in IDE on Linux - use system versions
-CXX     = $(CXX_NAME)
-CC      = $(CC_NAME)
-OBJCOPY = $(OBJCOPY_NAME)
+	# Compilers are not distributed in IDE on Linux - use system versions
+	CXX     = $(CXX_NAME)
+	CC      = $(CC_NAME)
+	OBJCOPY = $(OBJCOPY_NAME)
 else
-CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
-CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
-OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
+	CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
+	CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
+	OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
 endif
 
 OBJDUMP = $(AVR_TOOLS_PATH)/$(OBJDUMP_NAME)
 NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
-REMOVE  = rm -f
-ECHO    = echo
+REMOVE  = @rm -f
+ECHO    = @echo
 
 # General arguments
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
@@ -360,18 +368,19 @@ LIB_OBJS      += $(patsubst $(USER_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(USER_LIB
 LIB_OBJS      += $(patsubst $(USER_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(USER_LIB_C_SRC))
 
 ifndef MCU_FLAG_NAME
-MCU_FLAG_NAME = mmcu
+	MCU_FLAG_NAME = mmcu
 endif
 
-CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
+CPPFLAGS    = -g -Os -w -Wall \
+			-ffunction-sections -fdata-sections \
+			-$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-DARDUINO=$(ARDUINO_VERSION) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
-			$(SYS_INCLUDES) -g -Os -w -Wall \
-			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
+			$(SYS_INCLUDES) $(EXTRA_CPPFLAGS)
 
 ifdef USE_GNU99
-CFLAGS        = -std=gnu99
+	CFLAGS        = -std=gnu99
 endif
 
 CXXFLAGS      = -fno-exceptions
@@ -440,7 +449,7 @@ $(OBJDIR)/%.d: %.s
 	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # the pde -> cpp -> o file
-$(OBJDIR)/%.cpp: %.pde
+$(OBJDIR)/%.cpp: %.$(SUFFIX)
 	$(ECHO) $(PDEHEADER) > $@
 	@cat  $< >> $@
 
@@ -473,47 +482,13 @@ $(OBJDIR)/%.sym: $(OBJDIR)/%.elf
 
 ########################################################################
 #
-# Avrdude
-#
-ifndef AVRDUDE
-AVRDUDE          = $(AVR_TOOLS_PATH)/avrdude
-endif
-
-AVRDUDE_COM_OPTS = -q -V -p $(MCU)
-ifdef AVRDUDE_CONF
-AVRDUDE_COM_OPTS += -C $(AVRDUDE_CONF)
-endif
-
-AVRDUDE_ARD_OPTS = -c $(AVRDUDE_ARD_PROGRAMMER) -b $(AVRDUDE_ARD_BAUDRATE) -P $(ARD_PORT)
-
-ifndef ISP_PROG
-ISP_PROG	   = -c stk500v2
-endif
-
-AVRDUDE_ISP_OPTS = -P $(ISP_PORT) $(ISP_PROG)
-
-#######################################################################
-#
-# Serial monitoring
-#
-
-ifndef SERIAL_BAUDRATE
-SERIAL_BAUDRATE = 9600
-endif
-
-ifndef SERIAL_COMMAND
-SERIAL_COMMAND   = screen
-endif
-
-########################################################################
-#
 # Explicit targets start here
 #
 
 all: 		$(OBJDIR) $(TARGET_HEX)
 
 $(OBJDIR):
-		mkdir $(OBJDIR)
+		@mkdir $(OBJDIR)
 
 $(TARGET_ELF): 	$(OBJS)
 		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_OBJS) -lc
@@ -542,27 +517,24 @@ reset:
 		$$STTYF $(ARD_PORT) -hupcl
 
 ispload:	$(TARGET_HEX)
-		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
-			-U lock:w:$(ISP_LOCK_FUSE_PRE):m \
-			-U hfuse:w:$(ISP_HIGH_FUSE):m \
-			-U lfuse:w:$(ISP_LOW_FUSE):m \
-			-U efuse:w:$(ISP_EXT_FUSE):m
-		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -D \
+		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -v -v -v \
+			-c $(AVRDUDE_ARD_PROGRAMMER) $(FUSE_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
-		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) \
-			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
 	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
 
 clean:
-	rm -r $(OBJDIR)/*
+	@rm -r $(OBJDIR)/*
 
 depends:	$(DEPS)
 		@cat $(DEPS) > $(DEP_FILE)
 
 show_boards:
 	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
+	
+print-%:
+	@echo $* = [$($*)]
 
 .PHONY:	all clean depends upload raw_upload reset show_boards
 
