@@ -11,6 +11,8 @@
 # License, or (at your option) any later version.
 #
 
+OSTYPE := $(shell uname)
+
 AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
 AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
@@ -37,7 +39,6 @@ OBJCOPY_NAME = pic32-objcopy
 
 CORE_INCLUDE_NAME = "WProgram.h"
 LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
-OSTYPE := $(shell uname)
 
 ifndef AVRDUDE
 	ifeq ($(OSTYPE),Darwin)
