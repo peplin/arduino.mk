@@ -48,6 +48,7 @@
 #              			   - converted ard-parse-boards to a Makefile function
 #              			   so Perl/YAML aren't required (thanks to avenue33 on
 #              			   the chipKIT forums)
+#              			   - added support for multiple library paths
 #
 ########################################################################
 #
