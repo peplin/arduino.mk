@@ -288,6 +288,20 @@ else
 SUFFIX := ino
 endif
 
+
+# Sketch unicity test — rei-vilo
+# ----------------------------------
+#
+ifeq ($(words $(wildcard *.pde) $(wildcard *.ino)), 0)
+$(error No pde or ino sketch)
+endif
+
+ifneq ($(words $(wildcard *.pde) $(wildcard *.ino)), 1)
+$(error More than 1 pde or ino sketch)
+endif
+
+# end of edit
+
 ########################################################################
 # Local sources
 #
