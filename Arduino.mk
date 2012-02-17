@@ -77,8 +77,8 @@
 #                   here: you could always set it to xx if you wanted!
 #    ARDUINO_LIBS - A list of any libraries used by the sketch (we assume
 #                   these are in $(ARDUINO_DIR)/hardware/libraries
-#    ARDUINO_PORT - The port where the Arduino can be found (only needed
-#                   when uploading
+#    ARDUINO_PORT - The port where the Arduino can be found. Only needed
+#                   when uploading.
 #    BOARD_TAG    - The tag for the board e.g. uno or mega
 #                   'make show_boards' shows a list
 #
@@ -106,6 +106,7 @@
 #   make reset       - reset the Arduino by tickling DTR on the serial port
 #   make raw_upload  - upload without first resetting
 #   make show_boards - list all the boards defined in boards.txt
+#   make ispload     - upload via an external programmer
 #
 ########################################################################
 #
@@ -121,8 +122,11 @@
 #
 # ARDUINO WITH ISP
 #
-# You need to specify some details of your ISP programmer and might
-# also need to specify the fuse values:
+# Values similar to the following SHOULD be automatically retrieved
+# from avrdude.conf. However, you can manually set them to override
+# avrdude.conf.
+#
+# For example only (values for illustration only):
 #
 #     ISP_PROG	   = -c stk500v2
 #     ISP_PORT     = /dev/ttyACM0
