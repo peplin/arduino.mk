@@ -30,10 +30,8 @@ the Arduino IDE.
 The Makefile will look for libraries in two places:
 
 * In the Arduino/MPIDE installation directory under the `libraries` directory
-* In `$ARDUINO_SKETCHBOOK/libraries` where `ARDUINO_SKETCHBOOK` is an
-  environment variable or a variable set in your Makefile that points to the
-  sketchbook directory. This location is the preferred location for user
-  libraries when using the IDE.
+* In the `libraries` directory in your Arduino sketchbook. This location is the
+  preferred location for user libraries when using the IDE.
 
 ## Example
 
