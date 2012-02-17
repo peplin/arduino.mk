@@ -282,16 +282,22 @@ endif
 # Everything gets built in here
 OBJDIR  	  = build-cli
 
+ifeq ($(wildcard *.ino),)
+SUFFIX := pde
+else
+SUFFIX := ino
+endif
+
 ########################################################################
 # Local sources
 #
 LOCAL_C_SRCS    = $(wildcard *.c)
 LOCAL_CPP_SRCS  = $(wildcard *.cpp)
 LOCAL_CC_SRCS   = $(wildcard *.cc)
-LOCAL_PDE_SRCS  = $(wildcard *.pde)
+LOCAL_PDE_SRCS  = $(wildcard *.$(SUFFIX))
 LOCAL_AS_SRCS   = $(wildcard *.S)
 LOCAL_OBJ_FILES = $(LOCAL_C_SRCS:.c=.o) $(LOCAL_CPP_SRCS:.cpp=.o) \
-		$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.pde=.o) \
+		$(LOCAL_CC_SRCS:.cc=.o) $(LOCAL_PDE_SRCS:.$(SUFFIX)=.o) \
 		$(LOCAL_AS_SRCS:.S=.o)
 LOCAL_OBJS      = $(patsubst %,$(OBJDIR)/%,$(LOCAL_OBJ_FILES))
 
@@ -463,7 +469,7 @@ $(OBJDIR)/%.d: %.s
 	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # the pde -> cpp -> o file
-$(OBJDIR)/%.cpp: %.pde
+$(OBJDIR)/%.cpp: %.$(SUFFIX)
 	$(ECHO) $(PDEHEADER) > $@
 	@cat  $< >> $@
 
