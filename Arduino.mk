@@ -67,7 +67,7 @@
 #       BOARD_TAG    = uno
 #       ARDUINO_PORT = /dev/cu.usb*
 #
-#       include /usr/local/share/Arduino.mk
+#       include $(ARDUINO_MAKEFILE_HOME)/Arduino.mk
 #
 # Hopefully these will be self-explanatory but in case they're not:
 #
