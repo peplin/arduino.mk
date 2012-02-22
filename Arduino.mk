@@ -1,10 +1,11 @@
 ########################################################################
-# Version 02.19.2012
+# Version 2012/02/20
 # Arduino command line tools Makefile
 # System part (i.e. project independent)
 #
-# Copyright (C) 2010 Martin Oldfield <m@mjo.tc>, based on work that is
-# Copyright Nicholas Zambetti, David A. Mellis & Hernando Barragan
+# Derived from on work by Martin Oldfield <m@mjo.tc>(C) 2010, which was
+# based on work by Copyrighted Nicholas Zambetti, David Mellis & 
+# Hernando Barragan.
 #
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as
@@ -35,10 +36,10 @@
 #ARDUINO_MAKEFILE_HOME = /home/user/arduino
 #ARDUINO_LIBS = SoftwareSerial
 #ARDUINO_PORT = /dev/ttyUSB*
-
+#
 ## .SECONDARY: will cause the intermediary files to be kept
 ##.SECONDARY:
-
+#
 #include $(ARDUINO_MAKEFILE_HOME)/Arduino.mk
 #----------------------------------------------------------------------
 #
@@ -53,7 +54,8 @@
 #    ARDUINO_PORT - The port where the Arduino can be found. Only needed
 #                   if overriding avrdude.conf
 #    BOARD_TAG    - The tag for the board e.g. uno or mega
-#                   'make showboards' shows a list
+#                   'make showboards' shows a list. Note: If using an ATtiny
+#					chip, set BOARD_TAG = tiny before make showboards
 #
 # You can also specify these, but normally they'll be read from the
 # boards.txt file i.e. implied by BOARD_TAG
@@ -117,6 +119,8 @@
 #WARNING: This makefile is bash shell dependant!
 SHELL=/bin/bash
 
+OSTYPE := $(shell uname)
+
 ifeq ($(wildcard *.ino),)
 	SUFFIX:= pde
 else
@@ -126,7 +130,23 @@ endif
 ifndef TARGET
 	TARGET := $(notdir $(CURDIR))
 endif
-	
+
+ifndef ARDUINO_PREFERENCES_PATH
+	ifeq ($(OSTYPE),Linux)
+		ARDUINO_PREFERENCES_PATH = $(HOME)/.arduino/preferences.txt
+	else
+		ARDUINO_PREFERENCES_PATH = $(HOME)/Library/Arduino/preferences.txt
+	endif
+endif
+
+ifeq ($(wildcard $(ARDUINO_PREFERENCES_PATH)),)
+	$(error "Error: run the IDE once to initialize preferences sketchbook path")
+endif
+
+ifndef ARDUINO_SKETCHBOOK
+	ARDUINO_SKETCHBOOK = $(shell grep sketchbook.path $(wildcard $(ARDUINO_PREFERENCES_PATH)) | cut -d = -f 2)
+endif
+
 ifndef AVR_TOOLS_PATH
 	AVR_TOOLS_PATH := $(shell dirname "`find $(ARDUINO_DIR) -type f -name 'avr-gcc'`")
 endif
@@ -135,6 +155,13 @@ ifndef AVRDUDE_CONF
 	AVRDUDE_CONF := $(shell find $(ARDUINO_DIR) -type f -name 'avrdude.conf')
 endif
 
+# Having gotten got tired of setting up a make process and discovering that 
+# ARDUINO_LIBS was wrong, the makefile section below searches the source file 
+# for includes, sees if they are resident in the libraries folder and if they 
+# are, creates a ARDUINO_LIBS variable populated with the libraries imported 
+# by the source file. The '$$' is because make eats each first '$' that it 
+# encounters and the backslash before the '#' is because make considers any '#'
+# encountered to be the beginning of a comment. (E. Comer)
 ifndef ARDUINO_LIBS
 	ARDUINO_LIBS := $(shell for f in $$(grep "\#include" $(TARGET).$(SUFFIX)); \
 	do if [ "$$f" = "\#include" ]; \
@@ -169,13 +196,12 @@ ifndef VARIANTS_PATH
 		VARIANTS_PATH := $(ARDUINO_DIR)/hardware/arduino/variants
 	endif
 endif
+
 ifndef ARDUINO_VERSION
 	ARDUINO_VERSION = 100
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
-
-OSTYPE := $(shell uname)
 
 ########################################################################
 # boards.txt parsing
@@ -271,7 +297,9 @@ endif
 
 AVRDUDE_COM_OPTS := -p $(MCU)
 
-AVRDUDE_ISP_OPTS := -P $(ISP_PORT) $(ISP_PROG)
+ifneq ($(ISP_PORT),)
+	AVRDUDE_ISP_OPTS := -P $(ISP_PORT) $(ISP_PROG)
+endif
 
 #######################################################################
 #
@@ -528,9 +556,7 @@ raw_upload:	$(TARGET_HEX)
 		-c $(AVRDUDE_PROTOCOL) -P $(AVRDUDE_PORT) -b $(AVRDUDE_PORT_BAUDRATE) \
 			-D -U flash:w:$(TARGET_HEX):i
 
-# stty on MacOS likes -F, but on Debian it likes -f redirecting
-# stdin/out appears to work but generates a spurious error on MacOS at
-# least. Perhaps it would be better to just do it in perl ?
+# Toggle the DTR to reset the Arduino board and start bootloader
 reset:
 		@if [ -z "$(AVRDUDE_PORT)" ]; then \
 			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
@@ -544,6 +570,7 @@ reset:
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) -p $(MCU) $(AVRDUDE_ISP_OPTS) -v -v -v \
+			-C $(AVRDUDE_CONF) \
 			-c $(AVRDUDE_PROTOCOL) $(FUSE_OPTS) \
 			-U flash:w:$(TARGET_HEX):i
 
