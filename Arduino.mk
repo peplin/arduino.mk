@@ -421,8 +421,14 @@ CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-DARDUINO=$(ARDUINO_VERSION) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
-			$(SYS_INCLUDES) -g -Os -w -Wall \
-			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
+			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
+			-ffunction-sections -fdata-sections $(EXTRA_CXXFLAGS)
+
+ifdef DEBUG
+CPPFLAGS += -O0 -g -mdebugger
+else
+CPPFLAGS += -O2
+endif
 
 ifdef USE_GNU99
 CFLAGS        = -std=gnu99
