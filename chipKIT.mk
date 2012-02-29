@@ -14,7 +14,7 @@
 OSTYPE := $(shell uname)
 
 AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
-AVRDUDE_TOOLS_PATH=$(ARDUINO_DIR)/hardware/tools
+AVRDUDE_TOOLS_PATH = $(AVR_TOOLS_PATH)/../../../../tools
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
 ARDUINO_LIB_PATH = $(ARDUINO_DIR)/hardware/pic32/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt
@@ -40,24 +40,6 @@ OBJCOPY_NAME = pic32-objcopy
 CORE_INCLUDE_NAME = "WProgram.h"
 LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
 
-ifndef AVRDUDE
-	ifeq ($(OSTYPE),Darwin)
-		# a different path is used in OS X
-		AVRDUDE = $(AVRDUDE_TOOLS_PATH)/avr/bin/avrdude
-	else
-		AVRDUDE = $(AVRDUDE_TOOLS_PATH)/avrdude
-	endif
-endif
-
-ifndef AVRDUDE_CONF
-	ifeq ($(OSTYPE),Darwin)
-		# a different path is used in OS X
-		AVRDUDE_CONF = $(AVRDUDE_TOOLS_PATH)/avr/etc/avrdude.conf
-	else
-		AVRDUDE_CONF = $(AVRDUDE_TOOLS_PATH)/avrdude.conf
-	endif
-endif
-
 MCU_FLAG_NAME=mprocessor
 EXTRA_LDFLAGS  = -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
 EXTRA_CPPFLAGS = -O2  -mno-smart-io -D$(BOARD)
@@ -70,4 +52,3 @@ include $(CHIPKIT_MK_PATH)/Arduino.mk
 CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
 CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
 OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
-
