@@ -14,7 +14,19 @@
 OSTYPE := $(shell uname)
 
 AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
-AVRDUDE_TOOLS_PATH = $(AVR_TOOLS_PATH)/../../../../tools
+
+ifneq ($(OSTYPE),Linux)
+AVRDUDE_TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools/avr/bin
+else
+AVRDUDE_TOOLS_PATH = $(AVR_TOOLS_PATH)/hardware/tools
+endif
+
+ifneq ($(OSTYPE),Linux)
+AVRDUDE_ETC_PATH = $(ARDUINO_DIR)/hardware/tools/avr/etc
+else
+AVRDUDE_ETC_PATH = $(AVRDUDE_TOOLS_PATH)
+endif
+
 ARDUINO_CORE_PATH = $(ARDUINO_DIR)/hardware/pic32/cores/pic32
 ARDUINO_LIB_PATH = $(ARDUINO_DIR)/hardware/pic32/libraries
 BOARDS_TXT  = $(ARDUINO_DIR)/hardware/pic32/boards.txt

@@ -159,25 +159,26 @@ ifneq (ARDUINO_DIR,)
 
 ifndef AVR_TOOLS_PATH
 AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools
-ifneq ($(OSTYPE),Linux)
-AVR_TOOLS_PATH    += /avr/bin
-endif
 endif
 
 ifndef AVRDUDE_TOOLS_PATH
+ifeq ($(OSTYPE),Linux)
 AVRDUDE_TOOLS_PATH    = $(AVR_TOOLS_PATH)
+else
+AVRDUDE_TOOLS_PATH = $(AVR_TOOLS_PATH)/avr/bin
+endif
 endif
 
-ifndef ARDUINO_ETC_PATH
+ifndef AVRDUDE_ETC_PATH
 ifeq ($(OSTYPE),Linux)
-ARDUINO_ETC_PATH  = $(AVRDUDE_TOOLS_PATH)
+AVRDUDE_ETC_PATH  = $(AVRDUDE_TOOLS_PATH)
 else
-ARDUINO_ETC_PATH  = $(AVRDUDE_TOOLS_PATH)/avr/etc
+AVRDUDE_ETC_PATH  = $(AVR_TOOLS_PATH)/avr/etc
 endif
 endif
 
 ifndef AVRDUDE_CONF
-AVRDUDE_CONF     = $(ARDUINO_ETC_PATH)/avrdude.conf
+AVRDUDE_CONF     = $(AVRDUDE_ETC_PATH)/avrdude.conf
 endif
 
 ifndef ARDUINO_LIB_PATH
