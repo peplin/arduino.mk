@@ -18,7 +18,7 @@ AVR_TOOLS_PATH = $(ARDUINO_DIR)/hardware/pic32/compiler/pic32-tools/bin
 ifneq ($(OSTYPE),Linux)
 AVRDUDE_TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools/avr/bin
 else
-AVRDUDE_TOOLS_PATH = $(AVR_TOOLS_PATH)/hardware/tools
+AVRDUDE_TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools
 endif
 
 ifneq ($(OSTYPE),Linux)
