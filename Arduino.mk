@@ -563,7 +563,7 @@ SERIAL_BAUDRATE = 9600
 endif
 
 ifndef SERIAL_COMMAND
-SERIAL_COMMAND   = screen
+SERIAL_COMMAND   = minicom
 endif
 
 ########################################################################
@@ -614,7 +614,7 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
-	$(SERIAL_COMMAND) $(ARDUINO_PORT) $(SERIAL_BAUDRATE)
+	$(SERIAL_COMMAND) -D $(ARDUINO_PORT)
 
 clean:
 	rm -r $(OBJDIR)/*
