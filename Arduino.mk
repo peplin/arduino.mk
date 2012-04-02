@@ -155,7 +155,9 @@
 #
 OSTYPE := $(shell uname)
 
-ifneq (ARDUINO_DIR,)
+ifeq ($(wildcard $(ARDUINO_DIR)),)
+$(error "Error: the ARDUINO_DIR variable must point to your Arduino IDE installation")
+endif
 
 ifndef AVR_TOOLS_PATH
 AVR_TOOLS_PATH    = $(ARDUINO_DIR)/hardware/tools
@@ -191,8 +193,6 @@ ifeq ($(OSTYPE),Linux)
 ARDUINO_PREFERENCES_PATH = $(HOME)/.arduino/preferences.txt
 else
 ARDUINO_PREFERENCES_PATH = $(HOME)/Library/Arduino/preferences.txt
-endif
-
 endif
 
 ifeq ($(wildcard $(ARDUINO_PREFERENCES_PATH)),)
