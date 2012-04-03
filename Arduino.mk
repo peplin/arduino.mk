@@ -384,24 +384,38 @@ ifndef OBJDUMP_NAME
 OBJDUMP_NAME = avr-objdump
 endif
 
+ifndef AR_NAME
+AR_NAME      = avr-ar
+endif
+
+ifndef SIZE_NAME
+SIZE_NAME    = avr-size
+endif
+
 ifndef NM_NAME
 NM_NAME      = avr-nm
 endif
 
 # Names of executables
-ifeq ($(OSTYPE),Linux)
-# Compilers are not distributed in IDE on Linux - use system versions
-CXX     = $(CXX_NAME)
 CC      = $(CC_NAME)
+CXX     = $(CXX_NAME)
 OBJCOPY = $(OBJCOPY_NAME)
-else
-CC      = $(AVR_TOOLS_PATH)/$(CC_NAME)
-CXX     = $(AVR_TOOLS_PATH)/$(CXX_NAME)
-OBJCOPY = $(AVR_TOOLS_PATH)/$(OBJCOPY_NAME)
+OBJDUMP = $(OBJDUMP_NAME)
+AR      = $(AR_NAME)
+SIZE    = $(SIZE_NAME)
+NM      = $(NM_NAME)
+
+ifneq ($(OSTYPE),Linux)
+# Compilers distributed with the IDE in OS X and Windows, but not Linux
+CC      := $(addprefix $(AVR_TOOLS_PATH),$(CC))
+CXX     := $(addprefix $(AVR_TOOLS_PATH),$(CXX))
+OBJCOPY := $(addprefix $(AVR_TOOLS_PATH),$(OBJCOPY))
+OBJDUMP := $(addprefix $(AVR_TOOLS_PATH),$(OBJDUMP))
+AR      := $(addprefix $(AVR_TOOLS_PATH),$(AR))
+SIZE    := $(addprefix $(AVR_TOOLS_PATH),$(SIZE))
+NM      := $(addprefix $(AVR_TOOLS_PATH),$(NM))
 endif
 
-OBJDUMP = $(AVR_TOOLS_PATH)/$(OBJDUMP_NAME)
-NM      = $(AVR_TOOLS_PATH)/$(NM_NAME)
 REMOVE  = rm -f
 ECHO    = echo
 
@@ -631,6 +645,9 @@ clean:
 
 depends:	$(DEPS)
 		@cat $(DEPS) > $(DEP_FILE)
+
+size:		$(OBJDIR) $(TARGET_HEX)
+		$(SIZE) $(TARGET_HEX)
 
 show_boards:
 	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
