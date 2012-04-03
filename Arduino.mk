@@ -355,9 +355,6 @@ CORE_OBJS       = $(patsubst $(ARDUINO_CORE_PATH)/%,  \
 endif
 endif
 
-# all the objects!
-OBJS            = $(LOCAL_OBJS) $(CORE_OBJS) $(LIB_OBJS)
-
 ########################################################################
 # Rules for making stuff
 #
@@ -366,6 +363,7 @@ OBJS            = $(LOCAL_OBJS) $(CORE_OBJS) $(LIB_OBJS)
 TARGET_HEX = $(OBJDIR)/$(TARGET).hex
 TARGET_ELF = $(OBJDIR)/$(TARGET).elf
 TARGETS    = $(OBJDIR)/$(TARGET).*
+CORE_LIB   = $(OBJDIR)/libcore.a
 
 # A list of dependencies
 DEP_FILE   = $(OBJDIR)/depends.mk
@@ -585,8 +583,11 @@ all: 		$(OBJDIR) $(TARGET_HEX)
 $(OBJDIR):
 		mkdir $(OBJDIR)
 
-$(TARGET_ELF): 	$(OBJS)
-		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_OBJS) -lc
+$(TARGET_ELF): 	$(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS)
+		$(CC) $(LDFLAGS) -o $@ $(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS) -lc -lm
+
+$(CORE_LIB):	$(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
+		$(AR) rcs $@ $(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 
 $(DEP_FILE):	$(OBJDIR) $(DEPS)
 		@cat $(DEPS) > $(DEP_FILE)
