@@ -1,4 +1,3 @@
-TARGET       = blink
 BOARD_TAG    = uno
 ARDUINO_LIBS = Wire Wire/utility
 

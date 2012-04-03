@@ -227,6 +227,11 @@ endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
+# Default TARGET to cwd (ex Daniele Vergini)
+ifndef TARGET
+TARGET  = $(notdir $(CURDIR))
+endif
+
 ########################################################################
 # boards.txt parsing
 #
