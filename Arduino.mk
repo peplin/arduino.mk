@@ -199,6 +199,8 @@ else
 ARDUINO_PREFERENCES_PATH = $(HOME)/Library/Arduino/preferences.txt
 endif
 
+endif
+
 ifeq ($(wildcard $(ARDUINO_PREFERENCES_PATH)),)
 $(error "Error: run the IDE once to initialize preferences sketchbook path")
 endif
@@ -221,8 +223,6 @@ endif
 
 ifndef ARDUINO_VERSION
 ARDUINO_VERSION = 100
-endif
-
 endif
 
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
