@@ -164,7 +164,7 @@ TOOLS_PATH = $(ARDUINO_DIR)/hardware/tools/
 endif
 
 ifndef AVR_TOOLS_PATH
-AVR_TOOLS_PATH    = $(TOOLS_PATH)/avr/
+AVR_TOOLS_PATH    = $(TOOLS_PATH)/avr/bin/
 endif
 
 ifndef AVRDUDE_TOOLS_PATH
@@ -179,7 +179,7 @@ ifndef AVRDUDE_ETC_PATH
 ifeq ($(OSTYPE),Linux)
 AVRDUDE_ETC_PATH = $(TOOLS_PATH)
 else
-AVRDUDE_ETC_PATH = $(AVR_TOOLS_PATH)/avr/etc
+AVRDUDE_ETC_PATH = $(TOOLS_PATH)/avr/etc
 endif
 endif
 
