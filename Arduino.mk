@@ -654,4 +654,4 @@ show_boards:
 
 .PHONY:	all clean depends upload raw_upload reset show_boards
 
-include $(DEP_FILE)
+-include $(DEP_FILE)
