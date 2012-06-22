@@ -584,7 +584,20 @@ SERIAL_BAUDRATE = 9600
 endif
 
 ifndef SERIAL_COMMAND
-SERIAL_COMMAND   = minicom
+SERIAL_COMMAND   = picocom
+endif
+
+ifndef SERIAL_PORT_FLAG
+SERIAL_PORT_FLAG = -D
+endif
+
+ifndef SERIAL_BAUDRATE_FLAG
+SERIAL_BAUDRATE_FLAG = -b
+endif
+
+ifndef SERIAL_ARGS
+SERIAL_ARGS = $(SERIAL_PORT_FLAG) $(ARDUINO_PORT) \
+			  $(SERIAL_BAUDRATE_FLAG) $(SERIAL_BAUDRATE)
 endif
 
 ########################################################################
@@ -638,7 +651,7 @@ ispload:	$(TARGET_HEX)
 			-U lock:w:$(ISP_LOCK_FUSE_POST):m
 
 serial:
-	$(SERIAL_COMMAND) -D $(ARDUINO_PORT)
+	$(SERIAL_COMMAND) $(SERIAL_ARGS)
 
 clean:
 	rm -r $(OBJDIR)/*
