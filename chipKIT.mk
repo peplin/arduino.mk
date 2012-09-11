@@ -65,7 +65,7 @@ EXTRA_CXXFLAGS += -mno-smart-io -D$(BOARD)
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
-include $(CHIPKIT_MK_PATH)/Arduino.mk
+include $(CHIPKIT_MK_PATH)Arduino.mk
 
 ifeq ($(OSTYPE),Linux)
 # MPIDE still comes with the compilers on Linux, unlike Arduino
