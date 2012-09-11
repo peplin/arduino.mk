@@ -313,12 +313,14 @@ endif
 # Sketch unicity test — rei-vilo
 # ----------------------------------
 #
+ifndef SKIP_SUFFIX_CHECK
 ifeq ($(words $(wildcard *.pde) $(wildcard *.ino)), 0)
 $(error No pde or ino sketch)
 endif
 
 ifneq ($(words $(wildcard *.pde) $(wildcard *.ino)), 1)
 $(error More than 1 pde or ino sketch)
+endif
 endif
 
 # end of edit
