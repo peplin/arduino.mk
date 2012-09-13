@@ -494,33 +494,43 @@ $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.c
 # .o rules are for objects, .d for dependency tracking
 # there seems to be an awful lot of duplication here!!!
 $(OBJDIR)/%.o: %.c
+	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.cc
+	mkdir -p $(dir $@)
 	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.cpp
+	mkdir -p $(dir $@)
 	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.S
+	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.s
+	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
 
 $(OBJDIR)/%.d: %.c
+	mkdir -p $(dir $@)
 	$(CC) -MM $(CPPFLAGS) $(CFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.cc
+	mkdir -p $(dir $@)
 	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.cpp
+	mkdir -p $(dir $@)
 	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.S
+	mkdir -p $(dir $@)
 	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.s
+	mkdir -p $(dir $@)
 	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # the pde -> cpp -> o file
@@ -529,16 +539,20 @@ $(OBJDIR)/%.cpp: %.$(SUFFIX)
 	@cat  $< >> $@
 
 $(OBJDIR)/%.o: $(OBJDIR)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 $(OBJDIR)/%.d: $(OBJDIR)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # core files
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.c
+	mkdir -p $(dir $@)
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 # various object conversions
