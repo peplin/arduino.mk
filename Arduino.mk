@@ -102,7 +102,6 @@
 # Besides make upload you can also
 #   make             - no upload
 #   make clean       - remove all our dependencies
-#   make depends     - update dependencies
 #   make reset       - reset the Arduino by tickling DTR on the serial port
 #   make raw_upload  - upload without first resetting
 #   make show_boards - list all the boards defined in boards.txt
@@ -338,9 +337,6 @@ LOCAL_OBJ_FILES = $(LOCAL_C_SRCS:.c=.o) $(LOCAL_CPP_SRCS:.cpp=.o) \
 		$(LOCAL_AS_SRCS:.S=.o)
 LOCAL_OBJS      = $(patsubst %,$(OBJDIR)/%,$(LOCAL_OBJ_FILES))
 
-# Dependency files
-DEPS            = $(LOCAL_OBJS:.o=.d)
-
 # core sources
 ifeq ($(strip $(NO_CORE)),)
 ifdef ARDUINO_CORE_PATH
@@ -366,9 +362,6 @@ TARGET_HEX = $(OBJDIR)/$(TARGET).hex
 TARGET_ELF = $(OBJDIR)/$(TARGET).elf
 TARGETS    = $(OBJDIR)/$(TARGET).*
 CORE_LIB   = $(OBJDIR)/libcore.a
-
-# A list of dependencies
-DEP_FILE   = $(OBJDIR)/depends.mk
 
 ifndef CC_NAME
 CC_NAME      = avr-gcc
@@ -632,9 +625,6 @@ $(TARGET_ELF): 	$(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS)
 $(CORE_LIB):	$(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 		$(AR) rcs $@ $(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 
-$(DEP_FILE):	$(OBJDIR) $(DEPS)
-		@cat $(DEPS) > $(DEP_FILE)
-
 upload:		reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
@@ -672,15 +662,10 @@ serial:
 clean:
 	rm -r $(OBJDIR)/*
 
-depends:	$(DEPS)
-		@cat $(DEPS) > $(DEP_FILE)
-
 size:		$(OBJDIR) $(TARGET_HEX)
 		$(SIZE) $(TARGET_HEX)
 
 show_boards:
 	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
 
-.PHONY:	all clean depends upload raw_upload reset show_boards
-
--include $(DEP_FILE)
+.PHONY:	all clean upload raw_upload reset show_boards
