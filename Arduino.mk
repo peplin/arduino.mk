@@ -299,8 +299,9 @@ ifndef BOARD
 BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
 endif
 
-# Everything gets built in here
+ifndef OBJDIR
 OBJDIR  	  = build-cli
+endif
 
 ifeq ($(wildcard *.ino),)
 SUFFIX := pde
