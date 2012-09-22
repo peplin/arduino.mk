@@ -661,7 +661,7 @@ serial:
 	$(SERIAL_COMMAND) $(SERIAL_ARGS)
 
 clean:
-	rm -r $(OBJDIR)/*
+	rm -rf $(OBJDIR)/*
 
 size:		$(OBJDIR) $(TARGET_HEX)
 		$(SIZE) $(TARGET_HEX)
