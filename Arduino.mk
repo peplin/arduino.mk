@@ -660,7 +660,7 @@ ispload:	$(TARGET_HEX)
 serial:
 	$(SERIAL_COMMAND) $(SERIAL_ARGS)
 
-clean:
+clean::
 	rm -rf $(OBJDIR)/*
 
 size:		$(OBJDIR) $(TARGET_HEX)
