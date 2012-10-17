@@ -618,7 +618,7 @@ endif
 all: 		$(OBJDIR) $(TARGET_HEX)
 
 $(OBJDIR):
-		mkdir $(OBJDIR)
+		mkdir -p $(OBJDIR)
 
 $(TARGET_ELF): 	$(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS)
 		$(CC) $(LDFLAGS) -o $@ $(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS) -lc -lm
