@@ -61,7 +61,7 @@ LDSCRIPT_FILE = $(ARDUINO_CORE_PATH)/$(LDSCRIPT)
 
 MCU_FLAG_NAME=mprocessor
 EXTRA_LDFLAGS  += -T$(ARDUINO_CORE_PATH)/$(LDSCRIPT)
-EXTRA_CXXFLAGS += -mno-smart-io -D$(BOARD)
+EXTRA_CXXFLAGS += -mno-smart-io -D$(BOARD) -fno-short-double
 
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
