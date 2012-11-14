@@ -620,6 +620,12 @@ all: 		$(OBJDIR) $(TARGET_HEX)
 $(OBJDIR):
 		mkdir -p $(OBJDIR)
 
+$(LOCAL_OBJS): .flags.c .flags.cpp
+
+$(CORE_LIB): .flags.c .flags.cpp
+
+$(OTHER_OBJS): .flags.c .flags.cpp
+
 $(TARGET_ELF): 	$(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS)
 		$(CC) $(LDFLAGS) -o $@ $(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS) -lc -lm
 
@@ -669,4 +675,10 @@ size:		$(OBJDIR) $(TARGET_HEX)
 show_boards:
 	@cat $(BOARDS_TXT) | grep -E "^[[:alnum:]]" | cut -d . -f 1 | uniq
 
-.PHONY:	all clean upload raw_upload reset show_boards
+.flags.c: force
+	echo '$(CFLAGS)' | cmp -s - $@ || echo '$(CFLAGS)' > $@
+
+.flags.cpp: force
+	echo '$(CPPFLAGS)' | cmp -s - $@ || echo '$(CPPFLAGS)' > $@
+
+.PHONY:	all clean upload raw_upload reset show_boards force
