@@ -435,12 +435,12 @@ ifndef MCU_FLAG_NAME
 MCU_FLAG_NAME = mmcu
 endif
 
-CPPFLAGS      = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
+CPPFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-DARDUINO=$(ARDUINO_VERSION) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
-			-ffunction-sections -fdata-sections $(EXTRA_CXXFLAGS)
+			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
 
 ifdef DEBUG
 CPPFLAGS += -O0 -g -mdebugger
@@ -452,9 +452,9 @@ ifdef USE_GNU99
 CFLAGS        = -std=gnu99
 endif
 
-CXXFLAGS      = -fno-exceptions
-ASFLAGS       = -$(MCU_FLAG_NAME)=$(MCU) -I. -x assembler-with-cpp
-LDFLAGS       = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
+CPPFLAGS += -fno-exceptions
+ASFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -I. -x assembler-with-cpp
+LDFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
 
 # Rules for making a CPP file from the main sketch (.cpe)
 PDEHEADER     = \\\#include \"$(CORE_INCLUDE_NAME)\"
@@ -493,11 +493,11 @@ $(OBJDIR)/%.o: %.c
 
 $(OBJDIR)/%.o: %.cc
 	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.S
 	mkdir -p $(dir $@)
@@ -513,11 +513,11 @@ $(OBJDIR)/%.d: %.c
 
 $(OBJDIR)/%.d: %.cc
 	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.S
 	mkdir -p $(dir $@)
@@ -534,11 +534,11 @@ $(OBJDIR)/%.cpp: %.$(SUFFIX)
 
 $(OBJDIR)/%.o: $(OBJDIR)/%.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.d: $(OBJDIR)/%.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $(CXXFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # core files
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.c
@@ -547,7 +547,7 @@ $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.c
 
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CPPFLAGS) $< -o $@
 
 # various object conversions
 $(OBJDIR)/%.hex: $(OBJDIR)/%.elf
