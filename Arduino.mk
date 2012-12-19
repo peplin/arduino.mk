@@ -419,9 +419,7 @@ ECHO    = echo
 SYS_LIBS      = $(patsubst %,$(ARDUINO_LIB_PATH)/%,$(ARDUINO_LIBS))
 USER_LIBS     = $(patsubst %,$(USER_LIB_PATH)/%,$(ARDUINO_LIBS))
 SYS_INCLUDES  = $(patsubst %,-I%,$(SYS_LIBS))
-SYS_INCLUDES  += $(patsubst %,-I%,$(USER_LIBS))
-SYS_OBJS      = $(wildcard $(patsubst %,%/*.o,$(SYS_LIBS)))
-SYS_OBJS      += $(wildcard $(patsubst %,%/*.o,$(USER_LIBS)))
+USER_INCLUDES = $(patsubst %,-I%,$(USER_LIBS))
 LIB_CPP_SRC   = $(wildcard $(patsubst %,%/*.cpp,$(SYS_LIBS)))
 LIB_C_SRC     = $(wildcard $(patsubst %,%/*.c,$(SYS_LIBS)))
 USER_LIB_CPP_SRC   = $(wildcard $(patsubst %,%/*.cpp,$(USER_LIBS)))
@@ -435,12 +433,13 @@ ifndef MCU_FLAG_NAME
 MCU_FLAG_NAME = mmcu
 endif
 
-CPPFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
+CPPFLAGS_WITHOUT_USER_LIBS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-DARDUINO=$(ARDUINO_VERSION) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
 			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
+CPPFLAGS = $(CPPFLAGS_WITHOUT_USER_LIBS) $(USER_INCLUDES)
 
 ifdef DEBUG
 CPPFLAGS += -O0 -g -mdebugger
@@ -479,10 +478,10 @@ $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.c
 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.cpp
 	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.c
 	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 
 # normal local sources
 # .o rules are for objects, .d for dependency tracking
