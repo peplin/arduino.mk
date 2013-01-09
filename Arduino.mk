@@ -190,6 +190,10 @@ ifndef ARDUINO_LIB_PATH
 ARDUINO_LIB_PATH  = $(ARDUINO_DIR)/libraries
 endif
 
+ifndef USER_LIB_PATH
+
+ifndef ARDUINO_SKETCHBOOK
+
 ifndef ARDUINO_PREFERENCES_PATH
 
 ifeq ($(OSTYPE),Linux)
@@ -204,11 +208,9 @@ ifeq ($(wildcard $(ARDUINO_PREFERENCES_PATH)),)
 $(error "Error: run the IDE once to initialize preferences sketchbook path")
 endif
 
-ifndef ARDUINO_SKETCHBOOK
 ARDUINO_SKETCHBOOK = $(shell grep sketchbook.path $(wildcard $(ARDUINO_PREFERENCES_PATH)) | cut -d = -f 2)
 endif
 
-ifndef USER_LIB_PATH
 USER_LIB_PATH = $(ARDUINO_SKETCHBOOK)/libraries
 endif
 
