@@ -461,7 +461,11 @@ LDFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
 PDEHEADER     = \\\#include \"$(CORE_INCLUDE_NAME)\"
 
 # Expand and pick the first port
-ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
+ifneq (,$(findstring com,$(ARDUINO_PORT)))
+    ARD_PORT      = $(ARDUINO_PORT)
+else
+    ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
+endif
 
 # Implicit rules for building everything (needed to get everything in
 # the right directory)
@@ -637,15 +641,7 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-		@if [ -z "$(ARD_PORT)" ]; then \
-			echo "No Arduino-compatible TTY device found -- exiting"; exit 2; \
-			fi
-		for STTYF in 'stty --file' 'stty -f' 'stty <' ; \
-		  do $$STTYF /dev/tty >/dev/null 2>/dev/null && break ; \
-		done ;\
-		$$STTYF $(ARD_PORT)  hupcl ;\
-		(sleep 0.1 || sleep 1)     ;\
-		$$STTYF $(ARD_PORT) -hupcl
+	$(ARDUINO_MK_PATH)/reset.sh $(ARD_PORT)
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
