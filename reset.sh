@@ -23,11 +23,11 @@ if [ $OS != "windows" ] && [ $OS != "cygwin" ]; then
     fi
 
     for STTYF in 'stty --file' 'stty -f' 'stty <'; do
-        $$STTYF /dev/tty >/dev/null 2>/dev/null && break
+        $STTYF /dev/tty >/dev/null 2>/dev/null && break
     done
-    $$STTYF $(ARD_PORT) hupcl
+    $STTYF $ARD_PORT hupcl
     (sleep 0.1 || sleep 1)
-    $$STTYF $(ARD_PORT) -hupcl
+    $STTYF $ARD_PORT -hupcl
 else
     echo "NOTE: Can't reset device in Windows/Cygwin, so if the upload freezes try power cycling the device and retrying."
     echo
