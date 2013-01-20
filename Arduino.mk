@@ -641,7 +641,7 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-	$(ARDUINO_MK_PATH)/reset.sh $(ARD_PORT)
+	$(ARDUINO_MK_PATH)reset.sh $(ARD_PORT)
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \

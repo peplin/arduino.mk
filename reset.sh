@@ -28,5 +28,7 @@ if [ $OS != "windows" ] && [ $OS != "cygwin" ]; then
     $$STTYF $(ARD_PORT) hupcl
     (sleep 0.1 || sleep 1)
     $$STTYF $(ARD_PORT) -hupcl
-
+else
+    echo "NOTE: Can't reset device in Windows/Cygwin, so if the upload freezes try power cycling the device and retrying."
+    echo
 fi
