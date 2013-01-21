@@ -65,7 +65,7 @@
 #       ARDUINO_LIBS = LiquidCrystal
 #
 #       BOARD_TAG    = uno
-#       ARDUINO_PORT = /dev/cu.usb*
+#       SERIAL_PORT = /dev/cu.usb*
 #
 #       include $(ARDUINO_MAKEFILE_HOME)/Arduino.mk
 #
@@ -77,7 +77,7 @@
 #                   here: you could always set it to xx if you wanted!
 #    ARDUINO_LIBS - A list of any libraries used by the sketch (we assume
 #                   these are in $(ARDUINO_DIR)/hardware/libraries
-#    ARDUINO_PORT - The port where the Arduino can be found. Only needed
+#    SERIAL_PORT - The port where the Arduino can be found. Only needed
 #                   when uploading.
 #    BOARD_TAG    - The tag for the board e.g. uno or mega
 #                   'make show_boards' shows a list
@@ -461,10 +461,10 @@ LDFLAGS = -$(MCU_FLAG_NAME)=$(MCU) -lm -Wl,--gc-sections -Os $(EXTRA_LDFLAGS)
 PDEHEADER     = \\\#include \"$(CORE_INCLUDE_NAME)\"
 
 # Expand and pick the first port
-ifneq (,$(findstring com,$(ARDUINO_PORT)))
-    ARD_PORT      = $(ARDUINO_PORT)
+ifneq (,$(findstring com,$(SERIAL_PORT)))
+    ARD_PORT      = $(SERIAL_PORT)
 else
-    ARD_PORT      = $(firstword $(wildcard $(ARDUINO_PORT)))
+    ARD_PORT      = $(firstword $(wildcard $(SERIAL_PORT)))
 endif
 
 # Implicit rules for building everything (needed to get everything in
@@ -611,7 +611,7 @@ SERIAL_BAUDRATE_FLAG = -b
 endif
 
 ifndef SERIAL_ARGS
-SERIAL_ARGS = $(SERIAL_PORT_FLAG) $(ARDUINO_PORT) \
+SERIAL_ARGS = $(SERIAL_PORT_FLAG) $(SERIAL_PORT) \
 			  $(SERIAL_BAUDRATE_FLAG) $(SERIAL_BAUDRATE)
 endif
 
