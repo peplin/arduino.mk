@@ -297,10 +297,6 @@ ifndef VARIANT
 VARIANT = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 endif
 
-ifndef BOARD
-BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
-endif
-
 ifndef OBJDIR
 OBJDIR  	  = build-cli
 endif
@@ -440,7 +436,7 @@ CPPFLAGS_WITHOUT_USER_LIBS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
-			-ffunction-sections -fdata-sections -D$(BOARD) $(EXTRA_CPPFLAGS)
+			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
 CPPFLAGS = $(CPPFLAGS_WITHOUT_USER_LIBS) $(USER_INCLUDES)
 
 ifdef DEBUG
