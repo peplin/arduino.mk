@@ -17,6 +17,8 @@
 #
 # Modified by Christopher Peplin for chipKIT.
 #
+# Modified by John Wallbank for Visual Studio
+#
 # Version 0.1  17.ii.2009  M J Oldfield
 #
 #         0.2  22.ii.2009  M J Oldfield
@@ -49,6 +51,12 @@
 #              			   so Perl/YAML aren't required (thanks to avenue33 on
 #              			   the chipKIT forums)
 #              			   - added support for multiple library paths
+#              Development changes, John Wallbank,
+#
+#              			   - made inclusion of WProgram.h optional so that 
+#              			   including it in the source doesn't mess up compile error line numbers
+#              			   - tidied up the presentation of progress comments
+#						   - parameterised the routine used to reset the serial port
 #
 ########################################################################
 #
@@ -297,6 +305,10 @@ ifndef VARIANT
 VARIANT = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 endif
 
+ifndef BOARD
+BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
+endif
+
 ifndef OBJDIR
 OBJDIR  	  = build-cli
 endif
@@ -436,7 +448,7 @@ CPPFLAGS_WITHOUT_USER_LIBS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
-			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
+			-ffunction-sections -fdata-sections -D$(BOARD) $(EXTRA_CPPFLAGS)
 CPPFLAGS = $(CPPFLAGS_WITHOUT_USER_LIBS) $(USER_INCLUDES)
 
 ifdef DEBUG
@@ -462,7 +474,6 @@ ifneq (,$(findstring com,$(SERIAL_PORT)))
 else
     ARD_PORT      = $(firstword $(wildcard $(SERIAL_PORT)))
 endif
-
 # Implicit rules for building everything (needed to get everything in
 # the right directory)
 #
@@ -473,96 +484,119 @@ endif
 
 # library sources
 $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.cpp
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "21 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.c
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "20 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.cpp
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
+	@mkdir -p Compiling $(dir $@)
+	@echo "19 $@"
+	@$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.c
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
+	@mkdir -p Compiling $(dir $@)
+	@echo "18 $@"
+	@$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 
 # normal local sources
 # .o rules are for objects, .d for dependency tracking
 # there seems to be an awful lot of duplication here!!!
 $(OBJDIR)/%.o: %.c
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "17 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.cc
-	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "16 Compiling $@"
+	@$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.cpp
-	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "15 Compiling $@"
+	@$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.S
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "14 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: %.s
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "13 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(ASFLAGS) $< -o $@
 
 $(OBJDIR)/%.d: %.c
-	mkdir -p $(dir $@)
-	$(CC) -MM $(CPPFLAGS) $(CFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "12 Compiling $@"
+	@$(CC) -MM $(CPPFLAGS) $(CFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.cc
-	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "11 Compiling $@"
+	@$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.cpp
-	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "10 Compiling $@"
+	@$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.S
-	mkdir -p $(dir $@)
-	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "9 Compiling $@"
+	@$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 $(OBJDIR)/%.d: %.s
-	mkdir -p $(dir $@)
-	$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "8 Compiling $@"
+	@$(CC) -MM $(CPPFLAGS) $(ASFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # the pde -> cpp -> o file
 $(OBJDIR)/%.cpp: %.$(SUFFIX)
-	$(ECHO) $(PDEHEADER) > $@
+	@echo "Producing $a"
+	@if [ $(CORE_INCLUDE_NAME) ] ; then $(ECHO) $(PDEHEADER) > $@ ; echo Including $(CORE_INCLUDE_NAME) ; fi
 	@cat  $< >> $@
 
 $(OBJDIR)/%.o: $(OBJDIR)/%.cpp
-	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "7 Compiling $@"
+	@$(CXX) -c $(CPPFLAGS) $< -o $@
 
 $(OBJDIR)/%.d: $(OBJDIR)/%.cpp
-	mkdir -p $(dir $@)
-	$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
+	@mkdir -p $(dir $@)
+	@echo "6 Compiling $@"
+	@$(CXX) -MM $(CPPFLAGS) $< -MF $@ -MT $(@:.d=.o)
 
 # core files
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.c
-	mkdir -p $(dir $@)
-	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "5 Compiling $@"
+	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 
 $(OBJDIR)/%.o: $(ARDUINO_CORE_PATH)/%.cpp
-	mkdir -p $(dir $@)
-	$(CXX) -c $(CPPFLAGS) $< -o $@
+	@mkdir -p $(dir $@)
+	@echo "4 Compiling $@"
+	@$(CXX) -c $(CPPFLAGS) $< -o $@
 
 # various object conversions
 $(OBJDIR)/%.hex: $(OBJDIR)/%.elf
-	$(OBJCOPY) -O ihex -R .eeprom $< $@
+	@echo "Producing $@"
+	@$(OBJCOPY) -O ihex -R .eeprom $< $@
 
 $(OBJDIR)/%.eep: $(OBJDIR)/%.elf
-	-$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
+	@echo "Producing $@"
+	@-$(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
 		--change-section-lma .eeprom=0 -O ihex $< $@
 
 $(OBJDIR)/%.lss: $(OBJDIR)/%.elf
-	$(OBJDUMP) -h -S $< > $@
+	@echo "Producing $@"
+	@$(OBJDUMP) -h -S $< > $@
 
 $(OBJDIR)/%.sym: $(OBJDIR)/%.elf
-	$(NM) -n $< > $@
+	@echo "Producing $@"
+	@$(NM) -n $< > $@
 
 ########################################################################
 #
@@ -619,25 +653,27 @@ endif
 all: 		$(OBJDIR) $(TARGET_HEX)
 
 $(OBJDIR):
-		mkdir -p $(OBJDIR)
+		@mkdir -p $(OBJDIR)
 
 $(TARGET_ELF): 	$(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS)
-		$(CC) $(LDFLAGS) -o $@ $(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS) -lc -lm
+		@echo "Producing $(TARGET_ELF)"
+		@$(CC) $(LDFLAGS) -o $@ $(LOCAL_OBJS) $(CORE_LIB) $(OTHER_OBJS) -lc -lm
 
 $(CORE_LIB):	$(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
-		$(AR) rcs $@ $(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
+		@echo "Producing $(CORE_LIB)"
+		@$(AR) rcs $@ $(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 
 upload:		reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
-		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) \
-			-U flash:w:$(TARGET_HEX):i
+		@echo "Uploading $(TARGET_HEX) to device"
+		@$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ARD_OPTS) -U flash:w:$(TARGET_HEX):i
 
 # stty on MacOS likes -F, but on Debian it likes -f redirecting
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-	$(ARDUINO_MK_PATH)reset.sh $(ARD_PORT)
+	@$(ARDUINO_MK_PATH)$(RESET_SERIAL) $(ARD_PORT)
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
