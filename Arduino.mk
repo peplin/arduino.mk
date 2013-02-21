@@ -56,6 +56,7 @@
 #              			   - made inclusion of WProgram.h optional so that 
 #              			   including it in the source doesn't mess up compile error line numbers
 #              			   - tidied up the presentation of progress comments
+#						   - parameterised the routine used to reset the serial port
 #
 ########################################################################
 #
@@ -672,7 +673,7 @@ raw_upload:	$(TARGET_HEX)
 # stdin/out appears to work but generates a spurious error on MacOS at
 # least. Perhaps it would be better to just do it in perl ?
 reset:
-	@$(ARDUINO_MK_PATH)ResetSerial.exe $(ARD_PORT)
+	@$(ARDUINO_MK_PATH)$(RESET_SERIAL) $(ARD_PORT)
 
 ispload:	$(TARGET_HEX)
 		$(AVRDUDE) $(AVRDUDE_COM_OPTS) $(AVRDUDE_ISP_OPTS) -e \
