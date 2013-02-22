@@ -53,7 +53,7 @@
 #              			   - added support for multiple library paths
 #              Development changes, John Wallbank,
 #
-#              			   - made inclusion of WProgram.h optional so that 
+#              			   - made inclusion of WProgram.h optional so that
 #              			   including it in the source doesn't mess up compile error line numbers
 #              			   - tidied up the presentation of progress comments
 #						   - parameterised the routine used to reset the serial port
@@ -305,10 +305,6 @@ ifndef VARIANT
 VARIANT = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 endif
 
-ifndef BOARD
-BOARD = $(call PARSE_BOARD,$(BOARD_TAG),board)
-endif
-
 ifndef OBJDIR
 OBJDIR  	  = build-cli
 endif
@@ -445,7 +441,7 @@ CPPFLAGS_WITHOUT_USER_LIBS = -$(MCU_FLAG_NAME)=$(MCU) -DF_CPU=$(F_CPU) \
 			-I. -I$(ARDUINO_CORE_PATH) \
 			-I$(VARIANTS_PATH)/$(VARIANT) \
 			$(SYS_INCLUDES) -w -Wall -fno-exceptions\
-			-ffunction-sections -fdata-sections -D$(BOARD) $(EXTRA_CPPFLAGS)
+			-ffunction-sections -fdata-sections $(EXTRA_CPPFLAGS)
 CPPFLAGS = $(CPPFLAGS_WITHOUT_USER_LIBS) $(USER_INCLUDES)
 
 ifdef DEBUG
