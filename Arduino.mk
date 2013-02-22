@@ -411,8 +411,6 @@ AR      = $(AR_NAME)
 SIZE    = $(SIZE_NAME)
 NM      = $(NM_NAME)
 
-ifneq ($(OSTYPE),Linux)
-# Compilers distributed with the IDE in OS X and Windows, but not Linux
 CC      := $(addprefix $(AVR_TOOLS_PATH),$(CC))
 CXX     := $(addprefix $(AVR_TOOLS_PATH),$(CXX))
 OBJCOPY := $(addprefix $(AVR_TOOLS_PATH),$(OBJCOPY))
@@ -420,7 +418,6 @@ OBJDUMP := $(addprefix $(AVR_TOOLS_PATH),$(OBJDUMP))
 AR      := $(addprefix $(AVR_TOOLS_PATH),$(AR))
 SIZE    := $(addprefix $(AVR_TOOLS_PATH),$(SIZE))
 NM      := $(addprefix $(AVR_TOOLS_PATH),$(NM))
-endif
 
 REMOVE  = rm -f
 ECHO    = echo
