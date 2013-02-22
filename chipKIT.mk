@@ -79,14 +79,3 @@ EXTRA_CPPFLAGS += -mno-smart-io -fno-short-double
 CHIPKIT_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include $(CHIPKIT_MK_PATH)Arduino.mk
-
-ifeq ($(OSTYPE),Linux)
-# MPIDE still comes with the compilers on Linux, unlike Arduino
-CC      := $(addprefix $(AVR_TOOLS_PATH),$(CC))
-CXX     := $(addprefix $(AVR_TOOLS_PATH),$(CXX))
-OBJCOPY := $(addprefix $(AVR_TOOLS_PATH),$(OBJCOPY))
-OBJDUMP := $(addprefix $(AVR_TOOLS_PATH),$(OBJDUMP))
-AR      := $(addprefix $(AVR_TOOLS_PATH),$(AR))
-SIZE    := $(addprefix $(AVR_TOOLS_PATH),$(SIZE))
-NM      := $(addprefix $(AVR_TOOLS_PATH),$(NM))
-endif
