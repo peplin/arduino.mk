@@ -60,3 +60,4 @@ built-in `main()` from being compiled with your code by defining the
 * Chris Peplin (chipKIT)
 * rei_vilo / Olivier
 * Edward Comer
+* John Wallbank
