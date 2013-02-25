@@ -656,7 +656,7 @@ $(CORE_LIB):	$(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 		@echo "Producing $(CORE_LIB)"
 		@$(AR) rcs $@ $(CORE_OBJS) $(LIB_OBJS) $(USER_LIB_OBJS)
 
-upload:		reset raw_upload
+upload:		$(OBJDIR) reset raw_upload
 
 raw_upload:	$(TARGET_HEX)
 		@echo "Uploading $(TARGET_HEX) to device"
