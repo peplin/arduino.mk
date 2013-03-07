@@ -234,6 +234,10 @@ ifndef ARDUINO_VERSION
 ARDUINO_VERSION = 100
 endif
 
+ifndef RESET_SERIAL
+RESET_SERIAL=reset.sh
+endif
+
 ARDUINO_MK_PATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 # Default TARGET to cwd (ex Daniele Vergini)

@@ -15,10 +15,10 @@
 #
 #    Development changes, John Wallbank,
 #
-#   - made inclusion of WProgram.h optional so that 
+#   - made inclusion of WProgram.h optional so that
 #    including it in the source doesn't mess up compile error line numbers
 #   - parameterised the routine used to reset the serial port
-# 
+#
 OSTYPE := $(shell uname)
 
 ifeq ($(wildcard $(MPIDE_DIR)),)
@@ -63,12 +63,10 @@ AR_NAME = pic32-ar
 OBJDUMP_NAME = pic32-objdump
 OBJCOPY_NAME = pic32-objcopy
 
-ifndef $CORE_INCLUDE_NAME
+ifndef $(CORE_INCLUDE_NAME)
   CORE_INCLUDE_NAME="WProgram.h"
 endif
-ifndef $RESET_SERIAL
-	RESET_SERIAL=reset.sh
-endif
+
 LDSCRIPT = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
 LDSCRIPT_FILE = $(ARDUINO_CORE_PATH)/$(LDSCRIPT)
 
