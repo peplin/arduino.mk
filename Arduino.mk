@@ -489,12 +489,12 @@ $(OBJDIR)/libs/%.o: $(ARDUINO_LIB_PATH)/%.c
 	@echo "20 Compiling $@"
 	@$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.cpp
-	@mkdir -p Compiling $(dir $@)
-	@echo "19 $@"
+	@mkdir -p $(dir $@)
+	@echo "19 Compiling $@"
 	@$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 $(OBJDIR)/libs/%.o: $(USER_LIB_PATH)/%.c
-	@mkdir -p Compiling $(dir $@)
-	@echo "18 $@"
+	@mkdir -p $(dir $@)
+	@echo "18 Compiling $@"
 	@$(CC) -c $(CPPFLAGS_WITHOUT_USER_LIBS) -I$(dir $<) -I$(dir $<)/utility -I$(dir $<)/.. $(CFLAGS) $< -o $@
 
 # normal local sources
