@@ -339,8 +339,11 @@ endif
 # Local sources
 #
 LOCAL_C_SRCS    += $(wildcard *.c)
+LOCAL_C_SRCS    := $(sort $(LOCAL_C_SRCS))
 LOCAL_CPP_SRCS  += $(wildcard *.cpp)
+LOCAL_CPP_SRCS  := $(sort $(LOCAL_CPP_SRCS))
 LOCAL_CC_SRCS   += $(wildcard *.cc)
+LOCAL_CC_SRCS   := $(sort $(LOCAL_CC_SRCS))
 LOCAL_PDE_SRCS  += $(wildcard *.$(SUFFIX))
 LOCAL_AS_SRCS   += $(wildcard *.S)
 LOCAL_OBJ_FILES = $(LOCAL_C_SRCS:.c=.o) $(LOCAL_CPP_SRCS:.cpp=.o) \
