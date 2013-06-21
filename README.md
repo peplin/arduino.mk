@@ -61,3 +61,8 @@ built-in `main()` from being compiled with your code by defining the
 * rei_vilo / Olivier
 * Edward Comer
 * John Wallbank
+
+## License
+
+The arduino.mk project is distributed under the LGPL. See licence.txt for the
+full license text.
