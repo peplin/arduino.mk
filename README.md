@@ -1,5 +1,16 @@
 # Arduino.mk
 
+**Deprecation Warning**
+
+Note that the changes in this Makefile have been merged in the now active
+upstream project at https://github.com/sudar/Arduino-Makefile. The only
+difference at this point is that the upstream version requries Perl (for the
+board reset script). This project should be considered deprecated but I will
+update it once the Perl dependency is finally dropped from the upstream version
+to say this is dead for good.
+
+**Old docs:**
+
 This is a versioned history of the work done by Martin Oldfield on an Arduino
 Makefile. He releases tarballs on his website, so this version might be a bit
 easier if you want to track your modifications.
